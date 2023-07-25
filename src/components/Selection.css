@@ -1,0 +1,45 @@
+.Selection {
+    padding-top:20px;
+    text-align: center;
+}
+
+.Selection .editor_section {
+    margin-bottom: 40px;
+}
+
+.Selection .selection_list_wrapper {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+    gap:2%;
+}
+
+.Selection input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.Selection button{
+    width: 300px;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    white-space: nowrap;
+    /* background-color: rgb(255, 255, 255); */
+    color: black;
+}
+
+.Selection img{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

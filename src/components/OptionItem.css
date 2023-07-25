@@ -1,0 +1,39 @@
+.OptionItem {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.OptionItem span {
+    font-size: 18px;
+}
+
+.OptionItem_off {
+    background-color: #ececec;
+}
+
+.OptionItem_on_1 {
+    background-color: rgb(200, 220, 255);
+    color: black;
+}
+.OptionItem_on_2 {
+    background-color: rgb(200, 220, 255);
+    color: black;
+}
+.OptionItem_on_3 {
+    background-color: rgb(200, 220, 255);
+    color: black;
+}
+.OptionItem_on_4 {
+    background-color: rgb(200, 220, 255);
+    color: black;
+}
+.OptionItem_on_5 {
+    background-color: rgb(200, 220, 255);
+    color: black;
+}

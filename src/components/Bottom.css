@@ -1,0 +1,22 @@
+.Bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e2e2e2;
+    bottom: 0px;
+}
+
+.Bottom > div {
+    display: flex;
+}
+
+.Bottom .bottom_left {
+    width: 50%;
+    justify-content: start;
+}
+.Bottom .bottom_right {
+    width: 50%;
+    justify-content: end;
+}
