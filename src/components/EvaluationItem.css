@@ -1,0 +1,48 @@
+.EvaluationItem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.EvaluationItem .img_section {
+    cursor: pointer;
+    min-width: 120px;
+    height: 80px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.EvaluationItem .img_section img {
+    width: (80/120);
+}
+
+.EvaluationItem .info_section {
+    flex-grow: 1;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.EvaluationItem .info_section .date_wrapper {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.EvaluationItem .info_section .item_wrapper {
+    font-size: 18px;
+}
+
+.EvaluationItem .info_section .content_wrapper {
+    text-align: center;
+    background-color: #e2e2e2;
+    height: 25%;
+    width: 50%;
+    font-size: 15px;
+}
+
+.EvaluationItem .button_section {
+    min-width: 70px;
+}

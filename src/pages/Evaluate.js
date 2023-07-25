@@ -1,8 +1,9 @@
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
 import Search from "../components/Search";
+import EvaluationList from "../components/EvaluationList";
 
-const Evaluate = () => {
+const Evaluate = ({data}) => {
     return(
         <div>
             <Header
@@ -10,6 +11,7 @@ const Evaluate = () => {
             />
             <Navigator/>            
             <Search/>
+            <EvaluationList data={data} />
         </div>
     )
 }

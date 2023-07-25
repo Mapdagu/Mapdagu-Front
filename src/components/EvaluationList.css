@@ -1,0 +1,36 @@
+.EvaluationList {
+}
+
+.EvaluationList .menu_wrapper{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.EvaluationList h4{
+    padding-left:20px;
+}
+
+.EvaluationList .right_col select{
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ececec;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    cursor: pointer;
+    font-family: "Nanum Pen Script";
+    font-size: 18px;
+}
+
+.EvaluationList .menu_wrapper .left_col{
+    flex-grow: 1;
+}
+
+.EvaluationList .menu_wrapper .left_col button{
+    width: 100%;
+}
