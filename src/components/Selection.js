@@ -30,12 +30,6 @@ const Selection = () => {
             <div>
             <img alt="" src={img0}/>
             </div>
-            {/* <div><button>이게 맵다고?</button> </div>
-            <div><button>딱 맛있게 맵다</button> </div>
-            <div><button>좀 맵지만 즐길 수는 있다</button> </div>
-            <div><button>휴 도전이었다</button> </div>
-            <div><button>다시는 못 먹을 매운맛!! ㅠ</button> </div> */}
-
             <div className="input_wrapper selection_list_wrapper">
                 {selectionList.map((it) => (
                     <OptionItem

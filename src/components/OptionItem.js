@@ -9,7 +9,7 @@ const OptionItem = ({id, name, onClick, isSelected}) => {
         <div 
             className = {[
                 "OptionItem",
-                isSelected ? `OptionItem_on_${id}` : `OptionItem_off`,
+                isSelected ? `OptionItem_on` : `OptionItem_off`,
             ].join(" ")}
             onClick={handleOnClick}>
             <span>{name}</span>

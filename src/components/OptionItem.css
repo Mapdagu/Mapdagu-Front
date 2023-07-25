@@ -17,23 +17,7 @@
     background-color: #ececec;
 }
 
-.OptionItem_on_1 {
-    background-color: rgb(200, 220, 255);
-    color: black;
-}
-.OptionItem_on_2 {
-    background-color: rgb(200, 220, 255);
-    color: black;
-}
-.OptionItem_on_3 {
-    background-color: rgb(200, 220, 255);
-    color: black;
-}
-.OptionItem_on_4 {
-    background-color: rgb(200, 220, 255);
-    color: black;
-}
-.OptionItem_on_5 {
+.OptionItem_on{
     background-color: rgb(200, 220, 255);
     color: black;
 }
