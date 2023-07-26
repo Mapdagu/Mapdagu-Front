@@ -39,8 +39,9 @@
     text-align: center;
     background-color: #e2e2e2;
     height: 25%;
-    width: 50%;
+    width: 80%;
     font-size: 15px;
+    border-radius: 5px;
 }
 
 .EvaluationItem .button_section {

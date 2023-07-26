@@ -1,4 +1,6 @@
 .EvaluationList {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .EvaluationList .menu_wrapper{
@@ -8,7 +10,22 @@
 }
 
 .EvaluationList h4{
-    padding-left:20px;
+    margin:20px;
+    /* padding-left:20px; */
+}
+
+.EvaluationList .searchbar{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.EvaluationList .searchbar:focus{
+    outline: none;
+    border-bottom: 1px solid #1f93ff;
 }
 
 .EvaluationList .right_col select{
