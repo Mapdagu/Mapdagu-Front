@@ -9,7 +9,7 @@ const Friend = () => {
                 title="friend page"
             />
             <Navigator/>
-            <Search/>
+            <Search text="친구 찾기"/>
         </div>
     )
 }

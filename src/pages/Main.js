@@ -9,7 +9,7 @@ const Main = () => {
                 title="main page"
             />
             <Navigator/>
-            <Search/>
+            <Search text="음식 검색하기"/>
         </div>
     )
 }
