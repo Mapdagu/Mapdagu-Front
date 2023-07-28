@@ -3,26 +3,42 @@ import Button from "../components/Button";
 import Selection from "../components/Selection";
 import Bottom from "../components/Bottom"
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const Test = ({data}) => {
-    const itemName = "나에게 신라면은";
+const maxTestNum = 2;
+
+const Test = () => {
+    const [ testNum, setTestNum ] = useState(0);
     const isSelected = true;
     const navigate = useNavigate();
+
     const goNext = () => {
         if(isSelected){
-            navigate(`/result`);
+            if(testNum === maxTestNum){
+                navigate(`/result`);
+            }
+            else{
+                setTestNum(testNum + 1);
+            }
         }
         else{
             alert("하나를 선택해주세요");
         }
     }
     const goBack = () => {
-        navigate(-1);
+        if(testNum === 0){
+            navigate(`/`);
+        }
+        else{
+            setTestNum(testNum - 1);
+        }
     }
+
     return (
         <div>
-            <Header title={`${itemName}`}/>
-            <Selection data={data}/>
+            <Header title={`테스트 페이지`}/>
+            {testNum+1}/{maxTestNum+1}
+            <Selection testNum={testNum} />
             <Bottom 
             leftChild={<Button text={"< 이전"} onClick={goBack}/>}
             rightChild={<Button text={"다음 >"} onClick={goNext}/>} 

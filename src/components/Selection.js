@@ -1,14 +1,13 @@
 import "./Selection.css";
-import { selectionList } from "../util";
+import { selectionList, testItemList, getItemImgById } from "../util";
 import { useState } from "react";
-import img0 from "../img/logo192.png";
-// import SelectionItem from "./SelectionItem.";
 import OptionItem from "./OptionItem";
 
-const Selection = () => {
+const Selection = ({testNum}) => {
     const [state, setState] = useState({
         selectionId: 0,
     });
+    const itemInform = testItemList.filter(it => (it.id === testNum));
 
     const handleChangeSelection = (selectionId) => {
         setState({
@@ -17,19 +16,14 @@ const Selection = () => {
         });
     };
 
-    // useEffect(() => {
-    //     if(data){
-    //         setState({
-    //             ...data,
-    //         });
-    //     }
-    // }, [data]);
-
     return (
         <div className="Selection">
-            <div>
-            <img alt="" src={img0}/>
-            </div>
+            {itemInform.map((it) => (
+                <div key={it.id}>
+                    <h4> 나에게 {it.itemName}은</h4>
+                    <img alt="" src={getItemImgById(it.id)}/> 
+                </div>
+            ))} 
             <div className="input_wrapper selection_list_wrapper">
                 {selectionList.map((it) => (
                     <OptionItem

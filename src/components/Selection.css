@@ -1,5 +1,4 @@
 .Selection {
-    padding-top:20px;
     text-align: center;
 }
 
@@ -40,6 +39,10 @@
 }
 
 .Selection img{
-    padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.Selection h4{
+    text-align: center;
+    
 }

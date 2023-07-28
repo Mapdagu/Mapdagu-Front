@@ -1,7 +1,7 @@
 import "./OptionItem.css";
 import React from "react";
 
-const OptionItem = ({id, name, onClick, isSelected}) => {
+const OptionItem = ({ id, name, onClick, isSelected}) => {
     const handleOnClick = () => {
         onClick(id);
     }
