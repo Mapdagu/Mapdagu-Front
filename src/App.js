@@ -1,7 +1,6 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-// import { useRef, useEffect, useReducer } from 'react';
-import { useState, useRef } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useReducer, useEffect } from 'react';
 
 import TestMain from './pages/TestMain';
 import Test from './pages/Test';
@@ -11,79 +10,132 @@ import Friend from './pages/Friend';
 import Evaluate from './pages/Evaluate';
 import MyPage from './pages/MyPage';
 import Details from './pages/Details';
-import CreateEval from './pages/CreateEval';
+import EditEval from './pages/EditEval';
+
+export const EvalStateContext = React.createContext();
+export const EvalDispatchContext = React.createContext();
 
 const mockData = [
   {
     id: 0,
-    date: new Date().getTime() -1,
+    date: new Date().getTime()-1,
     itemName: "신라면",
     selectionId: 1,
   },
   {
     id: 1,
-    date: new Date().getTime() -1,
+    date: new Date().getTime()-2,
     itemName: "불닭볶음면",
     selectionId: 2,
   },
   {
     id: 2,
-    date: new Date().getTime() -1,
+    date: new Date().getTime()-3,
     itemName: "엽기떡볶이 오리지널",
     selectionId: 3,
   }
 ]
 
-function App() {
-  const [state, setState] = useState(mockData);
-  const idRef = useRef(3);
-  const onCreate = (itemName) => {
-    const newItem = {
-      id: idRef.current,
-      date: new Date().getTime(),
-      itemName,
-      selectionId: 1,
-    };
-    setState([newItem, ...state]);
-    idRef.current += 1;
+function reducer(state, action) {
+  switch(action.type){
+    case "CREATE": {
+      return [action.data, ...state];
+    }
+    case "UPDATE": {
+      return state.map((it) => 
+        String(it.id) === String(action.data.id) ? {...action.data} : it
+      );
+    }
+    case "DELETE": {
+      return state.filter((it) => String(it.id) !== String(action.targetId));
+    }
+    case "INIT": {
+      return action.data;
+    }
+    default: {
+      return state;
+    }
   }
-  // const [data, dispatch] = useReducer(reducer, []);
+}
 
-  // useEffect(() => {
-  //   idRef.current = mockData[0].id + 1;
-  //   dispatch({
-  //       data: mockData,
-  //   });
-  // }, []);
+function App() {
+  const [data, dispatch] = useReducer(reducer, []);
+  const idRef = useRef(3);
+  const navigate = useNavigate();
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-  // const onCreate = (itemName, selectionId) => {
-  //   dispatch({
-  //     data: {
-  //       id: idRef.current,
-  //       itemName: itemName,
-  //       selectionId: selectionId,
-  //     }
-  //   })
-  // }
+  useEffect(() => {
+    dispatch({
+      type: "INIT",
+      data: mockData,
+    });
+    setIsDataLoaded(true);
+  }, []);
 
-  return (
-    <div className="App">
-      <div className='project_name'>내가맵다했지</div>
-      <Routes>
-        <Route path = "/" element ={<TestMain />}/>
-        <Route path = "/test/:id" element ={<Test data={mockData}/>}/>
-        <Route path = "/result" element ={<Result />}/>
-        <Route path = "/main" element ={<Main />}/>
-        <Route path = "/details" element ={<Details />}/>
-        <Route path = "/friend" element ={<Friend />}/>
-        <Route path = "/evaluate" element ={<Evaluate data={mockData}/>}/>
-        <Route path = "/create_evalution" element ={<CreateEval/>}/>
-        <Route path = "/mypage" element ={<MyPage />}/>
-      </Routes>
-      {/* <TestMain/>
-      <Main/> */}
-    </div>
-  );
+  const onCreate = (date, itemName, selectionId) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: idRef.current,
+        date: new Date(date).getTime(),
+        itemName,
+        selectionId,
+      }
+    })
+  }
+  const onUpdate = (targetId, date, itemName, selectionId) => {
+    dispatch({
+      type: "UPDATE",
+      data: {
+        id: targetId,
+        data: new Date(date).getTime(),
+        itemName,
+        selectionId,
+      },
+    });
+  };
+  const onDelete = (targetId) => {
+    dispatch({
+      type: "DELETE",
+      targetId,
+    });
+  };
+
+  const changePage = () => {
+    navigate(`/`);
+  }
+  if(!isDataLoaded)
+    return <div>데이터를 불러오는 중입니다</div>
+  else {
+    return (
+      <EvalStateContext.Provider value={data}>
+        <EvalDispatchContext.Provider
+          value={{
+            onCreate,
+            onUpdate,
+            onDelete,
+          }}
+        >
+          <div className="App">
+            <div className='project_name'>
+              <button onClick={changePage}>처음으로</button>
+              내가맵다했지</div>
+            <Routes>
+              <Route path = "/" element ={<TestMain />}/>
+              <Route path = "/test" element ={<Test/>}/>
+              <Route path = "/result" element ={<Result />}/>
+              <Route path = "/main" element ={<Main />}/>
+              <Route path = "/detail" element ={<Details />}/>
+              <Route path = "/friend" element ={<Friend />}/>
+              <Route path = "/evaluate" element ={<Evaluate />}/>
+              <Route path = "/edit/:id" element ={<EditEval data={mockData}/>}/>
+              <Route path = "/mypage" element ={<MyPage />}/>
+            </Routes>
+          </div>
+        </EvalDispatchContext.Provider>
+      </EvalStateContext.Provider>
+    );
+  }
 }
 
 export default App;
