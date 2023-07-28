@@ -2,29 +2,15 @@ import "./EvaluationList.css";
 import { useState, useEffect } from "react";
 import EvaluationItem from "./EvaluationItem";
 
+const sortOptionList = [
+    {value: "latest", name: "최신순"},
+    {value: "oldest", name: "오래된 순"},
+]
+
 const EvaluationList = ({data}) => {    
     const [search, setSearch] = useState("");
     const [sortType, setSortType] = useState("latest");
     const [sortedData, setSortedData] = useState([]);
-    const sortOptionList = [
-        {value: "latest", name: "최신순"},
-        {value: "oldest", name: "오래된 순"},
-    ]
-
-    const onChangeSearch = (e) => {
-        setSearch(e.target.value);
-    };
-
-    const getSearchResult = () => {
-        return search === ""
-            ? data
-            : data.filter((it) => 
-                it.itemName.toLowerCase().includes(search));
-    };
-
-    const onChangeSortType = (e) => {
-        setSortType(e.target.value);
-    };
 
     useEffect(() => {
         const compare = (a, b) => {
@@ -40,19 +26,37 @@ const EvaluationList = ({data}) => {
         setSortedData(copyList);
     }, [data, sortType]);
 
+    const onChangeSearch = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const getSearchResult = () => {
+        return search === ""
+            ? sortedData
+            : sortedData.filter((it) => 
+                it.itemName.toLowerCase().includes(search));
+    };
+
+    const onChangeSortType = (e) => {
+        setSortType(e.target.value);
+    };
+
     return(
         <div className="EvaluationList">
-            {/* <div className="menu_wrapper"> */}
-                {/* <div className="left_col">
+            <div className="menu_wrapper">
+                <div className="left_col">
                     <h4>최근 나의 맵기평가</h4>
-                </div> */}
-                {/* <div className="right_col">
+                </div>
+                <div className="right_col">
                     <select value={sortType} onChange={onChangeSortType}>
-                        {sortOptionList.map()}
+                        {sortOptionList.map((it, idx) => (
+                            <option key={idx} value={it.value}>
+                                {it.name}
+                            </option>
+                        ))}
                     </select>
-                </div> */}
-            {/* </div> */}
-            <h4>최근 나의 맵기평가</h4>
+                </div>
+            </div>
             <input 
                 className="searchbar" 
                 value={search}
@@ -61,15 +65,15 @@ const EvaluationList = ({data}) => {
             />
             <div className="list_wrapper">
                 {/* {sortedData.map((it) => (
-                    <DiaryItem key={it.id} {...it} />
+                    <EvaluationItem 
+                        key={it.id} 
+                        {...it} 
+                    />
                 ))} */}
                 {getSearchResult().map((it) => (
-                    // <div>{it.itemName}</div>
                     <EvaluationItem
                         key={it.id}
                         {...it}
-                        // onClick={handleChangeSelection}
-                        // isSelected={state.selectionId === it.id}
                     />
                 ))}
             </div>

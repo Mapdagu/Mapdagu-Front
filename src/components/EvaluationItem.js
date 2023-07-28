@@ -1,24 +1,19 @@
 import "./EvaluationItem.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-// import React from "react";
 import { getItemImgById, getSelectionTextById } from "../util";
 
 const EvaluationItem = ({id, date, itemName, selectionId}) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const goDetail = () => {
-        // navigate(`/diary/${id}`);
+        navigate(`/detail`);
     }
     const goEdit = () => {
-        // navigate(`/edit/${id}`);
+        navigate(`/edit/${id}`);
     }
     return (
         <div className="EvaluationItem">
-            <div
-            onClick={goDetail}
-            className="img_section"
-            >
-                {/* <img alt={`emotion${emotionId}`} src={getEmotionImgById(emotionId)} />     */}
+            <div onClick={goDetail} className="img_section">
                 <img alt="" src={getItemImgById(id)}/>
             </div>    
             <div onClick={goDetail} className="info_section">
@@ -29,7 +24,6 @@ const EvaluationItem = ({id, date, itemName, selectionId}) => {
                     {new Date(date).toLocaleDateString()}
                 </div>
                 <div className="content_wrapper">
-                    {/* {content.slice(0,25)} */}
                     {getSelectionTextById(selectionId)}
                 </div>
             </div>
