@@ -6,7 +6,7 @@ import { getItemImgById, getSelectionTextById } from "../util";
 const EvaluationItem = ({id, date, itemName, selectionId}) => {
     const navigate = useNavigate();
     const goDetail = () => {
-        navigate(`/detail`);
+        navigate(`/detail/${id}`);
     }
     const goEdit = () => {
         navigate(`/edit/${id}`);
@@ -21,7 +21,7 @@ const EvaluationItem = ({id, date, itemName, selectionId}) => {
                     {itemName}
                 </div>
                 <div className="date_wrapper">
-                    {new Date(date).toLocaleDateString()}
+                    {new Date(parseInt(date)).toLocaleDateString()}
                 </div>
                 <div className="content_wrapper">
                     {getSelectionTextById(selectionId)}

@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
 import "./Editor.css";
 import OptionItem from "./OptionItem";
-import { useNavigate } from "react-router-dom";
 import Button from "./Button";
+import Bottom from "./Bottom";
 import { getItemImgById, selectionList } from "../util";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Editor = ({initData, id, itemName, onSubmit}) => {  
-    console.log("1111");  
+const Editor = ({initData, onSubmit}) => {  
     const navigate = useNavigate();
     const [state, setState] = useState({
         id: 2,
@@ -14,10 +14,8 @@ const Editor = ({initData, id, itemName, onSubmit}) => {
         selectionId: 0,
     });
 
-    // const item = data.filter(it => (it.id === id));
-
     const handleSubmit = () => {
-        onSubmit();
+        onSubmit(state);
     }
     const handleOnBack = () => {
         navigate(-1);
@@ -31,14 +29,13 @@ const Editor = ({initData, id, itemName, onSubmit}) => {
         console.log(`state.itemName: ${state.itemName}`);
     }, []);
 
-    // useEffect(() => {
-    //     if(initData){
-    //         setState({
-    //             ...initData,
-    //             date: new Date(parseInt(initData.date)),
-    //         })
-    //     }
-    // }, [initData])
+    useEffect(() => {
+        if(initData){
+            setState({
+                ...initData,
+            })
+        }
+    }, [initData])
 
     return (
         <div className="Editor">
@@ -54,11 +51,9 @@ const Editor = ({initData, id, itemName, onSubmit}) => {
                     />
                 ))}
             </div>
-            <div className="editor_section bottom_section">
-                {/*작성 완료, 취소*/}
-                <Button text={"취소하기"} onClick={handleOnBack}/>
-                <Button text={"작성 완료"} type={"positive"} onClick={handleSubmit}/>
-            </div>
+            <Bottom leftChild={<Button text={"취소하기"} onClick={handleOnBack}/>}
+                    rightChild={<Button text={"작성완료"} type={"positive"} onClick={handleSubmit}/>}
+            />
         </div>
     );
 }
