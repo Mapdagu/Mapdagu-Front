@@ -11,6 +11,9 @@ import Evaluate from './pages/Evaluate';
 import MyPage from './pages/MyPage';
 import Details from './pages/Details';
 import EditEval from './pages/EditEval';
+import New from './pages/New'
+
+import { getItemImgById } from './util';
 
 export const EvalStateContext = React.createContext();
 export const EvalDispatchContext = React.createContext();
@@ -21,18 +24,21 @@ const mockData = [
     date: new Date().getTime()-1,
     itemName: "신라면",
     selectionId: 1,
+    img: getItemImgById(0),   
   },
   {
     id: 1,
     date: new Date().getTime()-2,
     itemName: "불닭볶음면",
     selectionId: 2,
+    img: getItemImgById(1),  
   },
   {
     id: 2,
     date: new Date().getTime()-3,
     itemName: "엽기떡볶이 오리지널",
     selectionId: 3,
+    img: getItemImgById(2),  
   }
 ]
 
@@ -125,9 +131,10 @@ function App() {
               <Route path = "/test" element ={<Test/>}/>
               <Route path = "/result" element ={<Result />}/>
               <Route path = "/main" element ={<Main />}/>
-              <Route path = "/detail" element ={<Details />}/>
+              <Route path = "/detail/:id" element ={<Details />}/>
               <Route path = "/friend" element ={<Friend />}/>
               <Route path = "/evaluate" element ={<Evaluate />}/>
+              <Route path = "/new" element ={<New />}/>
               <Route path = "/edit/:id" element ={<EditEval data={mockData}/>}/>
               <Route path = "/mypage" element ={<MyPage />}/>
             </Routes>
