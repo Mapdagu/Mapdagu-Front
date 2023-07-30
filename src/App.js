@@ -64,6 +64,8 @@ function reducer(state, action) {
   }
 }
 
+const maxTestNum = 2;
+
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(3);
@@ -88,14 +90,15 @@ function App() {
         selectionId,
       }
     })
+    idRef.current += 1;
   }
-  const onUpdate = (targetId, date, itemName, selectionId) => {
+  const onUpdate = (targetId, itemName, date, selectionId) => {
     dispatch({
       type: "UPDATE",
       data: {
         id: targetId,
-        data: new Date(date).getTime(),
         itemName,
+        date: new Date(date).getTime(),
         selectionId,
       },
     });
@@ -128,15 +131,15 @@ function App() {
               내가맵다했지</div>
             <Routes>
               <Route path = "/" element ={<TestMain />}/>
-              <Route path = "/test" element ={<Test/>}/>
-              <Route path = "/result" element ={<Result />}/>
+              <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
+              <Route path = "/result" element ={<Result maxTestNum={maxTestNum} idRef={idRef}/>}/>
               <Route path = "/main" element ={<Main />}/>
               <Route path = "/detail/:id" element ={<Details />}/>
               <Route path = "/friend" element ={<Friend />}/>
               <Route path = "/evaluate" element ={<Evaluate />}/>
               <Route path = "/new" element ={<New />}/>
-              <Route path = "/edit/:id" element ={<EditEval data={mockData}/>}/>
-              <Route path = "/mypage" element ={<MyPage />}/>
+              <Route path = "/edit/:id" element ={<EditEval />}/>
+              <Route path = "/mypage" element ={<MyPage maxTestNum={maxTestNum} idRef={idRef}/>}/>
             </Routes>
           </div>
         </EvalDispatchContext.Provider>
