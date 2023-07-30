@@ -1,21 +1,12 @@
 import Header from "../components/Header";
 import ResultViewer from "../components/ResultViewer";
-import { useNavigate } from "react-router-dom";
 
-const Result = () => {
-    const content="content: empty";
-    const navigate = useNavigate();
-    const doAgain = () => {
-        navigate(`/`);
-    }
-    const goMain = () => {
-        navigate(`/main`);
-    }
+const Result = ({maxTestNum, idRef}) => {
     return(
         <div>
             <div>
                 <Header title="result page"/>
-                <ResultViewer content={content} doAgain={doAgain} goMain={goMain}/>                
+                <ResultViewer maxTestNum={maxTestNum} idRef={idRef}/>                
             </div>
         </div>
     )
