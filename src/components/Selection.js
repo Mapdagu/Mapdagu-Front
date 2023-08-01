@@ -2,8 +2,10 @@ import "./Selection.css";
 import { selectionList, testItemList, getItemImgById } from "../util";
 import { useState } from "react";
 import OptionItem from "./OptionItem";
+import Bottom from "./Bottom";
+import Button from "./Button";
 
-const Selection = ({testNum}) => {
+const Selection = ({testNum, goNext, goBack}) => {
     const [state, setState] = useState({
         selectionId: 0,
     });
@@ -12,9 +14,17 @@ const Selection = ({testNum}) => {
     const handleChangeSelection = (selectionId) => {
         setState({
             ...state,
+            date: new Date().getTime(),
+            itemName: itemInform.map((it) => it.itemName),
             selectionId,
         });
     };
+    const handleOnBack = () => {
+        goBack(state);
+    }
+    const handleOnNext = () => {
+        goNext(state);
+    }
 
     return (
         <div className="Selection">
@@ -34,6 +44,9 @@ const Selection = ({testNum}) => {
                     />
                 ))}
             </div>
+            <Bottom leftChild={<Button text="이전" onClick={handleOnBack}/>}
+                    rightChild={<Button text="다음" onClick={handleOnNext}/>}
+            />
         </div>
 
     );

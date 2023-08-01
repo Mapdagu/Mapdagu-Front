@@ -12,7 +12,6 @@ const MyPage = ({maxTestNum, idRef}) => {
         if(window.confirm("테스트를 다시 진행하시겠습니까?")){
             navigate(`/`);
             for(var i = 3 ; i <= 3+maxTestNum ; i ++){
-                console.log(i);
                 onDelete(i);           
             }
             idRef.current -= maxTestNum+1;

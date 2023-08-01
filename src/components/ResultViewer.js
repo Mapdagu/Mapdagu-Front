@@ -22,7 +22,6 @@ const ResultViewer = ({maxTestNum, idRef}) => {
     }
     const doAgain = () => {
         for( var i = 3; i <= 3+maxTestNum ; i ++){
-            console.log(i);
             onDelete(i);           
         }
         idRef.current -= maxTestNum+1;
