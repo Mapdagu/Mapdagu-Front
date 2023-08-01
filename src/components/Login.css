@@ -1,0 +1,13 @@
+.Login {
+}
+
+.Login button {
+    cursor: pointer;
+    background-color: white;    
+    border: none;
+}
+
+.Login textarea {
+    height: 18px;
+    resize: none;
+}
