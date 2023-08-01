@@ -1,0 +1,9 @@
+.Subscribe textarea {
+    height: 18px;
+    resize: none;
+}
+
+.Subscribe button{
+    padding: 2px;
+
+}

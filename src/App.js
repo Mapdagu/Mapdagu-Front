@@ -1,8 +1,13 @@
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useReducer, useEffect } from 'react';
+// import dummy from "./db/dummy.json";
 
+/*pages*/
 import TestMain from './pages/TestMain';
+import LoginPage from './pages/LoginPage';
+import SubscribePage from './pages/SubscribePage';
+import SetProfilePage from './pages/SetProfilePage';
 import Test from './pages/Test';
 import Result from './pages/Result';
 import Main from './pages/Main';
@@ -126,21 +131,26 @@ function App() {
           }}
         >
           <div className="App">
-            <div className='project_name'>
-              <button onClick={changePage}>처음으로</button>
-              내가맵다했지</div>
-            <Routes>
-              <Route path = "/" element ={<TestMain />}/>
-              <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
-              <Route path = "/result" element ={<Result maxTestNum={maxTestNum} idRef={idRef}/>}/>
-              <Route path = "/main" element ={<Main />}/>
-              <Route path = "/detail/:id" element ={<Details />}/>
-              <Route path = "/friend" element ={<Friend />}/>
-              <Route path = "/evaluate" element ={<Evaluate />}/>
-              <Route path = "/new" element ={<New />}/>
-              <Route path = "/edit/:id" element ={<EditEval />}/>
-              <Route path = "/mypage" element ={<MyPage maxTestNum={maxTestNum} idRef={idRef}/>}/>
-            </Routes>
+            {/* <BrowserRouter> */}
+              <div className='project_name'>
+                <button onClick={changePage}>처음으로</button>
+                내가맵다했지</div>
+              <Routes>
+                <Route path = "/" element ={<TestMain />}/>
+                <Route path = "/login" element ={<LoginPage />}/>
+                <Route path = "/subscribe" element ={<SubscribePage />}/>
+                <Route path = "/set_profile" element ={<SetProfilePage />}/>
+                <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
+                <Route path = "/result" element ={<Result maxTestNum={maxTestNum} idRef={idRef}/>}/>
+                <Route path = "/main" element ={<Main />}/>
+                <Route path = "/detail/:id" element ={<Details />}/>
+                <Route path = "/friend" element ={<Friend />}/>
+                <Route path = "/evaluate" element ={<Evaluate />}/>
+                <Route path = "/new" element ={<New />}/>
+                <Route path = "/edit/:id" element ={<EditEval />}/>
+                <Route path = "/mypage" element ={<MyPage maxTestNum={maxTestNum} idRef={idRef}/>}/>
+              </Routes>
+            {/* </BrowserRouter> */}
           </div>
         </EvalDispatchContext.Provider>
       </EvalStateContext.Provider>
