@@ -10,7 +10,7 @@ const MyPage = ({maxTestNum, idRef}) => {
     const navigate = useNavigate();
     const doAgain = () => {
         if(window.confirm("테스트를 다시 진행하시겠습니까?")){
-            navigate(`/`);
+            navigate(`/test`);
             for(var i = 3 ; i <= 3+maxTestNum ; i ++){
                 onDelete(i);           
             }
@@ -19,12 +19,12 @@ const MyPage = ({maxTestNum, idRef}) => {
     }
     const handleLogout = () => {
         if(window.confirm("로그아웃하시겠습니까?")){
-            navigate(`/test/1`);
+            navigate(`/test`);
         }
     }
     const handleWithdrawal = () => {
         if(window.confirm("회원탈퇴하시겠습니까?")){
-            navigate(`/test/1`);
+            navigate(`/test`);
         }
     }
     return(
