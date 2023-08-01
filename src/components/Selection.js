@@ -24,6 +24,9 @@ const Selection = ({testNum, goNext, goBack}) => {
     }
     const handleOnNext = () => {
         goNext(state);
+        setState({
+            selectionId: 0,
+        })
     }
 
     return (
