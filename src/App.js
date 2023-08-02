@@ -97,13 +97,13 @@ function App() {
     })
     idRef.current += 1;
   }
-  const onUpdate = (targetId, itemName, date, selectionId) => {
+  const onUpdate = (targetId, date, itemName, selectionId) => {
     dispatch({
       type: "UPDATE",
       data: {
         id: targetId,
-        itemName,
         date: new Date(date).getTime(),
+        itemName,
         selectionId,
       },
     });
@@ -141,14 +141,14 @@ function App() {
                 <Route path = "/subscribe" element ={<SubscribePage />}/>
                 <Route path = "/set_profile" element ={<SetProfilePage />}/>
                 <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
-                <Route path = "/result" element ={<Result maxTestNum={maxTestNum} idRef={idRef}/>}/>
+                <Route path = "/result" element ={<Result />}/>
                 <Route path = "/main" element ={<Main />}/>
                 <Route path = "/detail/:id" element ={<Details />}/>
                 <Route path = "/friend" element ={<Friend />}/>
                 <Route path = "/evaluate" element ={<Evaluate />}/>
                 <Route path = "/new" element ={<New />}/>
                 <Route path = "/edit/:id" element ={<EditEval />}/>
-                <Route path = "/mypage" element ={<MyPage maxTestNum={maxTestNum} idRef={idRef}/>}/>
+                <Route path = "/mypage" element ={<MyPage />}/>
               </Routes>
             {/* </BrowserRouter> */}
           </div>

@@ -1,12 +1,12 @@
 import Header from "../components/Header";
 import ResultViewer from "../components/ResultViewer";
 
-const Result = ({maxTestNum, idRef}) => {
+const Result = () => {
     return(
         <div>
             <div>
                 <Header title="result page"/>
-                <ResultViewer maxTestNum={maxTestNum} idRef={idRef}/>                
+                <ResultViewer />                
             </div>
         </div>
     )

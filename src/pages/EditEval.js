@@ -18,8 +18,8 @@ const EditEval = () => {
 
     const onSubmit = (data) => {
       if(window.confirm("평가를 정말 수정할까요?")){
-            const { itemName, date, selectionId } = data;
-            onUpdate(id, itemName, date, selectionId);
+            const { date, itemName, selectionId } = data;
+            onUpdate(id, date, itemName, selectionId);
             navigate(`/evaluate`, {replace:true});
         }
     }

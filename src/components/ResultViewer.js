@@ -1,11 +1,9 @@
 import "./ResultViewer.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import { useContext, useRef } from "react";
-import { EvalDispatchContext } from "../App";
+import { useRef } from "react";
 
-const ResultViewer = ({maxTestNum, idRef}) => {    
-    const {onDelete} = useContext(EvalDispatchContext);
+const ResultViewer = () => {    
     const content="content: empty";
     const navigate = useNavigate();
     
@@ -21,11 +19,7 @@ const ResultViewer = ({maxTestNum, idRef}) => {
         alert("복사되었습니다!");
     }
     const doAgain = () => {
-        for( var i = 3; i <= 3+maxTestNum ; i ++){
-            onDelete(i);           
-        }
-        idRef.current -= maxTestNum+1;
-        navigate(`/`);
+        navigate(`/test`);
     }
     const goMain = () => {
         navigate(`/main`);

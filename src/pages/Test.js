@@ -2,12 +2,15 @@ import Header from "../components/Header";
 import Selection from "../components/Selection";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { EvalDispatchContext } from "../App";
+import { EvalDispatchContext, EvalStateContext } from "../App";
 
-const Test = ({maxTestNum}) => {
-    const {onCreate} = useContext(EvalDispatchContext);
+const Test = ({maxTestNum}) => {    
+    const testData = useContext(EvalStateContext);
+    const {onCreate, onUpdate} = useContext(EvalDispatchContext);
     const [ testNum, setTestNum ] = useState(0);
+    const [ idRefTest, setIdRefTest ] = useState(3);
     const navigate = useNavigate();
+    const matchItem = testData.find((it)=> String(it.id) === String(idRefTest));
 
     const goNext = (data) => {
         const { date, itemName, selectionId } = data;
@@ -15,7 +18,14 @@ const Test = ({maxTestNum}) => {
             alert("하나를 선택해주세요");
         }
         else{
-            onCreate( date, itemName, selectionId );
+            if(!matchItem){
+                onCreate( date, itemName, selectionId );
+                setIdRefTest(idRefTest+1);
+            }
+            else{
+                onUpdate( idRefTest, date, itemName, selectionId );
+                setIdRefTest(idRefTest+1);
+            }
             if(testNum === maxTestNum){
                 navigate(`/result`);
             }
