@@ -1,0 +1,9 @@
+.SignUp textarea {
+    height: 18px;
+    resize: none;
+}
+
+.SignUp button{
+    padding: 2px;
+
+}

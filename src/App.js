@@ -6,7 +6,9 @@ import React, { useState, useRef, useReducer, useEffect } from 'react';
 /*pages*/
 import TestMain from './pages/TestMain';
 import LoginPage from './pages/LoginPage';
-import SubscribePage from './pages/SubscribePage';
+import SignUpPage from './pages/SignUpPage';
+import KakaoRedirect from './components/login/KakaoRedirect';
+import NaverRedirect from './components/login/NaverRedirect';
 import SetProfilePage from './pages/SetProfilePage';
 import Test from './pages/Test';
 import Result from './pages/Result';
@@ -138,7 +140,9 @@ function App() {
               <Routes>
                 <Route path = "/" element ={<TestMain />}/>
                 <Route path = "/login" element ={<LoginPage />}/>
-                <Route path = "/subscribe" element ={<SubscribePage />}/>
+                <Route path = "/sign_up" element ={<SignUpPage />}/>
+                <Route path = "/oauth/callback/kakao" element ={<KakaoRedirect />}/>
+                <Route path = "/oauth/callback/naver" element ={<NaverRedirect />}/>
                 <Route path = "/set_profile" element ={<SetProfilePage />}/>
                 <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
                 <Route path = "/result" element ={<Result />}/>

@@ -13,6 +13,7 @@ const SetProfile = () => {
     const onSubmit = () => {
         // if(닉네임 중복){}
         // else{
+            alert("회원가입이 완료되었습니다!");
             navigate(`/test`);
         // }
     }
@@ -25,7 +26,7 @@ const SetProfile = () => {
                 <textarea 
                     value={context} 
                     onChange={handleOnChangeContext} 
-                    placeholder="이메일 입력" />
+                    placeholder="닉네임 입력" />
             </div>
             <Button text="회원가입" onClick={onSubmit}/>
         </div>
