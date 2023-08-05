@@ -16,6 +16,7 @@ import Main from './pages/Main';
 import Friend from './pages/Friend';
 import Evaluate from './pages/Evaluate';
 import MyPage from './pages/MyPage';
+import EditProfile from './pages/EditProfile';
 import Details from './pages/Details';
 import EditEval from './pages/EditEval';
 import New from './pages/New'
@@ -141,8 +142,8 @@ function App() {
                 <Route path = "/" element ={<TestMain />}/>
                 <Route path = "/login" element ={<LoginPage />}/>
                 <Route path = "/sign_up" element ={<SignUpPage />}/>
-                <Route path = "/oauth/callback/kakao" element ={<KakaoRedirect />}/>
-                <Route path = "/oauth/callback/naver" element ={<NaverRedirect />}/>
+                <Route path = "/oauth2/code/kakao" element ={<KakaoRedirect />}/>
+                <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
                 <Route path = "/set_profile" element ={<SetProfilePage />}/>
                 <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
                 <Route path = "/result" element ={<Result />}/>
@@ -153,6 +154,7 @@ function App() {
                 <Route path = "/new" element ={<New />}/>
                 <Route path = "/edit/:id" element ={<EditEval />}/>
                 <Route path = "/mypage" element ={<MyPage />}/>
+                <Route path = "/edit_profile" element ={<EditProfile />}/>
               </Routes>
             {/* </BrowserRouter> */}
           </div>

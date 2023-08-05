@@ -1,0 +1,96 @@
+.Graph {
+    margin: 20px;
+}
+.Graph .nickname_container {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-hover {
+    width: 25px;
+    height: 70px;
+    margin: 3px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+}
+
+.btn-hover:hover {
+    transform: scale(1.1,1.1);
+    box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-1 {
+    /* background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673); */
+    /* box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); */
+    background-color: #FFEB3A;
+    color: #FFEB3A; 
+}
+.btn-hover.color-2 {
+    background-color: #FEDF39;
+    color: #FEDF39; 
+}
+.btn-hover.color-3 {
+    background-color: #FDD337;
+    color: #FDD337; 
+}
+.btn-hover.color-4 {
+    background-color: #FCC736;
+    color: #FCC736; 
+}
+.btn-hover.color-5 {
+    background-color: #FCBB35;  
+    color: #FCBB35;   
+}
+.btn-hover.color-6 {
+    background-color: #FBAF34;   
+    color: #FBAF34;  
+}
+.btn-hover.color-7 {
+    background-color: #FAA332;  
+    color: #FAA332;   
+}
+.btn-hover.color-8 {
+    background-color: #F99731;
+    color: #F99731; 
+}
+.btn-hover.color-9 {
+    background-color: #F88B30;  
+    color: #F88B30;   
+}
+.btn-hover.color-10 {
+    background-color: #F77F2E;  
+    color: #F77F2E;   
+}
+.btn-hover.color-11 {
+    background-color: #F6732D; 
+    color: #F6732D;    
+}
+.btn-hover.color-12 {
+    background-color: #F5672C;  
+    color: #F5672C;   
+}
+.btn-hover.color-13 {
+    background-color: #F45B2B; 
+    color: #F45B2B;    
+}
+.btn-hover.color-14 {
+    background-color: #F34F29;  
+    color: #F34F29;   
+}
+.btn-hover.color-15 {
+    background-color: #F24328;   
+    color: #F24328;  
+}
