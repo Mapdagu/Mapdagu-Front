@@ -2,118 +2,98 @@ import "./SignUp.css";
 import Button from "./Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const SIGN_UP_URL = `https://mapdagu.site/members/sign-up`;
 
 const SignUp = () => {
-    const navigate = useNavigate();
-    const [confirm, setConfirm] =  useState();
-    const [state, setState] = useState({
-        name: "",
-        email: "",
-        code: "",
-        password: "",
-        isCodeChecked: true, //수정필요
-        isPasswordChecked: true, //수정필요
-    });
-
-    const handleOnChangeName = (e) => {
-        setState({
-            ...state,
-            name: e.target.value,
-        });
-    }
-    const handleOnChangeEmail = (e) => {
-        setState({
-            ...state,
-            email: e.target.value,
-        });
-    }
-    const handleOnChangeCode = (e) => {
-        setState({
-            ...state,
-            code: e.target.value,
-        });
-    }
-    const handleOnChangePassword = (e) => {
-        setState({
-            ...state,
-            password: e.target.value,
-        });
-    }
-    const handleOnChangePassword2 = (e) => {
-            setConfirm(e.target.value);
-        }
-
-    const onRequestCode = () => {
-        alert("인증번호를 전송했습니다");
-    }
-    const onCheckCode = () => {
-        /*
-        if(코드일치)
-            확인되었습니다
-            setState({
-                ...state,
-                isCodeChecked: true,
-            })
-        else{
-            틀렸습니다
-            setState({
-                ...state,
-                iscodeChecked: false,
-            })
-        }
-        */
-    }    
+    const [userList, setUserList] = useState();
     
-    const onSubmit = () => {
-        // if(state.password === confirm){
-        //     setState({
-        //         ...state,
-        //         isPasswordChecked: true,
-        //     })
-        // }
-        // else{
-        //     setState({
-        //         ...state,
-        //         isPasswordChecked: false,
-        //     })
-        // }
+    const fetchData = async () => {
+        const response = await axios.get(SIGN_UP_URL);
+        setUserList(response.data);
+    };
 
-        if(state.name === ""){
-            alert("이름을 입력하세요");
-        }
-        else if(!state.isCodeChecked){
-            alert("이메일 인증을 해주세요");
-        }
-        else if(!state.isPasswordChecked){
-            alert("비밀번호가 같지 않습니다")
-        }
-        else
+    const navigate = useNavigate();
+    const [inputValue, setInputValue] = useState({
+        userName: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+    });
+    const { userName, email, password, passwordConfirm } = inputValue;
+    //이름 2글자 이상 5글자 미만
+    const isValidName = userName.length >= 2 && userName.length <= 5;
+    // 이메일 검사: '@', '.'이 둘 다 포함 될 것
+    const isValidEmail = email.includes('@') && email.includes('.');
+    // 전체 8자 이상일 것.
+    const isValidPassword = password.length >= 8;
+    // 모든 input의 value가 1자 이상이 될 것
+    const isValidInput = userName.length >= 1 ;
+    // 이메일 코드 인증 확인
+    // 비밀번호와 비밀번호 확인 값이 일치할 것
+    const isPasswordChecked = ((password === passwordConfirm) ? true : false);
+
+    // 검사한 모든 로직의 유효성 검사가 true가 될때 getIsActive함수가 작동
+    const getIsActive = 
+    isValidEmail && isValidPassword && isValidInput && isPasswordChecked === true;
+
+   
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        setInputValue({
+            ...inputValue,
+            [name]: value,
+        });
+    };
+    
+    const onSubmitHandler = async (e) => {
+        if(getIsActive){
+            e.preventDefault();
+            await axios.post(SIGN_UP_URL, { userName, email, password });
+            fetchData();
             navigate(`/set_profile`);
+        }
+        
     }
 
     return (
-        <div className="Subscribe">
-            <div>1. 이름</div>
-            <div>
-                <textarea value={state.name} onChange={handleOnChangeName} placeholder="이름 입력" />
-            </div>
-            <div>2. 이메일 확인</div>
-            <div>
-                <textarea value={state.email} onChange={handleOnChangeEmail} placeholder="이메일 입력" />
-                <Button text="인증번호 요청" onClick={onRequestCode}/>
-            </div>
-            <div>
-                <textarea value={state.code} onChange={handleOnChangeCode} placeholder="인증번호 입력" />
-                <Button text="인증번호 확인" onClick={onCheckCode}/>
-            </div>
-            <div>3. 비밀번호 설정</div>
-            <div>
-                <textarea value={state.password} onChange={handleOnChangePassword} placeholder="비밀번호 설정" />
-            </div>
-            <div>    
-                <textarea value={confirm} onChange={handleOnChangePassword2} placeholder="비밀번호 확인" />
-            </div>
-            <Button text="다음 단계" onClick={onSubmit}/>
+        <div className="SignUp">
+            <form className="signUpInput">
+                <div className="nameInput">
+                    <div className="inputMessage">1. 이름</div>
+                    <input 
+                        name="userName"
+                        onChange={handleInput}
+                    />
+                    <h5>{(userName.length!=0 && !isValidName) ? '2글자 이상 5글자 이하로 입력하세요' : ''}</h5>
+                </div>
+                <div className="emailInput">
+                    <div className="inputMessage">2. 이메일 인증</div>
+                    <input 
+                        name="email"
+                        onChange={handleInput}
+                    />
+                    <h5>{(email.length!=0 && !isValidEmail) ? '이메일 형식이 틀렸어요' : ''}</h5>
+                </div>
+                <div className="passwordInput">
+                    <div className="inputMessage">3. 비밀번호 설정</div>
+                    <input 
+                        type='password'
+                        name="password"
+                        onChange={handleInput}
+                    />
+                    <h5>{(password.length!=0 && !isValidPassword) ? '8글자 이상으로 설정해주세요' : ''}</h5>
+                    <div className="inputMessage">4. 비밀번호 확인</div>
+                    <input 
+                        type='password'
+                        name="passwordConfirm"
+                        onChange={handleInput}
+                    />
+                    <h5>{(passwordConfirm.length!=0 && !isPasswordChecked) ? '비밀번호가 일치하지 않아요' : ''}</h5>
+                </div>             
+            </form>
+            <Button text="다음 단계" onClick={onSubmitHandler}/>
         </div>
     )
 }
