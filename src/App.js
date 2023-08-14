@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useReducer, useEffect } from 'react';
 // import dummy from "./db/dummy.json";
+import axios  from 'axios';
 
 /*pages*/
 import TestMain from './pages/TestMain';
@@ -22,6 +23,8 @@ import EditEval from './pages/EditEval';
 import New from './pages/New'
 
 import { getItemImgById } from './util';
+
+const SERVER_URL = 'https://mapdagu.site/api/sign-up';
 
 export const EvalStateContext = React.createContext();
 export const EvalDispatchContext = React.createContext();
@@ -79,6 +82,16 @@ function App() {
   const idRef = useRef(3);
   const navigate = useNavigate();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [userInf, setUserInf] = useState({
+    nickname: "",
+    email: "",
+    password: "",
+    userName: "",
+    imageNum: 0,
+    intro: ""
+})
+
+  const {nickname, email, password, userName, imageNum, intro} = userInf;  
 
   useEffect(() => {
     dispatch({
@@ -87,6 +100,34 @@ function App() {
     });
     setIsDataLoaded(true);
   }, []);
+
+  const getSignUpInf = (nickname, email, password) => {
+    setUserInf({ 
+      ...userInf,
+      nickname,
+      email,
+      password
+    });
+    console.log(`App: ${nickname}, ${email}, ${password}`);
+    navigate(`/set_profile`);
+  }
+
+  const getProfileInf = (userName, imageNum, intro) => {
+    setUserInf({ 
+      ...userInf,
+      userName,
+      imageNum,
+      intro
+    });
+    console.log(`App: ${userName}, ${imageNum}, ${intro}`);
+    signUpHandler();
+  }
+
+  const signUpHandler = async (e) => {
+    await axios.post(SERVER_URL, {nickname, email, password, userName, imageNum, intro});
+    alert("회원가입이 완료되었습니다!");
+    navigate(`/test`);
+  }
 
   const onCreate = (date, itemName, selectionId) => {
     dispatch({
@@ -134,17 +175,16 @@ function App() {
           }}
         >
           <div className="App">
-            {/* <BrowserRouter> */}
               <div className='project_name'>
                 <button onClick={changePage}>처음으로</button>
                 내가맵다했지</div>
               <Routes>
                 <Route path = "/" element ={<TestMain />}/>
                 <Route path = "/login" element ={<LoginPage />}/>
-                <Route path = "/sign_up" element ={<SignUpPage />}/>
+                <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
+                <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
                 <Route path = "/oauth2/code/kakao" element ={<KakaoRedirect />}/>
                 <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
-                <Route path = "/set_profile" element ={<SetProfilePage />}/>
                 <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
                 <Route path = "/result" element ={<Result />}/>
                 <Route path = "/main" element ={<Main />}/>
@@ -156,7 +196,6 @@ function App() {
                 <Route path = "/mypage" element ={<MyPage />}/>
                 <Route path = "/edit_profile" element ={<EditProfile />}/>
               </Routes>
-            {/* </BrowserRouter> */}
           </div>
         </EvalDispatchContext.Provider>
       </EvalStateContext.Provider>
