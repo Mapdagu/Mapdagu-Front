@@ -1,6 +1,9 @@
 import buldak from "./img/buldak.png";
 import dduk from "./img/dduk.png";
 import ramen from "./img/ramen.png";
+import profile_0 from "./img/profile_0.png"
+import profile_1 from "./img/profile_1.png"
+import profile_2 from "./img/profile_2.png"
 
 export const getSelectionTextById = (selectionId) => {
     const targetSelectionId = String(selectionId);
@@ -31,6 +34,20 @@ export const getItemImgById = (itemId) => {
             return buldak;
         case "2":
             return dduk;
+        default:
+            return null;
+    }
+}
+
+export const getProfileImgById = (itemId) => {
+    const targetItemId = String(itemId);
+    switch(targetItemId){
+        case "0":
+            return profile_0;
+        case "1":
+            return profile_1;
+        case "2":
+            return profile_2;
         default:
             return null;
     }
@@ -78,6 +95,21 @@ export const testItemList = [
         id: 2,
         itemName: "엽기떡볶이 오리지널",
         img: getItemImgById(2),
+    },
+]
+
+export const profileImgList = [
+    {
+        id: 0,
+        img: getProfileImgById(0),
+    },
+    {
+        id: 1,
+        img: getProfileImgById(1),
+    },
+    {
+        id: 2,
+        img: getProfileImgById(2),
     },
 ]
 

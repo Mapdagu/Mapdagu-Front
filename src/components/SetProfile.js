@@ -1,9 +1,15 @@
 import "./SetProfile.css";
 import Button from "./Button";
-import tImg from "../img/logo192.png";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import Modal from "react-modal";
+import ProfileItem from "../components/ProfileItem";
+import { getProfileImgById, profileImgList } from "../util";
 
 const SetProfile = ({onSubmit}) => {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [state, setState] = useState({
+        profileId: 0,
+    })
     const [inputValue, setInputValue] = useState({
         userName: "",
         imageNum: 0,
@@ -21,10 +27,37 @@ const SetProfile = ({onSubmit}) => {
     const onSubmitHandler = async(e) => {
         onSubmit(inputValue);
     }
+    const handleChangeSelection = useCallback((profileId) => {
+        setState((state) => ({
+            ...state,
+            profileId,
+        }));
+    }, []);
+    const handleChangeProfile = () => {
+        setModalIsOpen(false);
+        setInputValue({
+            ...inputValue,
+            imageNum: state.profileId,
+        });
+    }
     return (
         <div className="SetProfile">
-            <div>1. 프로필 사진</div>
-            <div><img alt="" src={tImg}/></div>
+            <div>1. 프로필 이미지</div>
+            <div><img alt="" src={getProfileImgById(state.profileId)}/></div>
+            <Button text="이미지 선택" onClick={() => setModalIsOpen(true)}/>
+            <Modal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
+                <div className="profile_list_wrapper">
+                    {profileImgList.map((it) => (
+                        <ProfileItem
+                            key={it.id}
+                            {...it}
+                            onClick={handleChangeSelection}
+                            isSelected={state.profileId === it.id}
+                        />
+                    ))}
+                </div>
+                <div><Button text="완료" onClick={handleChangeProfile}/></div>
+            </Modal>
             <div>2. 닉네임</div>
             <div>
                 <input 
@@ -39,7 +72,7 @@ const SetProfile = ({onSubmit}) => {
                     onChange={handleInput}
                 />
             </div>
-            <Button text="회원가입" onClick={onSubmitHandler}/>
+            { onSubmit ? <Button text="회원가입" onClick={onSubmitHandler}/> : ""}
         </div>
     );
 }
