@@ -1,13 +1,33 @@
-.SignUp textarea {
-    height: 18px;
-    resize: none;
+.SignUp{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    text-align: center;
 }
 
-.SignUp button{
-    padding: 2px;
-
+.SignUp .signUpInput{
+    margin-bottom: 20px;
+    text-align: left;
+    /* align-items: center; */
 }
+
 .SignUp h5 {
-    margin: 0;
+    font-size: 15px;
+    margin: 3px;
     color: rgb(199, 41, 41);
+}
+.SignUp h6 {
+    font-size: 15px;
+    margin: 3px;
+    color: rgb(0, 158, 61);
+}
+.SignUp input{
+    margin: 5px;
+    width: 97%;
+    height: 20px;
+}
+.SignUp .wrapper{
+    display: flex;
+    width: 100%;
+    text-align: center;
 }
