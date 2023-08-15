@@ -108,7 +108,6 @@ function App() {
       email,
       password
     });
-    console.log(`App: ${nickname}, ${email}, ${password}`);
     navigate(`/set_profile`);
   }
 
@@ -119,7 +118,6 @@ function App() {
       imageNum,
       intro
     });
-    console.log(`App: ${userName}, ${imageNum}, ${intro}`);
     signUpHandler();
   }
 
