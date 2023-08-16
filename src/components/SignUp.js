@@ -13,15 +13,17 @@ const SignUp = ({onSubmit}) => {
     const [inputValue, setInputValue] = useState({
         nickname: "",
         email: "",
+        checkedEmail: "",
         code: "",
         password: "",
         passwordConfirm: "",
     });
-    const { nickname, email, code, password, passwordConfirm } = inputValue;
+    const { nickname, email, checkedEmail, code, password, passwordConfirm } = inputValue;
     //이름 2글자 이상 5글자 이하
     const isValidName = nickname.length >= 2 && nickname.length <= 5;
     // 이메일 검사: '@', '.'이 둘 다 포함
-    const isValidEmail = email.includes('@') && email.includes('.');
+    const isValidEmail1 = email.includes('@') && email.includes('.');
+    const isValidEmail2 = checkedEmail.includes('@') && checkedEmail.includes('.');
     // 전체 8자 이상
     const isValidPassword = password.length >= 8;
     // 모든 input의 value가 1자 이상이 될 것
@@ -38,16 +40,14 @@ const SignUp = ({onSubmit}) => {
     };
     
     const sendCode = async (e) => {
-        console.log("send");
-        if(isValidEmail){
+        if(isValidEmail1){
             setIsSended(true);
             setResponse((await axios.post(SERVER_URL, {email})).data.authCode);
-            console.log(response);
         }
-        else{
-            console.log("fail");
-        }
-        console.log(isSended);
+        setInputValue({
+            ...inputValue,
+            checkedEmail: email,
+        })
     }
     const checkCode = () => {
         if(code === response){
@@ -59,7 +59,7 @@ const SignUp = ({onSubmit}) => {
         }
     }
     const getIsActive = 
-    isValidEmail && isCodeChecked && isValidPassword && isValidInput && isPasswordChecked === true;
+    isValidEmail2 && isCodeChecked && isValidPassword && isValidInput && isPasswordChecked === true;
 
     const onSubmitHandler = () => {
         if(getIsActive){
@@ -90,8 +90,8 @@ const SignUp = ({onSubmit}) => {
                         />
                         <Button text="인증번호 전송" onClick={sendCode}/>
                     </div>
-                    <h5>{(email.length!==0 && !isValidEmail) ? '이메일 형식이 틀렸어요' : ''}</h5>
-                    <h6>{(isSended && isValidEmail) ? '인증번호가 전송되었어요' : ''}</h6>
+                    <h5>{(checkedEmail.length!==0 && !isValidEmail2) ? '이메일 형식이 틀렸어요' : ''}</h5>
+                    <h6>{(isSended && isValidEmail2) ? '인증번호가 전송되었어요' : ''}</h6>
                     <div className="inputMessage"> 인증번호</div>
                     <div className="wrapper">
                         <input 
