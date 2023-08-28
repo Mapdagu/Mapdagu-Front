@@ -22,36 +22,38 @@ import Details from './pages/Details';
 import EditEval from './pages/EditEval';
 import New from './pages/New'
 
-import { getItemImgById } from './util';
+// import { getItemImgById } from './util';
 
-const SERVER_URL = 'https://mapdagu.site/api/sign-up';
+const SIGN_UP_URL = 'https://mapdagu.site/api/sign-up';
+const SOCIAL_SIGN_UP_URL = 'https://mapdagu.site/api/sign-up/social';
 
 export const EvalStateContext = React.createContext();
+export const UserStateContext = React.createContext();
 export const EvalDispatchContext = React.createContext();
 
-const mockData = [
-  {
-    id: 0,
-    date: new Date().getTime()-1,
-    itemName: "신라면",
-    selectionId: 1,
-    img: getItemImgById(0),   
-  },
-  {
-    id: 1,
-    date: new Date().getTime()-2,
-    itemName: "불닭볶음면",
-    selectionId: 2,
-    img: getItemImgById(1),  
-  },
-  {
-    id: 2,
-    date: new Date().getTime()-3,
-    itemName: "엽기떡볶이 오리지널",
-    selectionId: 3,
-    img: getItemImgById(2),  
-  }
-]
+// const mockData = [
+//   {
+//     id: 0,
+//     date: new Date().getTime()-1,
+//     itemName: "신라면",
+//     selectionId: 1,
+//     img: getItemImgById(0),   
+//   },
+//   {
+//     id: 1,
+//     date: new Date().getTime()-2,
+//     itemName: "불닭볶음면",
+//     selectionId: 2,
+//     img: getItemImgById(1),  
+//   },
+//   {
+//     id: 2,
+//     date: new Date().getTime()-3,
+//     itemName: "엽기떡볶이 오리지널",
+//     selectionId: 3,
+//     img: getItemImgById(2),  
+//   }
+// ]
 
 function reducer(state, action) {
   switch(action.type){
@@ -88,16 +90,20 @@ function App() {
     password: "",
     userName: "",
     imageNum: 0,
-    intro: ""
+    intro: "",
+    isSocial: true,
+    role: "",
+    accessToken: "",
+    refreshToken: "",
 })
 
-  const {nickname, email, password, userName, imageNum, intro} = userInf;  
+  const {nickname, email, password, userName, imageNum, intro, isSocial, role, accessToken} = userInf;  
 
   useEffect(() => {
-    dispatch({
-      type: "INIT",
-      data: mockData,
-    });
+    // dispatch({
+    //   type: "INIT",
+    //   data: mockData,
+    // });
     setIsDataLoaded(true);
   }, []);
 
@@ -106,7 +112,8 @@ function App() {
       ...userInf,
       nickname,
       email,
-      password
+      password,
+      isSocial: false,
     });
     navigate(`/set_profile`);
   }
@@ -116,35 +123,56 @@ function App() {
       ...userInf,
       userName,
       imageNum,
-      intro
+      intro,
     });
     signUpHandler();
   }
 
   const signUpHandler = async (e) => {
-    await axios.post(SERVER_URL, {nickname, email, password, userName, imageNum, intro});
-    alert("회원가입이 완료되었습니다!");
-    navigate(`/test`);
+    try {
+      if(!isSocial){
+      await axios.post(SIGN_UP_URL, {nickname, email, password, userName, imageNum, intro});
+      } else{
+        await axios.patch(SOCIAL_SIGN_UP_URL, {userName, imageNum, intro});
+      }      
+      alert("회원가입이 완료되었습니다!");
+      navigate(`/test`);
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   }
 
-  const onCreate = (date, itemName, selectionId) => {
+  const getUserRole = (role) => {
+    setUserInf({ 
+      ...userInf,
+      role,
+    });
+  }
+
+  const getUserToken = (accessToken, refreshToken) => {
+    setUserInf({ 
+      ...userInf,
+      accessToken,
+      refreshToken,
+    });
+  }
+
+  const onCreate = (itemName, selectionId) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current,
-        date: new Date(date).getTime(),
         itemName,
         selectionId,
       }
     })
     idRef.current += 1;
   }
-  const onUpdate = (targetId, date, itemName, selectionId) => {
+  const onUpdate = (targetId, itemName, selectionId) => {
     dispatch({
       type: "UPDATE",
       data: {
         id: targetId,
-        date: new Date(date).getTime(),
         itemName,
         selectionId,
       },
@@ -157,6 +185,47 @@ function App() {
     });
   };
 
+  const onSubmit = async() => {    
+    setUserInf({ 
+      ...userInf,
+      role: "USER",
+    });
+    //임시 데이터
+    // const schoville = 3000; 
+    // const level = 2;
+    // const dtoList = data.map(item => {
+    //   return {
+    //     name: item.itemName[0],
+    //     score: item.selectionId,
+    //   };
+    // });
+    // if(role !== "USER"){
+    //   try{
+    //       await axios.post(TEST_URL, {dtoList}, {headers: {Authorization: accessToken}});
+    //       console.log(`post`);
+    //     } catch (error) {
+    //       alert(error.response.data.message);
+    //   }
+    // } else{   
+    //     try{
+    //       await axios.patch(TEST_URL, {dtoList}, {headers: {Authorization: accessToken}});
+    //       console.log('patch');
+    //     } catch (error) {
+    //       alert(error.response.data.message);
+    //   }
+    // }
+    // try{
+    //     await axios.patch(RESULT_URL, {schoville, level}, {headers: {Authorization: accessToken}});
+    // } catch (error) {
+    //     alert(error.response.data.message);
+    // }
+    // navigate(`/result`);
+    // console.log(data);
+    // console.log(dtoList);
+    // console.log(userInf.role);
+    // console.log(schoville, level);
+  }
+
   const changePage = () => {
     navigate(`/`);
   }
@@ -165,37 +234,40 @@ function App() {
   else {
     return (
       <EvalStateContext.Provider value={data}>
-        <EvalDispatchContext.Provider
-          value={{
-            onCreate,
-            onUpdate,
-            onDelete,
-          }}
-        >
-          <div className="App">
-              <div className='project_name'>
-                <button onClick={changePage}>처음으로</button>
-                내가맵다했지</div>
-              <Routes>
-                <Route path = "/" element ={<TestMain />}/>
-                <Route path = "/login" element ={<LoginPage />}/>
-                <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
-                <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
-                <Route path = "/oauth2/code/kakao" element ={<KakaoRedirect />}/>
-                <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
-                <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
-                <Route path = "/result" element ={<Result />}/>
-                <Route path = "/main" element ={<Main />}/>
-                <Route path = "/detail/:id" element ={<Details />}/>
-                <Route path = "/friend" element ={<Friend />}/>
-                <Route path = "/evaluate" element ={<Evaluate />}/>
-                <Route path = "/new" element ={<New />}/>
-                <Route path = "/edit/:id" element ={<EditEval />}/>
-                <Route path = "/mypage" element ={<MyPage />}/>
-                <Route path = "/edit_profile" element ={<EditProfile />}/>
-              </Routes>
-          </div>
-        </EvalDispatchContext.Provider>
+        <UserStateContext.Provider value={userInf}>
+          <EvalDispatchContext.Provider
+            value={{
+              onCreate,
+              onUpdate,
+              onDelete,
+              onSubmit,
+            }}
+          >
+            <div className="App">
+                <div className='project_name'>
+                  <button onClick={changePage}>처음으로</button>
+                  내가맵다했지</div>
+                <Routes>
+                  <Route path = "/" element ={<TestMain />}/>
+                  <Route path = "/login" element ={<LoginPage getUserRole={getUserRole} getUserToken={getUserToken}/>}/>
+                  <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
+                  <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
+                  <Route path = "/login/callback" element ={<KakaoRedirect />}/>
+                  <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
+                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
+                  <Route path = "/result" element ={<Result role={role} accessToken={accessToken}/>}/>
+                  <Route path = "/main" element ={<Main />}/>
+                  <Route path = "/detail/:id" element ={<Details />}/>
+                  <Route path = "/friend" element ={<Friend />}/>
+                  <Route path = "/evaluate" element ={<Evaluate />}/>
+                  <Route path = "/new" element ={<New />}/>
+                  <Route path = "/edit/:id" element ={<EditEval />}/>
+                  <Route path = "/mypage" element ={<MyPage accessToken={accessToken}/>}/>
+                  <Route path = "/edit_profile" element ={<EditProfile />}/>
+                </Routes>
+            </div>
+          </EvalDispatchContext.Provider>
+        </UserStateContext.Provider>
       </EvalStateContext.Provider>
     );
   }
