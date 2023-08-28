@@ -88,12 +88,12 @@ export const testItemList = [
     },
     {
         id: 1,
-        itemName: "불닭볶음면",
+        itemName: "진라면",
         img: getItemImgById(1),
     },
     {
         id: 2,
-        itemName: "엽기떡볶이 오리지널",
+        itemName: "너구리",
         img: getItemImgById(2),
     },
 ]
