@@ -4,10 +4,18 @@ import Body from "../components/Body";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
-const TestMain = () => {
+const TestMain = ({role}) => {
     const navigate = useNavigate();
     const goTest = () => {
-        navigate(`/login`);
+        if(role === ""){
+            navigate(`/login`);
+        } else if(role === "USER"){
+            navigate(`/main`);
+        } else if(role === "NOT_TEST_USER"){
+            navigate(`/test`);
+        } else {
+            navigate(`/set_profile`);
+        }
     }
     return (
         <div>

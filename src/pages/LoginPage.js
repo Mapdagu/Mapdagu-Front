@@ -1,13 +1,29 @@
-import Login from "../components/Login";
+import Login from "../components/login/Login";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const LoginPage = () => {
+const SERVER_URL = 'https://mapdagu.site/login';
+
+const LoginPage = ({getUserInfRes}) => {
     const navigate = useNavigate();
-    const onSubmit = (id, password) => {
-        //if(id, pw 정보가 db에 있으면)
-        navigate(`/test`);
-        //else
-        //alert("아이디 혹은 비밀번호가 틀렸습니다");
+    const onSubmit = async (data) => {
+        const { email, password } = data;
+        try {
+            const res = (await axios.post(SERVER_URL, {email, password}));
+            const role = res.data.role;
+            const accessToken = res.headers[`authorization`];
+            const refreshToken = res.headers[`authorization-refresh`];
+            if(role === "NOT_TEST_USER"){
+                navigate(`/test`);
+            } else if(role === "USER"){
+                navigate(`/main`);
+            } else {
+                navigate(`/set_profile`);
+            }
+            getUserInfRes(role, accessToken, refreshToken);
+        }catch (error) {
+            alert(error.response.data.message);
+        }
     }
     return (
         <div>

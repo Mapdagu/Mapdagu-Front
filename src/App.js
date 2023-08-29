@@ -97,7 +97,8 @@ function App() {
     refreshToken: "",
 })
 
-  const {nickname, email, password, userName, imageNum, intro, isSocial, role, accessToken} = userInf;  
+  const {nickname, email, password, userName, 
+        imageNum, intro, isSocial, role, accessToken} = userInf;  
 
   useEffect(() => {
     // dispatch({
@@ -142,20 +143,22 @@ function App() {
     }
   }
 
-  const getUserRole = (role) => {
+  const getUserInfRes = (role, accessToken, refreshToken) => {
     setUserInf({ 
       ...userInf,
       role,
-    });
-  }
-
-  const getUserToken = (accessToken, refreshToken) => {
-    setUserInf({ 
-      ...userInf,
       accessToken,
       refreshToken,
     });
   }
+
+  // const getUserToken = (accessToken, refreshToken) => {
+  //   setUserInf({ 
+  //     ...userInf,
+  //     accessToken,
+  //     refreshToken,
+  //   });
+  // }
 
   const onCreate = (itemName, selectionId) => {
     dispatch({
@@ -190,40 +193,6 @@ function App() {
       ...userInf,
       role: "USER",
     });
-    //임시 데이터
-    // const schoville = 3000; 
-    // const level = 2;
-    // const dtoList = data.map(item => {
-    //   return {
-    //     name: item.itemName[0],
-    //     score: item.selectionId,
-    //   };
-    // });
-    // if(role !== "USER"){
-    //   try{
-    //       await axios.post(TEST_URL, {dtoList}, {headers: {Authorization: accessToken}});
-    //       console.log(`post`);
-    //     } catch (error) {
-    //       alert(error.response.data.message);
-    //   }
-    // } else{   
-    //     try{
-    //       await axios.patch(TEST_URL, {dtoList}, {headers: {Authorization: accessToken}});
-    //       console.log('patch');
-    //     } catch (error) {
-    //       alert(error.response.data.message);
-    //   }
-    // }
-    // try{
-    //     await axios.patch(RESULT_URL, {schoville, level}, {headers: {Authorization: accessToken}});
-    // } catch (error) {
-    //     alert(error.response.data.message);
-    // }
-    // navigate(`/result`);
-    // console.log(data);
-    // console.log(dtoList);
-    // console.log(userInf.role);
-    // console.log(schoville, level);
   }
 
   const changePage = () => {
@@ -248,19 +217,19 @@ function App() {
                   <button onClick={changePage}>처음으로</button>
                   내가맵다했지</div>
                 <Routes>
-                  <Route path = "/" element ={<TestMain />}/>
-                  <Route path = "/login" element ={<LoginPage getUserRole={getUserRole} getUserToken={getUserToken}/>}/>
+                  <Route path = "/" element ={<TestMain role={role}/>}/>
+                  <Route path = "/login" element ={<LoginPage getUserInfRes={getUserInfRes} />}/>
                   <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
                   <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
                   <Route path = "/login/callback" element ={<KakaoRedirect />}/>
                   <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
-                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum} />}/>
+                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum}/>}/>
                   <Route path = "/result" element ={<Result role={role} accessToken={accessToken}/>}/>
                   <Route path = "/main" element ={<Main />}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>
-                  <Route path = "/evaluate" element ={<Evaluate />}/>
-                  <Route path = "/new" element ={<New />}/>
+                  <Route path = "/evaluate" element ={<Evaluate accessToken={accessToken}/>}/>
+                  <Route path = "/new" element ={<New accessToken={accessToken}/>}/>
                   <Route path = "/edit/:id" element ={<EditEval />}/>
                   <Route path = "/mypage" element ={<MyPage accessToken={accessToken}/>}/>
                   <Route path = "/edit_profile" element ={<EditProfile />}/>
