@@ -34,7 +34,7 @@ const Selection = ({testNum, goNext, goBack}) => {
             {itemInform.map((it) => (
                 <div key={it.id}>
                     <h4> 나에게 {it.itemName}은</h4>
-                    <img alt="" src={getItemImgById(it.id)}/> 
+                    <img alt="" src={getItemImgById(it.id+1)}/> 
                 </div>
             ))} 
             <div className="input_wrapper selection_list_wrapper">
