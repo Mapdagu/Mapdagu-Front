@@ -2,31 +2,32 @@ import Header from "../components/Header";
 import Navigator from "../components/Navigator";
 import EvaluationList from "../components/EvaluationList";
 import Button from "../components/Button";
-import { EvalStateContext } from "../App";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Evaluate = () => {
-    const data = useContext(EvalStateContext);
+const SERVER_URL = `https://mapdagu.site/api/evaluations/me`;
+
+const Evaluate = ({accessToken}) => {
     const navigate = useNavigate();
-    // const [pivotDate, setPivotDate] = useState(new Date());
-    // const [filteredData, setFilteredData] = useState([]);
-
-    // useEffect(() => {
-    //     if(data.length >= 1){
-    //         const{beginTimeStamp, endTimeStamp} = getMonthRangeByDate(pivotDate);
-    //         setFilteredData(
-    //             data.filter(
-    //                 (it) => beginTimeStamp <= it.date && it.date <= endTimeStamp
-    //             )
-    //         );
-    //     } else {
-    //         setFilteredData([]);
-    //     }
-    // }, [data, pivotDate]);
+    const [newData, setNewData] = useState();
+        
+    useEffect(() => {
+        try{
+            axios.get(SERVER_URL, {headers: {Authorization: accessToken}})
+            .then(res => {
+                setNewData(res.data.content.map((item, index) => ({
+                    id: index,
+                    ...item
+                })));
+            })
+        } catch(error){
+            alert(error.response.data.message);
+        }
+    })
 
     const handleCreateEval = () => {
-        navigate(`/new`);
+        navigate(`/new`);       
     }
 
     return(
@@ -36,7 +37,7 @@ const Evaluate = () => {
             />
             <Navigator/> 
             <Button text="새로운 맵기평가 작성하기" onClick={handleCreateEval}/>     
-            <EvaluationList data={data} />
+            <EvaluationList data={newData} />
         </div>
     )
 };

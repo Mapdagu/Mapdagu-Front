@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { getItemImgById, getSelectionTextById } from "../util";
 
-const EvaluationItem = ({id, date, itemName, selectionId}) => {
+const EvaluationItem = ({id, name, imageNum, score}) => {
+    //imageNum = id ?
     const navigate = useNavigate();
     const goDetail = () => {
         navigate(`/detail/${id}`);
@@ -14,17 +15,17 @@ const EvaluationItem = ({id, date, itemName, selectionId}) => {
     return (
         <div className="EvaluationItem">
             <div onClick={goDetail} className="img_section">
-                <img alt="" src={getItemImgById(id)}/>
+                <img alt="" src={getItemImgById(imageNum)}/>
             </div>    
             <div onClick={goDetail} className="info_section">
                 <div className="item_wrapper">
-                    {itemName}
+                    {name}
                 </div>
-                <div className="date_wrapper">
+                {/* <div className="date_wrapper">
                     {new Date(parseInt(date)).toLocaleDateString()}
-                </div>
+                </div> */}
                 <div className="content_wrapper">
-                    {getSelectionTextById(selectionId)}
+                    {getSelectionTextById(score)}
                 </div>
             </div>
             <div className="button_section">
