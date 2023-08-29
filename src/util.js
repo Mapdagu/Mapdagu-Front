@@ -1,9 +1,71 @@
-import buldak from "./img/buldak.png";
-import dduk from "./img/dduk.png";
 import ramen from "./img/ramen.png";
+import jin from "./img/jin.png";
+import neogoori from "./img/neogoori.png";
+import buldak from "./img/buldak.png";
+import samyang from "./img/samyang.png";
+
 import profile_0 from "./img/profile_0.png"
 import profile_1 from "./img/profile_1.png"
 import profile_2 from "./img/profile_2.png"
+
+export const getItemImgById = (itemId) => {
+    const targetItemId = String(itemId);
+    switch(targetItemId){
+        case "1":
+            return ramen;
+        case "2":
+            return jin;
+        case "3":
+            return neogoori;
+        case "4":
+            return buldak;            
+        case "5":
+            return samyang;
+        default:
+            return null;
+    }
+}
+export const testItemList = [
+    {
+        id: 0,
+        itemName: "신라면",
+        img: getItemImgById(1),
+    },
+    {
+        id: 1,
+        itemName: "진라면",
+        img: getItemImgById(2),
+    },
+    {
+        id: 2,
+        itemName: "너구리",
+        img: getItemImgById(3),
+    },
+    {
+        id: 3,
+        itemName: "불닭볶음면",
+        img: getItemImgById(4),
+    },
+    {
+        id: 4,
+        itemName: "삼양라면",
+        img: getItemImgById(5),
+    },
+]
+
+export const getProfileImgById = (itemId) => {
+    const targetItemId = String(itemId);
+    switch(targetItemId){
+        case "0":
+            return profile_0;
+        case "1":
+            return profile_1;
+        case "2":
+            return profile_2;
+        default:
+            return null;
+    }
+}
 
 export const getSelectionTextById = (selectionId) => {
     const targetSelectionId = String(selectionId);
@@ -24,35 +86,6 @@ export const getSelectionTextById = (selectionId) => {
             return null;
     }
 }
-
-export const getItemImgById = (itemId) => {
-    const targetItemId = String(itemId);
-    switch(targetItemId){
-        case "0":
-            return ramen;
-        case "1":
-            return buldak;
-        case "2":
-            return dduk;
-        default:
-            return null;
-    }
-}
-
-export const getProfileImgById = (itemId) => {
-    const targetItemId = String(itemId);
-    switch(targetItemId){
-        case "0":
-            return profile_0;
-        case "1":
-            return profile_1;
-        case "2":
-            return profile_2;
-        default:
-            return null;
-    }
-}
-
 export const selectionList = [
     {
         id: 1,
@@ -77,24 +110,6 @@ export const selectionList = [
     {
         id: 6,
         name: getSelectionTextById(6),
-    },
-]
-
-export const testItemList = [
-    {
-        id: 0,
-        itemName: "신라면",
-        img: getItemImgById(0),
-    },
-    {
-        id: 1,
-        itemName: "진라면",
-        img: getItemImgById(1),
-    },
-    {
-        id: 2,
-        itemName: "너구리",
-        img: getItemImgById(2),
     },
 ]
 
