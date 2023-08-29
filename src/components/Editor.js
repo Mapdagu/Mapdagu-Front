@@ -9,12 +9,11 @@ import { useNavigate } from "react-router-dom";
 const Editor = ({initData, onSubmit}) => {  
     const navigate = useNavigate();
     const [state, setState] = useState({
-        date: getFormattedDate(new Date()),
-        itemName: "",
-        selectionId: 0,
+        name: "",
+        score: 0,
     });
 
-    const handleSubmit = () => {
+    const handleOnSubmit = () => {
         onSubmit(state);
     }
     const handleOnBack = () => {
@@ -23,29 +22,28 @@ const Editor = ({initData, onSubmit}) => {
     const handleChangeItemName = (e) => {
         setState({
             ...state,
-            itemName: e.target.value,
+            name: e.target.value,
         })
     }
-    const handleChangeSelection = useCallback((selectionId) => {
+    const handleChangeSelection = useCallback((score) => {
         setState((state) => ({
             ...state,
-            selectionId,
+            score,
         }));
     }, []);
 
     useEffect(() => {
         if(initData){
             setState({
-                ...initData,
-                date: getFormattedDate(new Date(parseInt(initData.date))),
+                ...initData
             })
         }
     }, [initData])
 
     return (
         <div className="Editor">
-            <textarea value={state.itemName} onChange={handleChangeItemName}/>
-            <h4> 나에게 {state.itemName}은</h4>
+            <textarea value={state.name} onChange={handleChangeItemName}/>
+            <h4> 나에게 {state.name}은</h4>
             <img alt="" src={getItemImgById(state.id)}/> 
             <div className="input_wrapper selection_list_wrapper">
                 {selectionList.map((it) => (
@@ -53,12 +51,12 @@ const Editor = ({initData, onSubmit}) => {
                         key={it.id}
                         {...it}
                         onClick={handleChangeSelection}
-                        isSelected={state.selectionId === it.id}
+                        isSelected={state.score === it.id}
                     />
                 ))}
             </div>
             <Bottom leftChild={<Button text={"취소하기"} onClick={handleOnBack}/>}
-                    rightChild={<Button text={"작성완료"} type={"positive"} onClick={handleSubmit}/>}
+                    rightChild={<Button text={"작성완료"} onClick={handleOnSubmit}/>}
             />
         </div>
     );

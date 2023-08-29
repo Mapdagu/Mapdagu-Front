@@ -3,21 +3,31 @@ import Button from "../components/Button";
 import Search from "../components/Search";
 import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
-import { EvalDispatchContext } from "../App";
-import { useContext } from "react";
+import axios from "axios";
 
-const New = () => {    
-    const {onCreate} = useContext(EvalDispatchContext);
+const ADD_EVAL = 'https://mapdagu.site/api/evaluations';
+const UPDATE_LEVEL = 'https://mapdagu.site/api/evaluations/info';
+
+const New = ({accessToken}) => {    
     const navigate = useNavigate();
     const handleOnBack = () => {
         navigate(-1);
     }
     
-    const onSubmit = (data) => {
-        alert("작성이 완료되었습니다");
-        const { date, itemName, selectionId } = data;
-        onCreate(date, itemName, selectionId);
-        navigate(`/evaluate`, {replace:true});
+    const onSubmit = async(data) => {
+        const {name, score} = data;
+        // const name1 = name[0];
+        //임시 데이터
+        const schoville = 1000;
+        const level = 1;
+        try {
+            await axios.post(ADD_EVAL, {name, score}, {headers: {Authorization: accessToken}});
+            await axios.patch(UPDATE_LEVEL, {schoville, level}, {headers: {Authorization: accessToken}});
+            alert("작성이 완료되었습니다");
+            navigate(`/evaluate`, {replace:true});
+        } catch (error) {
+            alert(error.response.data.message);
+        }
     }
 
     return (
