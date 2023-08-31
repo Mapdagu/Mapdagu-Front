@@ -1,7 +1,6 @@
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useReducer, useEffect } from 'react';
-// import dummy from "./db/dummy.json";
 import axios  from 'axios';
 
 /*pages*/
@@ -22,38 +21,13 @@ import Details from './pages/Details';
 import EditEval from './pages/EditEval';
 import New from './pages/New'
 
-// import { getItemImgById } from './util';
-
 const SIGN_UP_URL = 'https://mapdagu.site/api/sign-up';
 const SOCIAL_SIGN_UP_URL = 'https://mapdagu.site/api/sign-up/social';
+const LOGIN_URL = 'https://mapdagu.site/login';
 
 export const EvalStateContext = React.createContext();
 export const UserStateContext = React.createContext();
 export const EvalDispatchContext = React.createContext();
-
-// const mockData = [
-//   {
-//     id: 0,
-//     date: new Date().getTime()-1,
-//     itemName: "신라면",
-//     selectionId: 1,
-//     img: getItemImgById(0),   
-//   },
-//   {
-//     id: 1,
-//     date: new Date().getTime()-2,
-//     itemName: "불닭볶음면",
-//     selectionId: 2,
-//     img: getItemImgById(1),  
-//   },
-//   {
-//     id: 2,
-//     date: new Date().getTime()-3,
-//     itemName: "엽기떡볶이 오리지널",
-//     selectionId: 3,
-//     img: getItemImgById(2),  
-//   }
-// ]
 
 function reducer(state, action) {
   switch(action.type){
@@ -137,6 +111,15 @@ function App() {
         await axios.patch(SOCIAL_SIGN_UP_URL, {userName, imageNum, intro});
       }      
       alert("회원가입이 완료되었습니다!");
+        try {
+          const res = (await axios.post(LOGIN_URL, {email, password}));
+          const role = res.data.role;
+          const accessToken = res.headers[`authorization`];
+          const refreshToken = res.headers[`authorization-refresh`];
+          getUserInfRes(role, accessToken, refreshToken);
+        }catch (error) {
+          alert(error.response.data.message);
+        }
       navigate(`/test`);
     } catch (error) {
       alert(error.response.data.message);
@@ -151,14 +134,6 @@ function App() {
       refreshToken,
     });
   }
-
-  // const getUserToken = (accessToken, refreshToken) => {
-  //   setUserInf({ 
-  //     ...userInf,
-  //     accessToken,
-  //     refreshToken,
-  //   });
-  // }
 
   const onCreate = (itemName, selectionId) => {
     dispatch({
@@ -223,16 +198,16 @@ function App() {
                   <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
                   <Route path = "/login/callback" element ={<KakaoRedirect />}/>
                   <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
-                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum}/>}/>
+                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum} role={role} accessToken={accessToken}/>}/>
                   <Route path = "/result" element ={<Result role={role} accessToken={accessToken}/>}/>
-                  <Route path = "/main" element ={<Main />}/>
+                  <Route path = "/main" element ={<Main accessToken={accessToken}/>}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>
                   <Route path = "/evaluate" element ={<Evaluate accessToken={accessToken}/>}/>
                   <Route path = "/new" element ={<New accessToken={accessToken}/>}/>
-                  <Route path = "/edit/:id" element ={<EditEval />}/>
+                  <Route path = "/edit/:id" element ={<EditEval accessToken={accessToken}/>}/>
                   <Route path = "/mypage" element ={<MyPage accessToken={accessToken}/>}/>
-                  <Route path = "/edit_profile" element ={<EditProfile />}/>
+                  <Route path = "/edit_profile" element ={<EditProfile accessToken={accessToken}/>}/>
                 </Routes>
             </div>
           </EvalDispatchContext.Provider>

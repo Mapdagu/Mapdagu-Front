@@ -24,7 +24,7 @@ const Evaluate = ({accessToken}) => {
         } catch(error){
             alert(error.response.data.message);
         }
-    })
+    }, [])
 
     const handleCreateEval = () => {
         navigate(`/new`);       

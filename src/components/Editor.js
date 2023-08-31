@@ -2,7 +2,7 @@ import "./Editor.css";
 import OptionItem from "./OptionItem";
 import Button from "./Button";
 import Bottom from "./Bottom";
-import { getFormattedDate, getItemImgById, selectionList } from "../util";
+import { getItemImgById, selectionList } from "../util";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,7 @@ const Editor = ({initData, onSubmit}) => {
     const navigate = useNavigate();
     const [state, setState] = useState({
         name: "",
+        imageNum: 0,
         score: 0,
     });
 
