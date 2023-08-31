@@ -1,53 +1,44 @@
-import Header from "../components/Header";
-import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SetProfile from "../components/SetProfile";
+import axios from "axios";
+import { useEffect } from "react";
 
-const EditProfile = () => {
+const SERVER_URL = `https://mapdagu.site/api/members/me/info`
+
+const EditProfile = ({accessToken}) => {
     const navigate = useNavigate();
+    const [data, setData] = useState();
 
-    // const [inputValue, setInputValue] = useState({
-    //     userName: "",
-    //     intro: "",
-    // });
-    // const { userName, intro } = inputValue;
+    useEffect(() => {
+        try{
+            axios.get(SERVER_URL, {headers: {Authorization: accessToken}})
+                .then(res =>{
+                    setData({
+                        ...res.data,
+                    })
+                })
+        } catch (error){
+            alert(error.response.data.message);
+        }
+    }, [])
 
-    // const isValidNickname = userName.length >= 2 && userName.length <= 5;
-    
-    // const handleInput = (e) => {
-    //     const { name, value } = e.target;
-    //     setInputValue({
-    //         ...inputValue,
-    //         [name]: value,
-    //     });
-    // };
-
-    const handleOnBack = () => {
-        navigate(-1);
-    }
-    const handleOnSubmit = () => {
-        // if(!isValidNickname){
-        //     alert("닉네임 형식이 틀렸어요");
-        // }
-        // else{
-        //     alert("변경되었습니다");
-        //     navigate(`/mypage`);
-        console.log("done");
-        // }        
+    const onSubmit = (data) => {
+        const { userName, imageNum, intro } = data;
+        try{
+            axios.patch(SERVER_URL, {userName, imageNum, intro}, {headers: {Authorization: accessToken}});
+            navigate(`/mypage`, {replace: true});
+        } catch (error){
+            alert(error.response.data.message);
+        }   
     }
     return (
         <div>
-            <Header title="edit profile"
-                    leftChild={<Button text="취소" onClick={handleOnBack}/>}
-                    rightChild={<Button text="완료" onClick={handleOnSubmit}/>}
-            />            
-            {/* <div>닉네임</div>
-            <input name="userName" onChange={handleInput}/>
-            <h5>{(userName.length!==0 && !isValidNickname) ? '2글자 이상 5글자 이하로 입력하세요' : ''}</h5>
-            <div>한줄소개</div>
-            <input name="intro"/> */}
-            <SetProfile/>
+            {/* <Header title="edit profile"
+                    leftChild={<Button text="취소" onClick={goBack}/>}
+                    rightChild={<Button text="완료" onClick={onSubmit}/>}
+            />             */}
+            <SetProfile initData={data} onSubmit={onSubmit}/>
         </div>
     );
 }

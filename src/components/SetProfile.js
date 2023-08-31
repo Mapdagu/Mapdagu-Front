@@ -4,8 +4,12 @@ import { useState, useCallback } from "react";
 import Modal from "react-modal";
 import ProfileItem from "../components/ProfileItem";
 import { getProfileImgById, profileImgList } from "../util";
+import { useEffect } from "react";
+import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
-const SetProfile = ({onSubmit}) => {
+const SetProfile = ({initData, onSubmit}) => {
+    const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [state, setState] = useState({
         profileId: 0,
@@ -15,8 +19,19 @@ const SetProfile = ({onSubmit}) => {
         imageNum: 0,
         intro: ""
     });
-    const {userName, imageNum, intro} = inputValue;
 
+    useEffect(() => {
+        if(initData){
+            setInputValue({
+                ...initData
+            })
+        }
+    }, [initData])
+
+    const goBack = () => {
+        navigate(-1);
+    }
+    
     const handleInput = (e) => {
         const { name, value } = e.target;
         setInputValue({
@@ -42,8 +57,12 @@ const SetProfile = ({onSubmit}) => {
     }
     return (
         <div className="SetProfile">
+            <Header title="edit profile"
+                    leftChild={<Button text="취소" onClick={goBack}/>}
+                    rightChild={<Button text="완료" onClick={onSubmitHandler}/>}
+            /> 
             <div>1. 프로필 이미지</div>
-            <div><img alt="" src={getProfileImgById(state.profileId)}/></div>
+            <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
             <Button text="이미지 선택" onClick={() => setModalIsOpen(true)}/>
             <Modal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
                 <div className="profile_list_wrapper">
@@ -63,6 +82,7 @@ const SetProfile = ({onSubmit}) => {
                 <input 
                     name="userName"
                     onChange={handleInput}
+                    value={inputValue.userName}
                 />
             </div>
             <div>3. 한줄소개</div>
@@ -70,9 +90,9 @@ const SetProfile = ({onSubmit}) => {
                 <input 
                     name="intro"
                     onChange={handleInput}
+                    value={inputValue.intro}
                 />
             </div>
-            { onSubmit ? <Button text="회원가입" onClick={onSubmitHandler}/> : ""}
         </div>
     );
 }
