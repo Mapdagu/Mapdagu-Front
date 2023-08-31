@@ -1,12 +1,10 @@
 import "./Graph.css";
 
-const Graph = () => {
-    const nickname = "린서";
-    const level = 10;
-    
+const Graph = ({data}) => {
+    const {userName, level} = data;
     return(
         <div className="Graph">
-        <span className="nickname_container">{nickname} </span>
+        <span className="nickname_container">{userName} </span>
             님은 Level. {level} 단계입니다.
             <div className="buttons">
                 <button className="btn-hover color-1">1</button>
