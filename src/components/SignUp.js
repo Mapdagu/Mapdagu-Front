@@ -24,10 +24,8 @@ const SignUp = ({onSubmit}) => {
     // 이메일 검사: '@', '.'이 둘 다 포함
     const isValidEmail1 = email.includes('@') && email.includes('.');
     const isValidEmail2 = checkedEmail.includes('@') && checkedEmail.includes('.');
-    // 전체 8자 이상
+    // 비밀번호 8자 이상
     const isValidPassword = password.length >= 8;
-    // 모든 input의 value가 1자 이상이 될 것
-    const isValidInput = nickname.length >= 1 ;
     // 비밀번호와 비밀번호 확인 값이 일치할 것
     const isPasswordChecked = ((password === passwordConfirm) ? true : false);
 
@@ -59,13 +57,15 @@ const SignUp = ({onSubmit}) => {
         }
     }
     const getIsActive = 
-    isValidEmail2 && isCodeChecked && isValidPassword && isValidInput && isPasswordChecked === true;
+    isValidName && isValidEmail2 && isCodeChecked && isValidPassword && isPasswordChecked === true;
 
     const onSubmitHandler = () => {
         if(getIsActive){
             onSubmit(inputValue);
         }        
         else{
+            console.log({isValidName, isValidEmail2, isCodeChecked, isValidPassword, isPasswordChecked});
+            console.log(inputValue.password);
             alert("항목을 채워주세요");
         }
     }
