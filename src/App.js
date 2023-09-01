@@ -100,10 +100,10 @@ function App() {
       imageNum,
       intro,
     });
-    signUpHandler();
+    signUpHandler(userName, imageNum, intro);
   }
 
-  const signUpHandler = async (e) => {
+  const signUpHandler = async(userName, imageNum, intro) => {
     try {
       if(!isSocial){
       await axios.post(SIGN_UP_URL, {nickname, email, password, userName, imageNum, intro});
