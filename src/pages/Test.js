@@ -14,7 +14,7 @@ const Test = ({maxTestNum}) => {
 
     const goBack = () => {
         if(testNum === 0){
-            navigate(`/`);
+            navigate(-1);
         }
         else{
             setTestNum(testNum - 1);
@@ -44,7 +44,6 @@ const Test = ({maxTestNum}) => {
     }
     const submitHandler = async (e) => {
         navigate(`/result`);
-        // onSubmit();
     }
     return (
         <div>
