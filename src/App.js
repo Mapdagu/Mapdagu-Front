@@ -134,7 +134,7 @@ function App() {
     });
   }
 
-  const setUserInfInit = () => {
+  const initUserInf = () => {
     setUserInf({
       nickname: "",
       email: "",
@@ -220,7 +220,7 @@ function App() {
                   <Route path = "/evaluate" element ={<Evaluate accessToken={accessToken}/>}/>
                   <Route path = "/new" element ={<New accessToken={accessToken}/>}/>
                   <Route path = "/edit/:id" element ={<EditEval accessToken={accessToken}/>}/>
-                  <Route path = "/mypage" element ={<MyPage email={email} accessToken={accessToken} setUserInfInit={setUserInfInit}/>}/>
+                  <Route path = "/mypage" element ={<MyPage email={email} accessToken={accessToken} initUserInf={initUserInf}/>}/>
                   <Route path = "/edit_profile" element ={<EditProfile accessToken={accessToken}/>}/>
                 </Routes>
             </div>

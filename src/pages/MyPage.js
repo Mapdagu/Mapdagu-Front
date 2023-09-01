@@ -6,7 +6,7 @@ import axios from "axios";
 
 const SERVER_URL = `https://mapdagu.site/api/auth/logout`;
 
-const MyPage = ({email, accessToken, setUserInfInit}) => {
+const MyPage = ({accessToken, initUserInf}) => {
     const navigate = useNavigate();
     const handleEdit = () => {
         navigate(`/edit_profile`);
@@ -19,9 +19,9 @@ const MyPage = ({email, accessToken, setUserInfInit}) => {
     const handleLogout = async() => {
         if(window.confirm("로그아웃하시겠습니까?")){
             try{
-                await axios.post(SERVER_URL, {email}, {headers: {Authorization: accessToken}});
+                await axios.post(SERVER_URL, {}, {headers: {Authorization: accessToken}});
                 navigate(`/`, {replace: true});
-                setUserInfInit();
+                initUserInf();
             } catch(error){
                 alert(error.response.data.message);
             }
