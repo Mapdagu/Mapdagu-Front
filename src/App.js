@@ -71,8 +71,7 @@ function App() {
     refreshToken: "",
 })
 
-  const {nickname, email, password, userName, 
-        imageNum, intro, isSocial, role, accessToken} = userInf;  
+  const {nickname, email, password, isSocial, role, accessToken} = userInf;  
 
   useEffect(() => {
     // dispatch({
@@ -133,6 +132,21 @@ function App() {
       accessToken,
       refreshToken,
     });
+  }
+
+  const setUserInfInit = () => {
+    setUserInf({
+      nickname: "",
+      email: "",
+      password: "",
+      userName: "",
+      imageNum: 0,
+      intro: "",
+      isSocial: true,
+      role: "",
+      accessToken: "",
+      refreshToken: "",
+    })
   }
 
   const onCreate = (itemName, selectionId) => {
@@ -206,7 +220,7 @@ function App() {
                   <Route path = "/evaluate" element ={<Evaluate accessToken={accessToken}/>}/>
                   <Route path = "/new" element ={<New accessToken={accessToken}/>}/>
                   <Route path = "/edit/:id" element ={<EditEval accessToken={accessToken}/>}/>
-                  <Route path = "/mypage" element ={<MyPage accessToken={accessToken}/>}/>
+                  <Route path = "/mypage" element ={<MyPage email={email} accessToken={accessToken} setUserInfInit={setUserInfInit}/>}/>
                   <Route path = "/edit_profile" element ={<EditProfile accessToken={accessToken}/>}/>
                 </Routes>
             </div>
