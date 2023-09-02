@@ -206,7 +206,7 @@ function App() {
                   <button onClick={changePage}>처음으로</button>
                   내가맵다했지</div>
                 <Routes>
-                  <Route path = "/" element ={<TestMain role={role}/>}/>
+                  <Route path = "/" element ={<TestMain getUserInfRes={getUserInfRes} role={role}/>}/>
                   <Route path = "/login" element ={<LoginPage getUserInfRes={getUserInfRes} />}/>
                   <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
                   <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
