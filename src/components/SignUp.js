@@ -6,6 +6,7 @@ import axios from "axios";
 const SERVER_URL = 'https://mapdagu.site/api/sign-up/email';
 
 const SignUp = ({onSubmit}) => {
+    const [initInput, setInitInput] = useState(false);
     const [isSended, setIsSended] = useState(false);
     const [isCodeChecked, setIsCodeChecked] = useState(false);
     const [response, setResponse] = useState();
@@ -35,6 +36,7 @@ const SignUp = ({onSubmit}) => {
             ...inputValue,
             [name]: value,
         });
+        setInitInput(false);
     };
     
     const sendCode = async (e) => {
@@ -46,6 +48,7 @@ const SignUp = ({onSubmit}) => {
             ...inputValue,
             checkedEmail: email,
         })
+        setInitInput(true);
     }
     const checkCode = () => {
         if(code === response){
@@ -64,8 +67,6 @@ const SignUp = ({onSubmit}) => {
             onSubmit(inputValue);
         }        
         else{
-            console.log({isValidName, isValidEmail2, isCodeChecked, isValidPassword, isPasswordChecked});
-            console.log(inputValue.password);
             alert("항목을 채워주세요");
         }
     }
@@ -107,6 +108,7 @@ const SignUp = ({onSubmit}) => {
                     <input 
                         type='password'
                         name="password"
+                        value={initInput && password.length === 0 ? "" : password}
                         onChange={handleInput}
                     />
                     <h5>{(password.length!==0 && !isValidPassword) ? '8글자 이상으로 설정해주세요' : ''}</h5>
@@ -114,6 +116,7 @@ const SignUp = ({onSubmit}) => {
                     <input 
                         type='password'
                         name="passwordConfirm"
+                        value={initInput && passwordConfirm.length === 0 ? "" : passwordConfirm}
                         onChange={handleInput}
                     />
                     <h5>{(passwordConfirm.length!==0 && !isPasswordChecked) ? '비밀번호가 일치하지 않아요' : ''}</h5>
