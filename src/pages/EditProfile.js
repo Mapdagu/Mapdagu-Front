@@ -26,8 +26,10 @@ const EditProfile = ({accessToken}) => {
     const onSubmit = (data) => {
         const { userName, imageNum, intro } = data;
         try{
-            axios.patch(SERVER_URL, {userName, imageNum, intro}, {headers: {Authorization: accessToken}});
-            navigate(`/mypage`, {replace: true});
+            axios.patch(SERVER_URL, {userName, imageNum, intro}, {headers: {Authorization: accessToken}})
+                .then(() => {
+                    navigate(`/mypage`, {replace: true});
+                })
         } catch (error){
             alert(error.response.data.message);
         }   
