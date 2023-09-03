@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 
-const SetProfile = ({initData, onSubmit}) => {
+const SetProfile = ({title, initData, onSubmit}) => {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [state, setState] = useState({
@@ -19,6 +19,9 @@ const SetProfile = ({initData, onSubmit}) => {
         imageNum: 0,
         intro: ""
     });
+    const {userName, intro} = inputValue
+    const isValidUserName = userName.length >= 2 && userName.length <= 7; 
+    const isValidIntro = intro.length <= 20;
 
     useEffect(() => {
         if(initData){
@@ -57,41 +60,52 @@ const SetProfile = ({initData, onSubmit}) => {
     }
     return (
         <div className="SetProfile">
-            <Header title="edit profile"
-                    leftChild={<Button text="취소" onClick={goBack}/>}
-                    rightChild={<Button text="완료" onClick={onSubmitHandler}/>}
+            <Header leftChild={<button onClick={goBack}>취소</button>}
+                    rightChild={<button onClick={onSubmitHandler}>완료</button>}
             /> 
-            <div>1. 프로필 이미지</div>
-            <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
-            <Button text="이미지 선택" onClick={() => setModalIsOpen(true)}/>
-            <Modal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
-                <div className="profile_list_wrapper">
-                    {profileImgList.map((it) => (
-                        <ProfileItem
-                            key={it.id}
-                            {...it}
-                            onClick={handleChangeSelection}
-                            isSelected={state.profileId === it.id}
-                        />
-                    ))}
+            <h1>{title}</h1>
+            <div className="profile_input">
+                <div className="profile_container">
+                    <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
+                    <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>✏️</button>
+                    <Modal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
+                        <div className="profile_list_wrapper">
+                            {profileImgList.map((it) => (
+                                <ProfileItem
+                                    key={it.id}
+                                    {...it}
+                                    onClick={handleChangeSelection}
+                                    isSelected={state.profileId === it.id}
+                                />
+                            ))}
+                        </div>
+                        <div><Button text="완료" onClick={handleChangeProfile}/></div>
+                    </Modal>
                 </div>
-                <div><Button text="완료" onClick={handleChangeProfile}/></div>
-            </Modal>
-            <div>2. 닉네임</div>
-            <div>
-                <input 
-                    name="userName"
-                    onChange={handleInput}
-                    value={inputValue.userName}
-                />
-            </div>
-            <div>3. 한줄소개</div>
-            <div>
-                <input 
-                    name="intro"
-                    onChange={handleInput}
-                    value={inputValue.intro}
-                />
+
+                <div className="container">
+                    <div className="inputMessage">닉네임</div>
+                    <div>
+                        <input 
+                            name="userName"
+                            onChange={handleInput}
+                            value={inputValue.userName}
+                        />
+                        <h5>{(userName.length!==0 && !isValidUserName) ? '2글자 이상 5글자 이하로 입력해 주세요😢' : ''}</h5>
+                    </div>
+                </div>
+
+                <div className="container">
+                    <div className="inputMessage">한줄소개</div>
+                    <div>
+                        <input 
+                            name="intro"
+                            onChange={handleInput}
+                            value={inputValue.intro}
+                        />
+                        <h5>{(intro.length!==0 && !isValidIntro) ? '20글자 이하로 입력해 주세요😢' : ''}</h5>
+                    </div>
+                </div>
             </div>
         </div>
     );

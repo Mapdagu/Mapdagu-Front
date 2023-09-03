@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import SetProfile from "../components/SetProfile";
 
 const SetProfilePage = ({getProfileInf}) => {
@@ -8,8 +7,7 @@ const SetProfilePage = ({getProfileInf}) => {
     }
     return (
         <div>
-            <Header title="profile set page"/>
-            <SetProfile onSubmit={onSubmit}/>
+            <SetProfile title="프로필 정보 입력" onSubmit={onSubmit}/>
         </div>
     );
 }

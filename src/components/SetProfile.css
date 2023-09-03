@@ -1,7 +1,77 @@
 .SetProfile{
+    text-align: center;
+}
+.SetProfile .profile_input{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10%;
+}
+.SetProfile .profile_container{
+    /* text-align: center; */
+    /* justify-content: center; */
+    margin-bottom: 50px;
+    /* display: flex; */
+    position: relative;
+    display: inline-block;
+}
+.SetProfile .container{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.SetProfile img{
+    border-radius: 100%;
+    border: 5px solid black;
+}
+.SetProfile .inputMessage{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.SetProfile input{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 15px;
+}
+.SetProfile button{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.SetProfile .btn_overlay{
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 100%;
+    border: 1px solid black;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
 
 }
 
+.SetProfile h1{    
+    margin-top: 10%;
+}
+.SetProfile h5 {
+    font-size: 15px;
+    margin: 3px;
+    color: rgb(199, 41, 41);
+}
+
+/* Modal */
 .profile_list_wrapper {
     display: flex;
     flex-direction: row;

@@ -119,7 +119,7 @@ function App() {
         }catch (error) {
           alert(error.response.data.message);
         }
-      navigate(`/test`);
+      navigate(`/test`, {replace: true});
     } catch (error) {
       alert(error.response.data.message);
     }

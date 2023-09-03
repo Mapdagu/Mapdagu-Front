@@ -40,7 +40,7 @@ const EditProfile = ({accessToken}) => {
                     leftChild={<Button text="취소" onClick={goBack}/>}
                     rightChild={<Button text="완료" onClick={onSubmit}/>}
             />             */}
-            <SetProfile initData={data} onSubmit={onSubmit}/>
+            <SetProfile title="회원정보 수정" initData={data} onSubmit={onSubmit}/>
         </div>
     );
 }

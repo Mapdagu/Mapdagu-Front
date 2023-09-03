@@ -1,5 +1,4 @@
 import "./SignUp.css";
-import Button from "./Button";
 import { useState } from "react";
 import axios from "axios";
 
@@ -73,56 +72,61 @@ const SignUp = ({onSubmit}) => {
 
     return (
         <div className="SignUp">
+            <h1>회원가입</h1>
             <div className="signUpInput">
-                <div className="nameInput">
-                    <div className="inputMessage">1. 이름</div>
+                <div className="container">
+                    <div className="inputMessage">이름</div>
                     <input 
                         name="nickname"
                         onChange={handleInput}
                     />
-                    <h5>{(nickname.length!==0 && !isValidName) ? '2글자 이상 5글자 이하로 입력하세요' : ''}</h5>
+                    <h5>{(nickname.length!==0 && !isValidName) ? '2글자 이상 5글자 이하로 입력해 주세요😢' : ''}</h5>
                 </div>
-                <div className="emailInput">
-                    <div className="inputMessage">2. 이메일 인증</div>
+
+                <div className="container">
+                    <div className="inputMessage">이메일</div>
                     <div className="wrapper">
                         <input 
                             name="email"
                             onChange={handleInput}
                         />
-                        <Button text="인증번호 전송" onClick={sendCode}/>
+                        <button className="btn_type1" onClick={sendCode}>인증번호 전송</button>   
                     </div>
-                    <h5>{(checkedEmail.length!==0 && !isValidEmail2) ? '이메일 형식이 틀렸어요' : ''}</h5>
+                    <h5>{(email.length!==0 && !isValidEmail1 && !isValidEmail2) ? '이메일 형식이 틀렸어요😢' : ''}</h5>
                     <h6>{(isSended && isValidEmail2) ? '인증번호가 전송되었어요' : ''}</h6>
-                    <div className="inputMessage"> 인증번호</div>
+                
+                    <div className="inputMessage">인증번호</div>
                     <div className="wrapper">
                         <input 
                             name="code"
                             onChange={handleInput}
                         />
-                        <Button text="인증번호 확인" onClick={checkCode}/>
+                        <button className="btn_type1" onClick={checkCode}>인증번호 확인</button>        
                     </div>
                     <h6>{(isCodeChecked) ? '인증번호가 확인되었어요' : ''}</h6>
                 </div>
-                <div className="passwordInput">
-                    <div className="inputMessage">3. 비밀번호 설정</div>
+
+                <div className="container">
+                    <div className="inputMessage">비밀번호</div>
                     <input 
                         type='password'
                         name="password"
                         value={initInput && password.length === 0 ? "" : password}
                         onChange={handleInput}
                     />
-                    <h5>{(password.length!==0 && !isValidPassword) ? '8글자 이상으로 설정해주세요' : ''}</h5>
-                    <div className="inputMessage">4. 비밀번호 확인</div>
+                    <h5>{(password.length!==0 && !isValidPassword) ? '8글자 이상으로 설정해 주세요😢' : ''}</h5>
+                        
+                    <div className="inputMessage">비밀번호 확인</div>
                     <input 
                         type='password'
                         name="passwordConfirm"
                         value={initInput && passwordConfirm.length === 0 ? "" : passwordConfirm}
                         onChange={handleInput}
                     />
-                    <h5>{(passwordConfirm.length!==0 && !isPasswordChecked) ? '비밀번호가 일치하지 않아요' : ''}</h5>
-                </div>             
+                    <h5>{(passwordConfirm.length!==0 && !isPasswordChecked) ? '비밀번호가 일치하지 않아요😢' : ''}</h5>
+                </div>
             </div>
-            <Button text="다음 단계" onClick={onSubmitHandler}/>
+            <button className="btn_type2" onClick={onSubmitHandler}>확인</button>
         </div>
     )
 }
