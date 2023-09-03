@@ -48,8 +48,7 @@ const Test = ({maxTestNum}) => {
     return (
         <div>
             <Header title={`테스트 페이지`}/>
-            {testNum+1}/{maxTestNum+1}
-            <Selection testNum={testNum} goNext={goNext} goBack={goBack}/>
+            <Selection testNum={testNum} maxTestNum={maxTestNum} goNext={goNext} goBack={goBack}/>
         </div>
     )
 }

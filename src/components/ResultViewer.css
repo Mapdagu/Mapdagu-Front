@@ -1,21 +1,93 @@
 .ResultViewer {
     text-align: center;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
-
+.ResultViewer .result_wrapper{    
+    background-color: #EE5054;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 7px 2px rgba(0, 0, 0, 0.25);
+}
+.ResultViewer .graph_wrapper{    
+    background-color: #FAFAFA;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);
+}
+.ResultViewer h1 {
+    /* out line */
+    text-shadow: 
+    2px 2px 0 black, 
+    -2px -2px 0 black, 
+    2px -2px 0 black, 
+    -2px 2px 0 black; 
+    color: #FFB4B4;
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.ResultViewer h2 {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.ResultViewer h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 .ResultViewer h4 {
-    font-size: 22px;
+    color: #FFB4B4;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .ResultViewer .content_wrapper{
+    display: flex;
+    flex-direction: column;
     padding-bottom: 20px;
+}
+
+.ResultViewer .button_wrapper{
+    margin-left: 7.5%;
+    justify-content: center;
+    display: flex;
+}
+.ResultViewer .btn_type1{
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-right: 7.5%;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #A73030;
+    color: white;    
+    box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);
+}
+.ResultViewer .btn_type2{
+    width: 85%;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: white;
+    box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);    
 }
 
 .ResultViewer textarea{
