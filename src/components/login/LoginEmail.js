@@ -1,3 +1,4 @@
+import "./LoginEmail.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button";
@@ -5,7 +6,7 @@ import axios from "axios";
 
 const SERVER_URL = 'https://mapdagu.site/login';
 
-const LoginEmail = ({getUserInfRes}) => {  
+const LoginEmail = ({getUserInfRes, closeModal}) => {  
     const navigate = useNavigate();  
     const [state, setState] = useState({
         email: "",
@@ -45,26 +46,33 @@ const LoginEmail = ({getUserInfRes}) => {
 
     return (
         <div className="LoginEmail">
-            <div>이메일 로그인</div>
-            <div>
-                <input 
-                    name="email"
-                    onChange={handleInput}
-                    placeholder="아이디"
-                />
-            </div> 
-            <div>
-                <input 
-                    type = "password"
-                    name="password"
-                    onChange={handleInput}
-                    placeholder="비밀번호"
-                />                
+            <h2>로그인</h2>
+                <div className="login_input">
+                <div className="text_area">
+                    <div>
+                        <input 
+                            name="email"
+                            onChange={handleInput}
+                            placeholder="아이디"
+                        />
+                    </div>
+                    <div>
+                        <input 
+                            type = "password"
+                            name="password"
+                            onChange={handleInput}
+                            placeholder="비밀번호"
+                        />
+                    </div>                
+                </div>
+                <button className="btn_login" onClick={onSubmit}>로그인</button>
             </div>
-            <div><Button text="로그인" onClick={onSubmit}/></div>
-            <button>아이디 찾기</button>|
-            <button>비밀번호 찾기</button>|
-            <button onClick={onSignUp}>회원가입</button>
+            <div className="buttons">
+                <button>아이디 찾기</button>|
+                <button>비밀번호 찾기</button>|
+                <button onClick={onSignUp}>회원가입</button>
+            </div>
+            <div><button className="btn_close" onClick={closeModal}>나중에 할래요</button></div>           
         </div>
     );
 }

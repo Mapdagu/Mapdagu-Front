@@ -58,6 +58,36 @@ const SetProfile = ({title, initData, onSubmit}) => {
             imageNum: state.profileId,
         });
     }
+    const modalStyle = {
+        content: {
+            width: "400px",
+            height: "300px",
+            margin: "auto",
+            padding: "20px",
+            border: "1px solid #ccc",
+            borderRadius: "50px", 
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+        }
+    }
+    const btn_profile = {
+        content: {
+            width: "100%",
+            cursor: "pointer",
+            border: "none",
+            borderRadius: "10px",
+            paddingTop: "15px",
+            paddingBottom: "15px",
+            paddingLeft: "40px",
+            paddingRight: "40px",
+            marginBottom: "40px",
+            fontSize: "22px",
+            fontWeight: "bold",
+            backgroundColor: "#DB1D22",
+            color: "white",
+            boxShadow: "5px 5px 7px -2px rgba(0, 0, 0, 0.25)",   
+
+        }
+    }
     return (
         <div className="SetProfile">
             <Header leftChild={<button onClick={goBack}>취소</button>}
@@ -68,7 +98,8 @@ const SetProfile = ({title, initData, onSubmit}) => {
                 <div className="profile_container">
                     <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
                     <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>✏️</button>
-                    <Modal ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
+                    <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
+                        <div><button className="btn_profile_close" onClick={() => setModalIsOpen(false)}>×</button></div>
                         <div className="profile_list_wrapper">
                             {profileImgList.map((it) => (
                                 <ProfileItem
@@ -79,7 +110,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                                 />
                             ))}
                         </div>
-                        <div><Button text="완료" onClick={handleChangeProfile}/></div>
+                        <div><button className="btn_profile" onClick={handleChangeProfile}>완료</button></div>
                     </Modal>
                 </div>
 

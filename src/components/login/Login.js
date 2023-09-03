@@ -48,7 +48,7 @@ const Login = ({onSubmit}) => {
 
     const googleLoginHandler = () => {
         window.location.href = GOOGLE_REDIRECT_URI;
-    }
+    } 
     return(
         <div className="Login">            
             <Header title={`login page`}/>

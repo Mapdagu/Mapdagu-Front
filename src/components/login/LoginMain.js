@@ -1,6 +1,6 @@
-import Button from "../Button";
+import "./LoginMain.css";
 
-const LoginMain = ({onChange}) => {
+const LoginMain = ({onChange, closeModal}) => {
     const KAKAO_REDIRECT_URI = `https://mapdagu.site/oauth2/authorization/kakao`;
     const NAVER_REDIRECT_URI = `https://mapdagu.site/oauth2/authorization/naver`;
     const GOOGLE_REDIRECT_URI = `https://mapdagu.site/oauth2/authorization/google`;
@@ -21,14 +21,16 @@ const LoginMain = ({onChange}) => {
     }
 
     return (
-        <div className="LoginMain">  
-            <div>3초 로그인 후 바로 이용해보세요!</div>
-            <div>
-                <Button text="카카오" onClick={kakaoLoginHandler}/>
-                <Button text="네이버" onClick={naverLoginHandler}/>
-                <Button text="구글" onClick={googleLoginHandler}/>
-                <Button text="이메일" onClick={emailLoginHandler}/>
-            </div>
+        <div className="LoginMain"> 
+            <h2>3초 로그인 및 회원가입 후</h2>
+            <h2>바로 이용해보세요!</h2>
+            <div className="buttons">
+                <button onClick={kakaoLoginHandler}>K</button>
+                <button onClick={naverLoginHandler}>N</button>
+                <button onClick={googleLoginHandler}>G</button>
+                <button onClick={emailLoginHandler}>M</button>
+            </div>    
+            <div><button className="btn_close" onClick={closeModal}>나중에 할래요</button></div>           
         </div>
     );
 }

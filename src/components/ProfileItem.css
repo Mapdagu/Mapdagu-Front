@@ -6,8 +6,8 @@
     align-items: center;
 }
 
-.ProfileItem .img{
-    width: 50%;
+.ProfileItem img{
+    width: 100%;
 }
 
 .ProfileItem_off {
