@@ -89,7 +89,7 @@ function App() {
       password,
       isSocial: false,
     });
-    navigate(`/set_profile`);
+    navigate(`/set_profile`, {replace: true});
   }
 
   const getProfileInf = (userName, imageNum, intro) => {

@@ -47,24 +47,22 @@ const LoginEmail = ({getUserInfRes, closeModal}) => {
     return (
         <div className="LoginEmail">
             <h2>로그인</h2>
-                <div className="login_input">
-                <div className="text_area">
-                    <div>
-                        <input 
-                            name="email"
-                            onChange={handleInput}
-                            placeholder="아이디"
-                        />
-                    </div>
-                    <div>
-                        <input 
-                            type = "password"
-                            name="password"
-                            onChange={handleInput}
-                            placeholder="비밀번호"
-                        />
-                    </div>                
+            <div className="login_input">
+                <div>
+                    <input 
+                        name="email"
+                        onChange={handleInput}
+                        placeholder="아이디"
+                    />
                 </div>
+                <div>
+                    <input 
+                        type = "password"
+                        name="password"
+                        onChange={handleInput}
+                        placeholder="비밀번호"
+                    />
+                </div>  
                 <button className="btn_login" onClick={onSubmit}>로그인</button>
             </div>
             <div className="buttons">

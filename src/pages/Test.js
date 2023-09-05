@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Selection from "../components/Selection";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -47,7 +46,6 @@ const Test = ({maxTestNum}) => {
     }
     return (
         <div>
-            <Header title={`테스트 페이지`}/>
             <Selection testNum={testNum} maxTestNum={maxTestNum} goNext={goNext} goBack={goBack}/>
         </div>
     )

@@ -10,7 +10,7 @@
 }
 
 .OptionItem span {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -19,13 +19,19 @@
     /* E73232 */
     background-color:rgb(231, 50, 50, 0.5);
     color: black;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 .OptionItem_off {
     background-color: #F5F5F5;
     color: black;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .OptionItem_on{
     background-color: #E73232;
     color: white;
+    padding: 10px;
+    margin-bottom: 10px;
 }

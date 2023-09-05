@@ -36,8 +36,8 @@ const TestMain = ({getUserInfRes, role}) => {
 
     const modalStyle = {
         content: {
-            width: "400px",
-            height: "300px",
+            width: "300px",
+            height: "280px",
             margin: "auto",
             padding: "20px",
             border: "1px solid #ccc",

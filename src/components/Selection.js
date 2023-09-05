@@ -40,7 +40,7 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
                         <div className="image_wrapper">
                             <img alt="" src={getItemImgById(it.id+1)}/> 
                         </div>
-                        <h4> 나에게 {it.itemName}은</h4>
+                        <h4> 나에게 {it.itemName} 은(는)</h4>
                     </div>
                 ))} 
                 <div className="selection_list_wrapper">
@@ -59,12 +59,16 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
                         <ProgressBar width={100} color={"#D9D9D9"}>
                             <ProgressBar width={100*percent} color={"#000000"}/>
                         </ProgressBar>
+                        {testNum+1} / {maxTestNum+1}
                     </div>
-                     {testNum+1}/{maxTestNum+1}
                 </div>
-                <Bottom leftChild={<Button text="이전" onClick={handleOnBack}/>}
-                        rightChild={<Button text="다음" onClick={handleOnNext}/>}
-                />
+                <div className="buttons">
+                    <button onclick={handleOnBack}>이전</button>
+                    <button onclick={handleOnBack}>다음</button>
+                </div>
+                {/* <Bottom leftChild={<Button text="이전" onClick={handleOnBack}/>}
+                        rightChild={<Button text="다음" onClick={handleOnBack}/>}
+                /> */}
             </div>
         </div>
 
