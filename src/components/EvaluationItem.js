@@ -4,7 +4,6 @@ import Button from "./Button";
 import { getItemImgById, getSelectionTextById } from "../util";
 
 const EvaluationItem = ({id, name, imageNum, score}) => {
-    //imageNum = id ?
     const navigate = useNavigate();
     const goDetail = () => {
         navigate(`/detail/${id}`);
@@ -21,9 +20,6 @@ const EvaluationItem = ({id, name, imageNum, score}) => {
                 <div className="item_wrapper">
                     {name}
                 </div>
-                {/* <div className="date_wrapper">
-                    {new Date(parseInt(date)).toLocaleDateString()}
-                </div> */}
                 <div className="content_wrapper">
                     {getSelectionTextById(score)}
                 </div>

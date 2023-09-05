@@ -1,3 +1,4 @@
+import logo192 from "./img/logo192.png";
 import ramen from "./img/ramen.png";
 import jin from "./img/jin.png";
 import neogoori from "./img/neogoori.png";
@@ -11,6 +12,8 @@ import profile_2 from "./img/profile_2.png"
 export const getItemImgById = (itemId) => {
     const targetItemId = String(itemId);
     switch(targetItemId){
+        case "0" : 
+            return logo192;
         case "1":
             return ramen;
         case "2":

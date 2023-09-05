@@ -43,22 +43,34 @@ const Editor = ({initData, onSubmit}) => {
 
     return (
         <div className="Editor">
-            <textarea value={state.name} onChange={handleChangeItemName}/>
-            <h4> 나에게 {state.name}은</h4>
-            <img alt="" src={getItemImgById(state.id)}/> 
-            <div className="input_wrapper selection_list_wrapper">
-                {selectionList.map((it) => (
-                    <OptionItem
-                        key={it.id}
-                        {...it}
-                        onClick={handleChangeSelection}
-                        isSelected={state.score === it.id}
-                    />
-                ))}
+            {/* <textarea value={state.name} onChange={handleChangeItemName}/> */}
+            <div className="container">
+                <div className="text_wrapper"> 
+                    <h2> '{state.name}'은(는) 어느 정도 맵나요?</h2>
+                    <h3>난이도: ☆☆☆☆☆</h3>
+                </div>
+                <div className="selection_list_wrapper">
+                    {selectionList.map((it) => (
+                        <OptionItem
+                            key={it.id}
+                            {...it}
+                            isTest={false}
+                            onClick={handleChangeSelection}
+                            isSelected={state.score === it.id}
+                        />
+                    ))}
+                </div>
+                <button className="btn_submit" onClick={handleOnSubmit}>작성하기</button>
+                {/* <Bottom leftChild={<Button text={"취소하기"} onClick={handleOnBack}/>}
+                        rightChild={<Button text={"작성완료"} onClick={handleOnSubmit}/>}
+                /> */}
             </div>
-            <Bottom leftChild={<Button text={"취소하기"} onClick={handleOnBack}/>}
-                    rightChild={<Button text={"작성완료"} onClick={handleOnSubmit}/>}
-            />
+            <div className="image_wrapper">
+                <img alt="" src={state.imageNum ? getItemImgById(state.imageNum) : getItemImgById(1)}/> 
+                <div>
+                    <h2>{state.name ? state.name : "음식을 선택해 주세요"}</h2>
+                </div>
+            </div>
         </div>
     );
 }

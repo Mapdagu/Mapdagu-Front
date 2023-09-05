@@ -48,6 +48,7 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
                         <OptionItem
                             key={it.id}
                             {...it}
+                            isTest={true}
                             onClick={handleChangeSelection}
                             isSelected={state.selectionId === it.id}
                         />

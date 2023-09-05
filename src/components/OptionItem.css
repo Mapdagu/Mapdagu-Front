@@ -14,10 +14,14 @@
     font-weight: bold;
 }
 
-.OptionItem_off {
+.OptionItem_off_for_test {
     /* border: 1px solid red; */
     /* E73232 */
     background-color:rgb(231, 50, 50, 0.5);
+    color: black;
+}
+.OptionItem_off {
+    background-color: #F5F5F5;
     color: black;
 }
 
