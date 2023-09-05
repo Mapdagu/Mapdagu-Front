@@ -10,13 +10,13 @@ const SERVER_URL = `https://mapdagu.site/api/evaluations/me`;
 
 const Evaluate = ({accessToken}) => {
     const navigate = useNavigate();
-    const [newData, setNewData] = useState();
+    const [data, setData] = useState();
         
     useEffect(() => {
         try{
             axios.get(SERVER_URL, {headers: {Authorization: accessToken}})
             .then(res => {
-                setNewData(res.data.content.map((item, index) => ({
+                setData(res.data.content.map((item, index) => ({
                     id: index,
                     ...item
                 })));
@@ -37,7 +37,7 @@ const Evaluate = ({accessToken}) => {
             />
             <Navigator/> 
             <Button text="새로운 맵기평가 작성하기" onClick={handleCreateEval}/>     
-            <EvaluationList data={newData} />
+            <EvaluationList data={data} />
         </div>
     )
 };
