@@ -1,49 +1,54 @@
 .EvaluationItem {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e2e2e2;
+    padding: 15px;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: space-between;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.25);  
 }
-
-
 .EvaluationItem .img_section {
     cursor: pointer;
-    min-width: 120px;
-    height: 80px;
-    border-radius: 5px;
+    width: 120px;
+    height: 120px;
     display: flex;
     justify-content: center;
 }
-
 .EvaluationItem .img_section img {
     width: (80/120);
+    border-radius: 15px;
 }
 
 .EvaluationItem .info_section {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 100%;
+    margin: 15px;
     margin-left: 20px;
     cursor: pointer;
 }
 
-.EvaluationItem .info_section .date_wrapper {
-    font-size: 15px;
-    margin-bottom: 5px;
-}
-
 .EvaluationItem .info_section .item_wrapper {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
-
+.EvaluationItem .info_section .schoville_wrapper {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 .EvaluationItem .info_section .content_wrapper {
     text-align: center;
+    padding: 5px;
     background-color: #e2e2e2;
-    height: 25%;
-    width: 80%;
-    font-size: 15px;
+    width: 100%;
+    font-size: 12px;
     border-radius: 5px;
 }
 
-.EvaluationItem .button_section {
-    min-width: 70px;
+.EvaluationItem .button_section button{
+    font-size: 10px;
+    padding: 0;
+    margin: 5px;
+    border: 2px solid rgb(0,0,0,0.2);
+    border-radius: 5px;
 }

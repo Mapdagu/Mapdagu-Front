@@ -66,7 +66,7 @@ const Editor = ({initData, onSubmit}) => {
                 /> */}
             </div>
             <div className="image_wrapper">
-                <img alt="" src={state.imageNum ? getItemImgById(state.imageNum) : getItemImgById(1)}/> 
+                <img alt="" src={state.imageNum ? getItemImgById(state.imageNum) : getItemImgById(0)}/> 
                 <div>
                     <h2>{state.name ? state.name : "음식을 선택해 주세요"}</h2>
                 </div>

@@ -1,7 +1,6 @@
-import Header from "../components/Header";
 import Navigator from "../components/Navigator";
 import EvaluationList from "../components/EvaluationList";
-import Button from "../components/Button";
+import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -26,18 +25,14 @@ const Evaluate = ({accessToken}) => {
         }
     }, [])
 
-    const handleCreateEval = () => {
-        navigate(`/new`);       
-    }
-
     return(
-        <div>
-            <Header
-                title="evaluate page"
-            />
-            <Navigator/> 
-            <Button text="새로운 맵기평가 작성하기" onClick={handleCreateEval}/>     
-            <EvaluationList data={data} />
+        <div className="container">
+            <div className="header">
+                <Header type={1}/>
+            </div>
+            {/* <Button text="새로운 맵기평가 작성하기" onClick={handleCreateEval}/>      */}
+            <div className="content"><EvaluationList data={data} /></div>
+            <div className="footer"><Navigator/></div> 
         </div>
     )
 };

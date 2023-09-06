@@ -1,17 +1,41 @@
 .EvaluationList {
-    margin-left: 10px;
-    margin-right: 10px;
+    background-color: #F6F6F6;
+    height: 100%; 
 }
 
 .EvaluationList .menu_wrapper{
-    margin-bottom: 20px;
+    padding: 25px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    /* justify-content: space-between; */
 }
 
-.EvaluationList h4{
-    margin:20px;
-    /* padding-left:20px; */
+.EvaluationList .left_col{
+    /* flex-grow: 1; */
+    padding:0;
+    text-align: left;
+    width: 50%;
+}
+.EvaluationList .right_col{
+    text-align: right;
+    width: 50%;
+}
+.EvaluationList .right_col button{
+    cursor: pointer;
+    color: gray;
+    font-size: 20px;
+    padding: 0;
+    width: 25px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+.EvaluationList .list_wrapper{
+    margin: 20px;
+    margin-top: 0;
+}
+.EvaluationList h2{
+    font-size: 24px;
+    margin: 0;
 }
 
 .EvaluationList .searchbar{
@@ -26,28 +50,4 @@
 .EvaluationList .searchbar:focus{
     outline: none;
     border-bottom: 1px solid #1f93ff;
-}
-
-.EvaluationList .right_col select{
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ececec;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    cursor: pointer;
-    font-family: "Nanum Pen Script";
-    font-size: 18px;
-}
-
-.EvaluationList .menu_wrapper .left_col{
-    flex-grow: 1;
-}
-
-.EvaluationList .menu_wrapper .left_col button{
-    width: 100%;
 }

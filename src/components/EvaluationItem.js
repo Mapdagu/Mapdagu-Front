@@ -20,12 +20,15 @@ const EvaluationItem = ({id, name, imageNum, score}) => {
                 <div className="item_wrapper">
                     {name}
                 </div>
+                <div className="schoville_wrapper">
+                    스코빌지수 3500
+                </div>
                 <div className="content_wrapper">
                     {getSelectionTextById(score)}
                 </div>
             </div>
             <div className="button_section">
-                <Button text="수정" onClick={goEdit}/>
+                <button onClick={goEdit}>✏️</button>
             </div>
         </div>
     );
