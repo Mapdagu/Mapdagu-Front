@@ -1,10 +1,8 @@
 .Header {
     padding-top: 20px;
     padding-bottom: 20px;
-
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e2e2e2;
 }
 
 .Header > div {
@@ -12,15 +10,34 @@
 }
 
 .Header .header_title {
-    width: 50%;
-    font-size: 20px;
+    width: 40%;
+    font-size: 16px;
     justify-content: center;
 }
 .Header .header_left {
-    width: 25%;
+    width: 30%;
     justify-content: start;
+    margin-left: 20px;
 }
 .Header .header_right {
-    width: 25%;
+    width: 30%;
     justify-content: end;
+    margin-right: 10px;
+}
+.Header button {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    margin-right: 10px;
+}
+.Header .header_title button {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    color: lightgray;
+    margin-right: 10px;
 }

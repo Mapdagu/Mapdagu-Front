@@ -1,44 +1,38 @@
 .Navigator {
-    cursor: pointer;
     border: none;
-    border-radius: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 18px;
-    white-space: nowrap;
-    color: white;
-    border-bottom: 1px solid #e2e2e2;
+    width: 100%;
+    height: 100px;
+    /* padding: 10px; */
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    /* white-space: nowrap; */
+    /* color: white; */
+    /* border-top: 1px solid #e2e2e2; */
+    /* text-align: center; */
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: row;
 }
 
 .Navigator_default  button{
     cursor: pointer;
     border: none;
-    /* border-radius: 5px; */
+    width: 30%;
     padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-right: 20px;
-    /* margin-bottom: 20px; */
-    font-size: 18px;
-    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
     background-color: rgb(255, 255, 255);
-    color: black;
+    color: gray;
 }
 
 .Navigator_current  button{
     cursor: pointer;
     border: none;
+    width: 30%;
     padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-right: 20px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    white-space: nowrap;
     background-color: rgb(255, 255, 255);
     color: black;
 }
