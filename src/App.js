@@ -184,9 +184,6 @@ function App() {
     });
   }
 
-  const changePage = () => {
-    navigate(`/`);
-  }
   if(!isDataLoaded)
     return <div>데이터를 불러오는 중입니다</div>
   else {
@@ -202,9 +199,6 @@ function App() {
             }}
           >
             <div className="App">
-                <div className='project_name'>
-                  <button onClick={changePage}>처음으로</button>
-                  내가맵다했지</div>
                 <Routes>
                   <Route path = "/" element ={<TestMain getUserInfRes={getUserInfRes} role={role}/>}/>
                   <Route path = "/login" element ={<LoginPage getUserInfRes={getUserInfRes} />}/>

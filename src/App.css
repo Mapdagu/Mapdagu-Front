@@ -1,6 +1,7 @@
 .App {
   /* padding-left: 20px;
   padding-right: 20px; */
+  height: 100vh;
 }
 
 .App-logo {
@@ -45,4 +46,39 @@
   font-size: 20px;
   text-align: center;
   border-bottom: 1px solid #e2e2e2;
+}
+/* App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  /* background-color: #333;
+  color: #fff;
+  text-align: center; */
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.footer {
+  /* background-color: #333;
+  color: #fff;
+  text-align: center; */
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
 }
