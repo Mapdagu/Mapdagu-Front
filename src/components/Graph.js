@@ -20,9 +20,9 @@ const Graph = ({data}) => {
                 <button className="btn-hover color-10">10</button>
                 <button className="btn-hover color-11">11</button>
                 <button className="btn-hover color-12">12</button>
-                <button className="btn-hover color-13">13</button>
+                {/* <button className="btn-hover color-13">13</button>
                 <button className="btn-hover color-14">14</button>
-                <button className="btn-hover color-15">15</button>
+                <button className="btn-hover color-15">15</button> */}
             </div>
         </div>
     );

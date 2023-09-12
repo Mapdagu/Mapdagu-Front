@@ -40,14 +40,14 @@ const ResultViewer = () => {
                     {content}
                 </div>
                 <div className="button_wrapper">
-                    <button className="btn_type1" onClick={copyUrl}>링크복사</button>
+                    <button className="btn_type1" onClick={doAgain}>다시하기</button>
+                    <button className="btn_type1" onClick={copyUrl}>결과 공유하기</button>
                     <form>
                             <textarea
                                 ref={copyUrlRef}
                                 defaultValue={window.location.href}
                             />
-                        </form>
-                    <button className="btn_type1" onClick={doAgain}>다시하기</button>
+                        </form>                    
                 </div>
                 <div>
                     <h4>나의 레벨에 맞는 음식 보러가기</h4>

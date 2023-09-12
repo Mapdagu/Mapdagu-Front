@@ -1,5 +1,6 @@
 .Graph {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .Graph .nickname_container {
     font-size: 20px;
@@ -8,13 +9,14 @@
 
 .buttons {
     margin-top: 20px;
+    margin-left: 0;
     text-align: center;
 }
 
 .btn-hover {
-    width: 5%;
-    height: 70px;
-    margin: 3px;
+    width: 6.5%;
+    height: 50px;
+    margin: 2px;
     font-size: 10px;
     cursor: pointer;
     text-align:center;
@@ -47,42 +49,42 @@
     color: #FDD337; 
 }
 .btn-hover.color-4 {
-    background-color: #FCC736;
-    color: #FCC736; 
+    background-color: #FCBB35;
+    color: #FCBB35; 
 }
 .btn-hover.color-5 {
-    background-color: #FCBB35;  
-    color: #FCBB35;   
+    background-color: #FBAF34;  
+    color: #FBAF34;   
 }
 .btn-hover.color-6 {
-    background-color: #FBAF34;   
-    color: #FBAF34;  
+    background-color: #F99731;   
+    color: #F99731;  
 }
 .btn-hover.color-7 {
-    background-color: #FAA332;  
-    color: #FAA332;   
-}
-.btn-hover.color-8 {
-    background-color: #F99731;
-    color: #F99731; 
-}
-.btn-hover.color-9 {
     background-color: #F88B30;  
     color: #F88B30;   
 }
+.btn-hover.color-8 {
+    background-color: #F77F2E;
+    color: #F77F2E; 
+}
+.btn-hover.color-9 {
+    background-color: #F6732D;  
+    color: #F6732D;   
+}
 .btn-hover.color-10 {
-    background-color: #F77F2E;  
-    color: #F77F2E;   
+    background-color: #F45B2B;  
+    color: #F45B2B;   
 }
 .btn-hover.color-11 {
-    background-color: #F6732D; 
-    color: #F6732D;    
+    background-color: #F34F29; 
+    color: #F34F29;    
 }
 .btn-hover.color-12 {
-    background-color: #F5672C;  
-    color: #F5672C;   
+    background-color: #F24328;  
+    color: #F24328;   
 }
-.btn-hover.color-13 {
+/* .btn-hover.color-13 {
     background-color: #F45B2B; 
     color: #F45B2B;    
 }
@@ -93,4 +95,4 @@
 .btn-hover.color-15 {
     background-color: #F24328;   
     color: #F24328;  
-}
+} */

@@ -10,9 +10,10 @@
 }
 .ResultViewer .graph_wrapper{    
     background-color: #FAFAFA;
-    margin: 30px;
-    padding: 10px;
-    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 15px;
     box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);
 }
 .ResultViewer h1 {
@@ -23,13 +24,13 @@
     2px -2px 0 black, 
     -2px 2px 0 black; 
     color: #FFB4B4;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 .ResultViewer h2 {
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -43,7 +44,7 @@
     color: #FFB4B4;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .ResultViewer .content_wrapper{
@@ -53,7 +54,8 @@
 }
 
 .ResultViewer .button_wrapper{
-    margin-left: 7.5%;
+    margin-left: 20px;
+    margin-right: -10px;
     justify-content: center;
     display: flex;
 }
@@ -64,11 +66,11 @@
     border-radius: 30px;
     padding-top: 15px;
     padding-bottom: 15px;;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-right: 7.5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 30px;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     background-color: #A73030;
     color: white;    
@@ -84,7 +86,7 @@
     padding-left: 40px;
     padding-right: 40px;
     margin-bottom: 40px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     background-color: white;
     box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);    

@@ -1,6 +1,6 @@
 .EvaluationList {
     background-color: #F6F6F6;
-    height: 100%; 
+    padding-bottom: 50px;
 }
 
 .EvaluationList .menu_wrapper{
@@ -30,8 +30,8 @@
     border-radius: 5px;
 }
 .EvaluationList .list_wrapper{
-    margin: 20px;
-    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .EvaluationList h2{
     font-size: 24px;

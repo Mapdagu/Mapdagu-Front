@@ -74,21 +74,23 @@ const SignUp = ({onSubmit}) => {
         <div className="SignUp">
             <h1>회원가입</h1>
             <div className="signUpInput">
-                <div className="container">
+                <div className="sign_up_container">
                     <div className="inputMessage">이름</div>
                     <input 
                         name="nickname"
                         onChange={handleInput}
+                        placeholder="이름 입력 (2~6자)"
                     />
                     <h5>{(nickname.length!==0 && !isValidName) ? '2글자 이상 5글자 이하로 입력해 주세요😢' : ''}</h5>
                 </div>
 
-                <div className="container">
+                <div className="sign_up_container">
                     <div className="inputMessage">이메일</div>
                     <div className="wrapper">
                         <input 
                             name="email"
                             onChange={handleInput}
+                            placeholder="이메일 주소 입력"
                         />
                         <button className="btn_type1" onClick={sendCode}>인증번호 전송</button>   
                     </div>
@@ -100,19 +102,21 @@ const SignUp = ({onSubmit}) => {
                         <input 
                             name="code"
                             onChange={handleInput}
+                            placeholder="인증번호 입력"
                         />
                         <button className="btn_type1" onClick={checkCode}>인증번호 확인</button>        
                     </div>
                     <h6>{(isCodeChecked) ? '인증번호가 확인되었어요' : ''}</h6>
                 </div>
 
-                <div className="container">
+                <div className="sign_up_container">
                     <div className="inputMessage">비밀번호</div>
                     <input 
                         type='password'
                         name="password"
                         value={initInput && password.length === 0 ? "" : password}
                         onChange={handleInput}
+                        placeholder="비밀번호 입력 (8자 이상)"
                     />
                     <h5>{(password.length!==0 && !isValidPassword) ? '8글자 이상으로 설정해 주세요😢' : ''}</h5>
                         
@@ -122,6 +126,7 @@ const SignUp = ({onSubmit}) => {
                         name="passwordConfirm"
                         value={initInput && passwordConfirm.length === 0 ? "" : passwordConfirm}
                         onChange={handleInput}
+                        placeholder="비밀번호 재입력"
                     />
                     <h5>{(passwordConfirm.length!==0 && !isPasswordChecked) ? '비밀번호가 일치하지 않아요😢' : ''}</h5>
                 </div>

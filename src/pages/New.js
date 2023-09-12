@@ -1,6 +1,4 @@
 import Header from "../components/Header";
-import Button from "../components/Button";
-import Search from "../components/Search";
 import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
 import axios from "axios";
@@ -31,14 +29,16 @@ const New = ({accessToken}) => {
     }
 
     return (
-        <div>
-            <Header title="새로운 맵기 평가 작성하기"
-                    leftChild={<Button text="<" onClick={handleOnBack}/>}
-            />
-            <div>1. 음식 선택하기</div>
-            <Search />
-            <div>2. 매운 정도 평가하기</div>
-            <Editor onSubmit={onSubmit}/>
+        <div className="container">
+            <div className="header">
+                <Header 
+                    type={1}
+                    leftChild={<button onClick={handleOnBack}>◁</button>}
+                />
+            </div>
+            <div className="content">
+                <Editor onSubmit={onSubmit}/>
+            </div>
         </div>
     )
 }

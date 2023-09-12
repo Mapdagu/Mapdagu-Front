@@ -1,5 +1,4 @@
 import Header from "../components/Header";
-import Button from "../components/Button";
 import Editor from "../components/Editor";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
@@ -67,13 +66,16 @@ const EditEval = ({accessToken}) => {
         return (<div>항목을 불러오고 있습니다...</div>)
     }else{
         return(
-            <div>
-                <Header
-                    title="edit page"
-                    leftChild={<Button text="←" onClick={handleOnBack}/>}
-                    rightChild={<Button text="삭제하기" onClick={onClickDelete}/>}
-                />
-                <Editor initData={data} onSubmit={onSubmit}/>
+            <div className="container">
+                <div className="header">
+                    <Header
+                        type = {1}
+                        leftChild={<button onClick={handleOnBack}>◁</button>}
+                    />
+                </div>
+                <div className="content">
+                    <Editor initData={data} onSubmit={onSubmit}/>
+                </div>
             </div>
         );
     }

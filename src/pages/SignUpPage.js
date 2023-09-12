@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import SignUp from "../components/SignUp";
 
 const SignUpPage = ({getSignUpInf}) => {
@@ -7,9 +6,10 @@ const SignUpPage = ({getSignUpInf}) => {
         getSignUpInf(nickname, checkedEmail, password);
     }
     return (
-        <div>
-            <Header title="sign up page"/>
-            <SignUp onSubmit={onSubmit}/>
+        <div className="container">
+            <div className="content">
+                <SignUp onSubmit={onSubmit}/>
+            </div>
         </div>
     );
 }

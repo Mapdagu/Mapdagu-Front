@@ -46,6 +46,7 @@
 }
 
 .EvaluationItem .button_section button{
+    cursor: pointer;
     font-size: 10px;
     padding: 0;
     margin: 5px;

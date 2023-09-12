@@ -1,7 +1,5 @@
 import "./Editor.css";
 import OptionItem from "./OptionItem";
-import Button from "./Button";
-import Bottom from "./Bottom";
 import { getItemImgById, selectionList } from "../util";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,17 +11,17 @@ const Editor = ({initData, onSubmit}) => {
         imageNum: 0,
         score: 0,
     });
-
+    const [search, setSearch] = useState();
     const handleOnSubmit = () => {
         onSubmit(state);
     }
-    const handleOnBack = () => {
-        navigate(-1);
-    }
     const handleChangeItemName = (e) => {
+        setSearch(e.target.value)
+    }
+    const handleSearch = () => {
         setState({
-            ...state,
-            name: e.target.value,
+            // ...state,
+            name: search,
         })
     }
     const handleChangeSelection = useCallback((score) => {
@@ -44,7 +42,15 @@ const Editor = ({initData, onSubmit}) => {
     return (
         <div className="Editor">
             {/* <textarea value={state.name} onChange={handleChangeItemName}/> */}
-            <div className="container">
+            <div className="editor_container">
+                <div>
+                    {state.name ? "" : 
+                        <input
+                            onChange={handleChangeItemName}
+                        />
+                    }
+                    {state.name ? "" : <button className="btn_search" onClick={handleSearch}>찾기</button>}
+                </div>
                 <div className="text_wrapper"> 
                     <h2> '{state.name}'은(는) 어느 정도 맵나요?</h2>
                     <h3>난이도: ☆☆☆☆☆</h3>
@@ -61,14 +67,11 @@ const Editor = ({initData, onSubmit}) => {
                     ))}
                 </div>
                 <button className="btn_submit" onClick={handleOnSubmit}>작성하기</button>
-                {/* <Bottom leftChild={<Button text={"취소하기"} onClick={handleOnBack}/>}
-                        rightChild={<Button text={"작성완료"} onClick={handleOnSubmit}/>}
-                /> */}
             </div>
             <div className="image_wrapper">
                 <img alt="" src={state.imageNum ? getItemImgById(state.imageNum) : getItemImgById(0)}/> 
                 <div>
-                    <h2>{state.name ? state.name : "음식을 선택해 주세요"}</h2>
+                    {state.name ? <h2>{state.name}</h2> : <h4>음식을 선택해 주세요</h4>}
                 </div>
             </div>
         </div>

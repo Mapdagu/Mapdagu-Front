@@ -32,12 +32,3 @@
     background-color: white;
     margin-right: 10px;
 }
-.Header .header_title button {
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    background-color: white;
-    color: lightgray;
-    margin-right: 10px;
-}
