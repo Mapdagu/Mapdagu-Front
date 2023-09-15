@@ -1,6 +1,5 @@
 import "./EvaluationItem.css";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
 import { getItemImgById, getSelectionTextById } from "../util";
 
 const EvaluationItem = ({id, name, imageNum, score}) => {

@@ -5,7 +5,6 @@ import axios  from 'axios';
 
 /*pages*/
 import TestMain from './pages/TestMain';
-import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import KakaoRedirect from './components/login/KakaoRedirect';
 import NaverRedirect from './components/login/NaverRedirect';
@@ -201,7 +200,6 @@ function App() {
             <div className="App">
                 <Routes>
                   <Route path = "/" element ={<TestMain getUserInfRes={getUserInfRes} role={role}/>}/>
-                  <Route path = "/login" element ={<LoginPage getUserInfRes={getUserInfRes} />}/>
                   <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
                   <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
                   <Route path = "/login/callback" element ={<KakaoRedirect />}/>

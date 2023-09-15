@@ -1,4 +1,3 @@
-import Button from "../components/Button";
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
 import { useNavigate } from "react-router-dom";
@@ -56,17 +55,23 @@ const MyPage = ({accessToken, initUserInf}) => {
     }
     else{
         return(
-            <div>
-                <Header
-                    title="my page"
-                />
-                <Navigator/>
-                <div><img alt="profile image" src={getProfileImgById(state.imageNum)}/></div>
-                <div>{state.userName}</div>
-                <div><Button text="회원정보 수정" onClick={handleEdit}/></div>
-                <div><Button text="테스트 다시하기" onClick={doAgain}/></div>
-                <div><Button text="로그아웃" onClick={handleLogout}/></div>
-                <div><Button text="회원탈퇴" onClick={handleWithdrawal}/></div>
+            <div className="container">
+                <div className="header">
+                    <Header
+                        type={1}
+                    />
+                </div>
+                <div className="content">
+                    <div><img alt="profile image" src={getProfileImgById(state.imageNum)}/></div>
+                    <div>{state.userName}</div>
+                    <div><button onClick={handleEdit}>회원정보수정</button></div>
+                    <div><button onClick={doAgain}>테스트 다시하기</button></div>
+                    <div><button onClick={handleLogout}>로그아웃</button></div>
+                    <div><button onClick={handleWithdrawal}>회원탈퇴</button></div>
+                </div>
+                <div className="footer">
+                    <Navigator/>
+                </div>
             </div>
         )
     }

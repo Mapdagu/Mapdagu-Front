@@ -1,5 +1,4 @@
 import "./SetProfile.css";
-import Button from "./Button";
 import { useState, useCallback } from "react";
 import Modal from "react-modal";
 import ProfileItem from "../components/ProfileItem";

@@ -1,7 +1,6 @@
 import "./LoginEmail.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button";
 import axios from "axios";
 
 const SERVER_URL = 'https://mapdagu.site/login';

@@ -1,5 +1,4 @@
 import Header from "../components/Header";
-import Button from "../components/Button";
 import useDetail from "../hooks/useDetail";
 import Viewer from "../components/Viewer";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,8 +24,8 @@ const Details = () => {
             <div>
                 <Header
                     title="detail page"
-                    leftChild={<Button text="←" onClick={goBack}/>}
-                    rightChild={<Button text="평가작성" onClick={handleCreateEval}/>}
+                    leftChild={<button onClick={goBack}>←</button>}
+                    rightChild={<button onClick={handleCreateEval}>평가작성</button>}
                 />
                 <Viewer itemName={itemName} id={id}/>
             </div>

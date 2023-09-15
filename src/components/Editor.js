@@ -2,10 +2,8 @@ import "./Editor.css";
 import OptionItem from "./OptionItem";
 import { getItemImgById, selectionList } from "../util";
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Editor = ({initData, onSubmit}) => {  
-    const navigate = useNavigate();
     const [state, setState] = useState({
         name: "",
         imageNum: 0,
