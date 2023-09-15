@@ -3,16 +3,26 @@ import { useState } from "react";
 import EvaluationItem from "./EvaluationItem";
 import { useNavigate } from "react-router-dom";
 
-const EvaluationList = ({data}) => {   
+const EvaluationList = ({data, onSubmit}) => {   
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
-
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
     };
+    const submitHandler = () => {
+        if(search !== ""){
+            onSubmit(search);
+            // setSearch("");
+        }
+    }
+    const onKeyDown = (e) => {
+        if(e.keyCode === 13){
+            submitHandler();
+        }
+    }
     const handleCreateEval = () => {
         navigate(`/new`);       
-    }
+    }  
     if(!data){
         return <div>불러오는 중입니다...</div>;
     }
@@ -27,12 +37,16 @@ const EvaluationList = ({data}) => {
                     <button onClick={handleCreateEval}>+</button>
                 </div>
             </div>
-            {/* <input 
-                className="searchbar" 
-                value={search}
-                onChange={onChangeSearch}
-                placeholder="검색어를 입력하세요"
-            /> */}
+            <div className="search_bar_wrapper">
+                <input 
+                    className="search_bar" 
+                    value={search}
+                    onChange={onChangeSearch}
+                    onKeyDown={onKeyDown}
+                    placeholder="검색어를 입력하세요"
+                />
+                <button onClick={submitHandler}>검색</button>
+            </div>
             <div className="list_wrapper">
                 {data.map((it) => (
                     <EvaluationItem
