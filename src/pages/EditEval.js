@@ -68,9 +68,13 @@ const EditEval = ({accessToken}) => {
         return(
             <div className="container">
                 <div className="header">
-                    <Header
+                    {/* <Header
                         type = {1}
                         leftChild={<button onClick={handleOnBack}>◁</button>}
+                    /> */}
+                    <Header
+                        leftChild={<button onClick={handleOnBack}>취소</button>}
+                        rightChild={<button onClick={onClickDelete}>삭제하기</button>}
                     />
                 </div>
                 <div className="content">

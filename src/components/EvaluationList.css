@@ -1,15 +1,19 @@
 .EvaluationList {
-    background-color: #F6F6F6;
-    padding-bottom: 50px;
+    /* background-color: #F6F6F6; */
+    /* padding-bottom: 50px; */
+    /* height: 100vh; */
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
+
 
 .EvaluationList .menu_wrapper{
     padding: 25px;
+    padding-top: 0;
     display: flex;
     align-items: center;
     /* justify-content: space-between; */
 }
-
 .EvaluationList .left_col{
     /* flex-grow: 1; */
     padding:0;
@@ -29,25 +33,44 @@
     border: 2px solid gray;
     border-radius: 5px;
 }
-.EvaluationList .list_wrapper{
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.EvaluationList h2{
-    font-size: 24px;
-    margin: 0;
-}
 
-.EvaluationList .searchbar{
+
+.EvaluationList .search_bar_wrapper{
+    padding: 20px;
+    padding-top: 0;    
+    text-align: center;
+    display: flex;
+    gap: 10px;
+}
+.EvaluationList .search_bar{
     width: 100%;
     border: none;
-    border-radius: 5px;
     border-bottom: 1px solid rgb(220, 220, 220);
     box-sizing: border-box;
     padding: 20px;
 }
-
-.EvaluationList .searchbar:focus{
+.EvaluationList .search_bar:focus{
     outline: none;
     border-bottom: 1px solid #1f93ff;
+}
+.EvaluationList .search_bar_wrapper button{
+    cursor: pointer;
+    width: 90px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.EvaluationList .search_bar_wrapper button:hover {
+    background-color: rgb(200, 220, 255);
+    color: black;
+}
+
+
+.EvaluationList .list_wrapper{
+    padding: 20px;
+    padding-top: 0;
+}
+.EvaluationList h2{
+    font-size: 24px;
+    margin: 0;
 }
