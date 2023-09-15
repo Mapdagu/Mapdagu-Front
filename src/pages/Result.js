@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import Header from "../components/Header";
 import ResultViewer from "../components/ResultViewer";
 import { EvalDispatchContext, EvalStateContext } from "../App";
 import axios from "axios";
@@ -44,9 +43,8 @@ const Result = ({role, accessToken}) => {
     }, []);
     
     return(
-        <div>
-            <div>
-                <Header title="result page"/>
+        <div className="container">
+            <div className="content">
                 <ResultViewer />                
             </div>
         </div>

@@ -1,15 +1,19 @@
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
-import Search from "../components/Search";
 
 const Friend = () => {
     return(
-        <div>
-            <Header
-                title="friend page"
-            />
-            <Navigator/>
-            <Search text="친구 찾기"/>
+        <div className="container">
+            <div className="header">
+                <Header
+                    type={1}
+                />
+            </div>
+            <div className="content">
+            </div>
+            <div className="footer">
+                <Navigator/>
+            </div>
         </div>
     )
 }

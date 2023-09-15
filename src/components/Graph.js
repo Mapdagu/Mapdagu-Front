@@ -1,12 +1,8 @@
 import "./Graph.css";
 
-const Graph = ({data}) => {
+const Graph = () => {
     return(
         <div className="Graph">
-        <span className="nickname_container">
-            {data ? data.userName : ""} 
-            </span>
-            {data ? `님은 Level. ${data.level} 단계입니다.` : ""}
             <div className="buttons">
                 <button className="btn-hover color-1">1</button>
                 <button className="btn-hover color-2">2</button>

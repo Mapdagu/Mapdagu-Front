@@ -45,8 +45,10 @@ const Test = ({maxTestNum}) => {
         navigate(`/result`);
     }
     return (
-        <div>
-            <Selection testNum={testNum} maxTestNum={maxTestNum} goNext={goNext} goBack={goBack}/>
+        <div className="container">
+            <div className="content">
+                <Selection testNum={testNum} maxTestNum={maxTestNum} goNext={goNext} goBack={goBack}/>
+            </div>
         </div>
     )
 }

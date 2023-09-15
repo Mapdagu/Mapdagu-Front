@@ -1,0 +1,61 @@
+.MainViewer{
+    /* align-items: center;
+    text-align: center;
+    justify-content: center; */
+    background-color: #F54343;
+    height: 250px;
+}
+
+.MainViewer .profile_wrapper{
+    color: white;
+    display: flex;
+    padding: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /* padding-bottom: 100px; */
+}
+.MainViewer img{
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;    
+}
+.MainViewer .info_section{
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+.MainViewer .level_info{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.MainViewer .graph_section{
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    border-top-left-radius: 30px; 
+    border-top-right-radius: 30px; 
+}
+.MainViewer .btn_viewmore{
+    width: 100%;
+    cursor: pointer;
+    background-color: white;
+    padding: 10px;
+    border: none;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px; 
+}
+.MainViewer h2{
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.MainViewer h4{
+    font-size: 14px;
+    margin: 0;
+}

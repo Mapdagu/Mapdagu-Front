@@ -1,5 +1,3 @@
-import Header from "../components/Header";
-import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Modal from "react-modal";
@@ -15,7 +13,6 @@ const TestMain = ({getUserInfRes, role}) => {
     const goTest = () => {
         if(role === ""){
             setModalIsOpen(true);
-            // navigate(`/login`);
         } else if(role === "USER"){
             navigate(`/main`);
         } else if(role === "NOT_TEST_USER"){
@@ -47,10 +44,8 @@ const TestMain = ({getUserInfRes, role}) => {
     }
 
     return (
-        <div>
-            <Header title={"테스트 시작 페이지"}/>
-            <Button text={"테스트 시작하기"} onClick={goTest}/>
-            <Button text={"로그인 페이지 전환"} onClick={() => navigate(`/login`)}/>
+        <div className="container">
+            <button onClick={goTest}>테스트 시작하기</button>
             <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>   
                 {showContent1 ? <LoginMain onChange={onChange} closeModal={closeModal}/> : <LoginEmail getUserInfRes={getUserInfRes} closeModal={closeModal}/>}   
             </Modal>
