@@ -35,11 +35,7 @@ const EditProfile = ({accessToken}) => {
         }   
     }
     return (
-        <div>
-            {/* <Header title="edit profile"
-                    leftChild={<Button text="취소" onClick={goBack}/>}
-                    rightChild={<Button text="완료" onClick={onSubmit}/>}
-            />             */}
+        <div className="container">  
             <SetProfile title="회원정보 수정" initData={data} onSubmit={onSubmit}/>
         </div>
     );

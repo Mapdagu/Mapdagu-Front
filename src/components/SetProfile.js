@@ -33,7 +33,9 @@ const SetProfile = ({title, initData, onSubmit}) => {
     const goBack = () => {
         navigate(-1);
     }
-    
+    const goMain = () => {
+        navigate(`/main`);
+    }
     const handleInput = (e) => {
         const { name, value } = e.target;
         setInputValue({
@@ -68,30 +70,16 @@ const SetProfile = ({title, initData, onSubmit}) => {
             boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
         }
     }
-    const btn_profile = {
-        content: {
-            width: "100%",
-            cursor: "pointer",
-            border: "none",
-            borderRadius: "10px",
-            paddingTop: "15px",
-            paddingBottom: "15px",
-            paddingLeft: "40px",
-            paddingRight: "40px",
-            marginBottom: "40px",
-            fontSize: "22px",
-            fontWeight: "bold",
-            backgroundColor: "#DB1D22",
-            color: "white",
-            boxShadow: "5px 5px 7px -2px rgba(0, 0, 0, 0.25)",   
-
-        }
-    }
+    
     return (
         <div className="SetProfile">
-            <Header leftChild={<button onClick={goBack}>취소</button>}
-                    rightChild={<button onClick={onSubmitHandler}>완료</button>}
-            /> 
+            <div className="header">
+                <Header 
+                        title={<button onClick={goMain}>내가 맵다 했지!</button>}
+                        leftChild={<button onClick={goBack}>취소</button>}
+                        rightChild={<button onClick={onSubmitHandler}>완료</button>}
+                /> 
+            </div>
             <h1>{title}</h1>
             <div className="profile_input">
                 <div className="profile_container">
@@ -113,7 +101,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                     </Modal>
                 </div>
 
-                <div className="container">
+                <div className="text_container">
                     <div className="inputMessage">닉네임</div>
                     <div>
                         <input 
@@ -125,7 +113,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                     </div>
                 </div>
 
-                <div className="container">
+                <div className="text_container">
                     <div className="inputMessage">한줄소개</div>
                     <div>
                         <input 

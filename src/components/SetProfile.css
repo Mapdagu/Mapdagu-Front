@@ -11,7 +11,7 @@
     position: relative;
     display: inline-block;
 }
-.SetProfile .container{
+.SetProfile .text_container{
     text-align: left;
     margin-bottom: 20px;
     margin-left: 5%;

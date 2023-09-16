@@ -6,7 +6,7 @@ const SetProfilePage = ({getProfileInf}) => {
         getProfileInf(userName, imageNum, intro);
     }
     return (
-        <div>
+        <div className="container">
             <SetProfile title="프로필 정보 입력" onSubmit={onSubmit}/>
         </div>
     );
