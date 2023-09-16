@@ -12,7 +12,7 @@ const Friend = () => {
             <div className="content">
             </div>
             <div className="footer">
-                <Navigator/>
+                <Navigator current="friend"/>
             </div>
         </div>
     )

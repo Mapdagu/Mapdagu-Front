@@ -41,10 +41,9 @@ const Evaluate = ({accessToken}) => {
         <div className="container">
             <div className="header">
                 <Header type={1}/>
-            </div>
-            
+            </div>            
             <div className="content"><EvaluationList data={data} onSubmit={onSubmit}/></div>
-            <div className="footer"><Navigator/></div> 
+            <div className="footer"><Navigator current="eval"/></div> 
         </div>
     )
 };

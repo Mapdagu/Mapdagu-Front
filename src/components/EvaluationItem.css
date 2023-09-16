@@ -27,13 +27,12 @@
 }
 
 .EvaluationItem .info_section .item_wrapper {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
 }
 .EvaluationItem .info_section .schoville_wrapper {
     font-size: 14px;
-    font-weight: bold;
     margin-bottom: 15px;
 }
 .EvaluationItem .info_section .content_wrapper {
@@ -47,9 +46,11 @@
 
 .EvaluationItem .button_section button{
     cursor: pointer;
-    font-size: 10px;
     padding: 0;
     margin: 5px;
-    border: 2px solid rgb(0,0,0,0.2);
-    border-radius: 5px;
+    border: none;
+    background-color: white;
+}
+.EvaluationItem .button_section img{
+    width: 20px;
 }

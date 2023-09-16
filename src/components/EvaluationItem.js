@@ -1,6 +1,7 @@
 import "./EvaluationItem.css";
 import { useNavigate } from "react-router-dom";
 import { getItemImgById, getSelectionTextById } from "../util";
+import icon_edit from "../img/icon/evaluate_edit.png";
 
 const EvaluationItem = ({id, name, imageNum, score}) => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ const EvaluationItem = ({id, name, imageNum, score}) => {
                 </div>
             </div>
             <div className="button_section">
-                <button onClick={goEdit}>✏️</button>
+                <button onClick={goEdit}><img alt="edit" src={icon_edit}/></button>
             </div>
         </div>
     );

@@ -1,12 +1,12 @@
 .EvaluationList {
+    background-color: white;
     padding-top: 25px;
-    padding-bottom: 25px;
 }
 
 
 .EvaluationList .menu_wrapper{
     padding: 25px;
-    padding-top: 0;
+    padding-top: 5px;
     display: flex;
     align-items: center;
     /* justify-content: space-between; */
@@ -23,12 +23,9 @@
 }
 .EvaluationList .right_col button{
     cursor: pointer;
-    color: gray;
-    font-size: 20px;
     padding: 0;
-    width: 25px;
-    border: 2px solid gray;
-    border-radius: 5px;
+    border: none;
+    background-color: white;
 }
 
 
@@ -61,7 +58,6 @@
     background-color: rgb(200, 220, 255);
     color: black;
 }
-
 
 .EvaluationList .list_wrapper{
     padding: 20px;

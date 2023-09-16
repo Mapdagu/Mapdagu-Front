@@ -2,6 +2,7 @@ import "./EvaluationList.css";
 import { useState } from "react";
 import EvaluationItem from "./EvaluationItem";
 import { useNavigate } from "react-router-dom";
+import icon_add from "../img/icon/evaluate_add.png";
 
 const EvaluationList = ({data, onSubmit}) => {   
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const EvaluationList = ({data, onSubmit}) => {
                     <h2>최근 평가 목록</h2>
                 </div>
                 <div className="right_col">
-                    <button onClick={handleCreateEval}>+</button>
+                    <button onClick={handleCreateEval}><img alt="add" src={icon_add}/></button>
                 </div>
             </div>
             <div className="search_bar_wrapper">

@@ -1,8 +1,7 @@
 .Header {
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     display: flex;
-    align-items: center;
 }
 
 .Header > div {
@@ -11,24 +10,29 @@
 
 .Header .header_title {
     width: 40%;
-    font-size: 16px;
+    height: 100%;
     justify-content: center;
 }
 .Header .header_left {
+    /* padding-top: 5px; */
     width: 30%;
+    height: 100%;
     justify-content: start;
     margin-left: 20px;
 }
 .Header .header_right {
+    /* padding-top: 10px; */
     width: 30%;
+    height: 100%;
     justify-content: end;
     margin-right: 10px;
 }
 .Header button {
     cursor: pointer;
+    font-family: 'KCCMurukmuruk';
     font-size: 14px;
-    font-weight: bold;
     border: none;
     background-color: white;
+    margin: 0;
     margin-right: 10px;
 }

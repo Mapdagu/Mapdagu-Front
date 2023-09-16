@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'KCCMurukmuruk';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCMurukmuruk.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
 html,
 body {
   margin: 0px;
@@ -8,6 +26,7 @@ body {
 }
 
 body {
+  font-family: 'Pretendard-Regular';
   height: 100%;
 }
 
@@ -19,4 +38,45 @@ body {
   height: 100%;
   background-color: white;
   box-shadow: rgba(100, 100, 100, 0.2) 0px 7px 29px 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 1px solid #e2e2e2;
+  background-color: white;
+}
+
+.footer {
+  color: #fff;
+  text-align: center;
+  border-top: 1px solid #e2e2e2;
+  background-color: white;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+.content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: white;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #E7E7E7;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

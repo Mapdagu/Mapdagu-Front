@@ -15,7 +15,7 @@ const Main = ({accessToken}) => {
                 <MainViewer accessToken={accessToken}/>
             </div>
             <div className="footer">
-                <Navigator/>
+                <Navigator current="main" />
             </div>
         </div>
     )

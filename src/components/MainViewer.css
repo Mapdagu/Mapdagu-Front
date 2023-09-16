@@ -22,7 +22,7 @@
 .MainViewer .info_section{
     width: 100%;
     text-align: center;
-    padding: 15px;
+    padding: 5px;
 }
 .MainViewer .level_info{
     margin-left: 20px;
@@ -43,6 +43,7 @@
     width: 100%;
     cursor: pointer;
     background-color: white;
+    font-weight: bold;
     padding: 10px;
     border: none;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
@@ -50,8 +51,8 @@
     border-bottom-right-radius: 30px; 
 }
 .MainViewer h2{
-    font-size: 28px;
-    font-weight: bold;
+    font-family: 'yg-jalnan';
+    font-size: 32px;
     margin: 0;
     margin-bottom: 10px;
 }

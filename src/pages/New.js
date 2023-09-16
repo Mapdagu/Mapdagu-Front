@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
+import icon_back from "../img/icon/header_back.png";
 import axios from "axios";
 
 const ADD_EVAL = 'https://mapdagu.site/api/evaluations';
@@ -33,7 +34,9 @@ const New = ({accessToken}) => {
             <div className="header">
                 <Header 
                     type={1}
-                    leftChild={<button onClick={handleOnBack}>◁</button>}
+                    leftChild={<button onClick={handleOnBack}>
+                        <img alt="back" src={icon_back}/>
+                    </button>}
                 />
             </div>
             <div className="content">
