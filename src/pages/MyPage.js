@@ -5,6 +5,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getProfileImgById } from "../util";
+import icon_back from "../img/icon/header_back.png";
+import MyPageViewer from "../components/MyPageViewer";
 
 const PROFILE_URL = `https://mapdagu.site/api/members/me/info`;
 const LOGOUT_URL = `https://mapdagu.site/api/auth/logout`;
@@ -26,13 +28,8 @@ const MyPage = ({accessToken, initUserInf}) => {
         }
     }, [])
 
-    const handleEdit = () => {
-        navigate(`/edit_profile`);
-    }
-    const doAgain = () => {
-        if(window.confirm("테스트를 다시 진행하시겠습니까?")){
-            navigate(`/test`);
-        }
+    const goBack = () => {
+        navigate(`/mypage`);
     }
     const handleLogout = async() => {
         if(window.confirm("로그아웃하시겠습니까?")){
@@ -59,15 +56,13 @@ const MyPage = ({accessToken, initUserInf}) => {
                 <div className="header">
                     <Header
                         type={1}
+                        leftChild={<button onClick={goBack}>
+                            <img alt="back" src={icon_back}/>
+                        </button>}
                     />
                 </div>
                 <div className="content">
-                    <div><img alt="profile image" src={getProfileImgById(state.imageNum)}/></div>
-                    <div>{state.userName}</div>
-                    <div><button onClick={handleEdit}>회원정보수정</button></div>
-                    <div><button onClick={doAgain}>테스트 다시하기</button></div>
-                    <div><button onClick={handleLogout}>로그아웃</button></div>
-                    <div><button onClick={handleWithdrawal}>회원탈퇴</button></div>
+                    <MyPageViewer imageNum={state.imageNum} userName={state.userName} handleLogout={handleLogout} handleWithdrawal={handleWithdrawal}/>
                 </div>
                 <div className="footer">
                     <Navigator/>

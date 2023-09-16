@@ -1,0 +1,37 @@
+.MyPageViewer{
+    text-align: center;
+}
+.MyPageViewer .profile_section{
+    width: 100%;
+    padding-top: 119px;
+    padding-bottom: 119px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.MyPageViewer img{
+    width: 100px;
+    border-radius: 100%;
+    border: 5px solid black;
+}
+.MyPageViewer h1{
+    font-family: 'Pretendard-Regular';
+    font-weight: bold;
+    font-size: 16px;
+}
+.MyPageViewer .buttons{
+    margin: 20px;
+}
+.MyPageViewer .button_section{
+    display: flex;
+}
+.MyPageViewer button{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    width: 100%;
+    font-family: 'Pretendard-Regular';
+    font-weight: bold;
+    font-size: 16px;
+    color: #525252;
+    text-align: left;
+    padding: 20px;
+}
