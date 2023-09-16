@@ -2,6 +2,7 @@ import "./ResultViewer.css";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import Graph from "./Graph.js"
+import img_title from "../img/title_result.png";
 
 const ResultViewer = () => {    
     //임시
@@ -30,7 +31,8 @@ const ResultViewer = () => {
         <div className="ResultViewer">
             <div className="result_wrapper">
                 <h4>나의 매운맛 수준은?</h4>
-                <h1>맵기 레벨 테스트</h1>
+                {/* <h1>맵기 레벨 테스트</h1> */}
+                <img alt="title" src={img_title}/>
                 <div className="content_wrapper">
                     <h2>당신의 맵기는 Level. {level} 단계입니다.</h2>
                     <div className="graph_wrapper">
@@ -40,7 +42,7 @@ const ResultViewer = () => {
                     {content}
                 </div>
                 <div className="button_wrapper">
-                    <button className="btn_type1" onClick={doAgain}>다시하기</button>
+                    <button className="btn_type1" onClick={doAgain}>다시 하기</button>
                     <button className="btn_type1" onClick={copyUrl}>결과 공유하기</button>
                     <form>
                             <textarea

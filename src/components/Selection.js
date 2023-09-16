@@ -5,7 +5,7 @@ import OptionItem from "./OptionItem";
 import ProgressBar from "./ProgressBar";
 
 const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
-    const percent = (testNum)/(maxTestNum+1);
+    const percent = (testNum+1)/(maxTestNum+1);
     const [state, setState] = useState({
         selectionId: 0,
     });

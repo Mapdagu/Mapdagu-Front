@@ -29,10 +29,16 @@
 }
 .Header button {
     cursor: pointer;
-    font-family: 'KCCMurukmuruk';
-    font-size: 14px;
+    font-family: 'Pretendard-Regular';
+    font-weight: bold;
+    font-size: 15px;
     border: none;
     background-color: white;
     margin: 0;
     margin-right: 10px;
+}
+.Header .header_title button{
+    font-family: 'KCCMurukmuruk';
+    font-weight: lighter;
+    font-size: 13px;
 }
