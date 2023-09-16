@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Graph from "./Graph";
 import { getProfileImgById } from "../util";
+import tImg from "../img/ramen.png";
 
 const SERVER_URL = `https://mapdagu.site/api/members/me/main`;
 
@@ -33,13 +34,31 @@ const MainViewer = ({accessToken}) => {
                     />
                 </div>
                 <div className="info_section">
-                    <h2>{data.userName}</h2>
-                    <h4>님은 Level. {data.level}입니다.</h4>
+                    <div className="text_username">{data.userName}</div>
+                    <div className="text_level">님은 Level. {data.level} 단계입니다.</div>
                 </div>
             </div>
             <div className="level_info">
                 <div className="graph_section">
-                    <Graph />
+                    <Graph level={data.level}/>
+                </div>
+                <div className="item_section">
+                    <img alt="tImg" src={tImg}/>
+                    <div className="item_info">                        
+                        <div className="text_itemname">신라면</div>       
+                        <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>       
+                        <div className="text_schoville">스코빌지수: 8000</div>
+                        <button className="btn_eval">평가하러 가기</button>
+                    </div>
+                </div>
+                <div className="item_section">
+                    <img alt="tImg" src={tImg}/>
+                    <div className="item_info">                        
+                        <div className="text_itemname">신라면</div>       
+                        <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>       
+                        <div className="text_schoville">스코빌지수: 8000</div>
+                        <button className="btn_eval">평가하러 가기</button>
+                    </div>
                 </div>
                 <button className="btn_viewmore">더보기</button>
             </div>

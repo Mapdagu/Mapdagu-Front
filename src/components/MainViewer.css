@@ -14,7 +14,7 @@
     padding-bottom: 40px;
     /* padding-bottom: 100px; */
 }
-.MainViewer img{
+.MainViewer .profile_wrapper img{
     width: 100px;
     height: 100px;
     border-radius: 15px;    
@@ -24,9 +24,11 @@
     text-align: center;
     padding: 5px;
 }
+
+
 .MainViewer .level_info{
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 20px;
+    margin-top: 0;
 }
 .MainViewer .graph_section{
     width: 100%;
@@ -39,6 +41,39 @@
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
 }
+.MainViewer .item_section{
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pretendard-Regular';
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    display: flex;
+}
+.MainViewer .item_section img{
+    width: 110px;
+    height: 110px;
+    border-radius: 15px;  
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.MainViewer .item_info{
+    width: 50%;
+    text-align: center;
+}
+.MainViewer .btn_eval{
+    cursor: pointer;
+    background-color: #F6732D;
+    color: white;
+    border: none;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    font-family: 'Pretendard-Regular';
+    font-size: 16px;
+}
 .MainViewer .btn_viewmore{
     width: 100%;
     cursor: pointer;
@@ -50,13 +85,37 @@
     border-bottom-left-radius: 30px; 
     border-bottom-right-radius: 30px; 
 }
-.MainViewer h2{
+
+
+.MainViewer .text_username{
     font-family: 'yg-jalnan';
     font-size: 32px;
     margin: 0;
     margin-bottom: 10px;
 }
-.MainViewer h4{
+.MainViewer .text_level{
+    font-family: 'Pretendard-Regular';
+    font-weight: lighter;
     font-size: 14px;
     margin: 0;
+}
+.MainViewer .text_itemname{
+    font-family: 'Pretendard-Regular';
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 7px;
+}
+.MainViewer .text_score{
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+    color: #F6732D;
+    margin: 0;
+    margin-bottom: 7px;
+}
+.MainViewer .text_schoville{
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 7px;
 }
