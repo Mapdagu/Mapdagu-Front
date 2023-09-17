@@ -1,9 +1,10 @@
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
 import MainViewer from "../components/MainViewer";
+import { getCookie } from "../cookie";
 
-const Main = ({accessToken}) => {
-
+const Main = () => {
+    const accessToken = getCookie("accessToken");
     return(
         <div className="container">
             <div className="header">

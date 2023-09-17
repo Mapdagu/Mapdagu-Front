@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
 import icon_back from "../img/icon/header_back.png";
 import axios from "axios";
+import { getCookie } from "../cookie";
 
 const ADD_EVAL = 'https://mapdagu.site/api/evaluations';
 const UPDATE_LEVEL = 'https://mapdagu.site/api/evaluations/info';
 
-const New = ({accessToken}) => {    
+const New = () => {    
+    const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const handleOnBack = () => {
         navigate(-1);

@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useReducer, useEffect } from 'react';
 import axios  from 'axios';
+import { setCookie } from './cookie';
 
 /*pages*/
 import TestMain from './pages/TestMain';
@@ -64,12 +65,10 @@ function App() {
     imageNum: 0,
     intro: "",
     isSocial: true,
-    role: "",
-    accessToken: "",
-    refreshToken: "",
 })
+  const [role, setRole] = useState("");
 
-  const {nickname, email, password, isSocial, role, accessToken} = userInf;  
+  const {nickname, email, password, isSocial} = userInf;  
 
   useEffect(() => {
     // dispatch({
@@ -113,7 +112,11 @@ function App() {
           const role = res.data.role;
           const accessToken = res.headers[`authorization`];
           const refreshToken = res.headers[`authorization-refresh`];
-          getUserInfRes(role, accessToken, refreshToken);
+          
+          setCookie("accessToken", accessToken);
+          setCookie("refreshToken", refreshToken); 
+          setRole(role);
+          initUserInf();
         }catch (error) {
           alert(error.response.data.message);
         }
@@ -123,15 +126,12 @@ function App() {
     }
   }
 
-  const getUserInfRes = (role, accessToken, refreshToken) => {
-    setUserInf({ 
-      ...userInf,
-      role,
-      accessToken,
-      refreshToken,
-    });
+  const getUserRole = (role) => {
+    setRole(role);
   }
-
+  const initUserRole = () => {
+    setRole("");
+  }
   const initUserInf = () => {
     setUserInf({
       nickname: "",
@@ -140,10 +140,6 @@ function App() {
       userName: "",
       imageNum: 0,
       intro: "",
-      isSocial: true,
-      role: "",
-      accessToken: "",
-      refreshToken: "",
     })
   }
 
@@ -176,10 +172,7 @@ function App() {
   };
 
   const onSubmit = async() => {    
-    setUserInf({ 
-      ...userInf,
-      role: "USER",
-    });
+    setRole("USER");
   }
 
   if(!isDataLoaded)
@@ -198,21 +191,21 @@ function App() {
           >
             <div className="App">
                 <Routes>
-                  <Route path = "/" element ={<TestMain getUserInfRes={getUserInfRes} role={role}/>}/>
+                  <Route path = "/" element ={<TestMain getUserRole={getUserRole} role={role}/>}/>
                   <Route path = "/sign_up" element ={<SignUpPage getSignUpInf={getSignUpInf}/>}/>
                   <Route path = "/set_profile" element ={<SetProfilePage getProfileInf={getProfileInf}/>}/>
                   <Route path = "/login/callback" element ={<KakaoRedirect />}/>
                   <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
-                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum} role={role} accessToken={accessToken}/>}/>
-                  <Route path = "/result" element ={<Result role={role} accessToken={accessToken}/>}/>
-                  <Route path = "/main" element ={<Main accessToken={accessToken}/>}/>
+                  <Route path = "/test" element ={<Test maxTestNum={maxTestNum}/>}/>
+                  <Route path = "/result" element ={<Result role={role}/>}/>
+                  <Route path = "/main" element ={<Main />}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>
-                  <Route path = "/evaluate" element ={<Evaluate accessToken={accessToken}/>}/>
-                  <Route path = "/new" element ={<New accessToken={accessToken}/>}/>
-                  <Route path = "/edit/:id" element ={<EditEval accessToken={accessToken}/>}/>
-                  <Route path = "/mypage" element ={<MyPage email={email} accessToken={accessToken} initUserInf={initUserInf}/>}/>
-                  <Route path = "/edit_profile" element ={<EditProfile accessToken={accessToken}/>}/>
+                  <Route path = "/evaluate" element ={<Evaluate />}/>
+                  <Route path = "/new" element ={<New />}/>
+                  <Route path = "/edit/:id" element ={<EditEval />}/>
+                  <Route path = "/mypage" element ={<MyPage email={email} initUserRole={initUserRole}/>}/>
+                  <Route path = "/edit_profile" element ={<EditProfile />}/>
                 </Routes>
             </div>
           </EvalDispatchContext.Provider>

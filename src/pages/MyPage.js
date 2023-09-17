@@ -1,17 +1,17 @@
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import { getProfileImgById } from "../util";
-import icon_back from "../img/icon/header_back.png";
 import MyPageViewer from "../components/MyPageViewer";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getCookie } from "../cookie";
+import icon_back from "../img/icon/header_back.png";
 
 const PROFILE_URL = `https://mapdagu.site/api/members/me/info`;
 const LOGOUT_URL = `https://mapdagu.site/api/auth/logout`;
 
-const MyPage = ({accessToken, initUserInf}) => {
+const MyPage = ({initUserRole}) => {
+    const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const [state, setState] = useState();
 
@@ -29,14 +29,14 @@ const MyPage = ({accessToken, initUserInf}) => {
     }, [])
 
     const goBack = () => {
-        navigate(`/mypage`);
+        navigate(`-1`);
     }
     const handleLogout = async() => {
         if(window.confirm("로그아웃하시겠습니까?")){
             try{
                 await axios.post(LOGOUT_URL, {}, {headers: {Authorization: accessToken}});
                 navigate(`/`, {replace: true});
-                initUserInf();
+                initUserRole();
             } catch(error){
                 alert(error.response.data.message);
             }

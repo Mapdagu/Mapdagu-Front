@@ -3,11 +3,13 @@ import EvaluationList from "../components/EvaluationList";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getCookie } from "../cookie";
 
 const GET_ALL_ITEM = `https://mapdagu.site/api/evaluations/me`;
 const GET_SEARCHED_ITEM = `https://mapdagu.site/api/evaluations?search=`;
 
-const Evaluate = ({accessToken}) => {
+const Evaluate = () => {
+    const accessToken = getCookie("accessToken");
     const [data, setData] = useState();
         
     useEffect(() => {

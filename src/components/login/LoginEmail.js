@@ -2,10 +2,11 @@ import "./LoginEmail.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { setCookie } from "../../cookie";
 
 const SERVER_URL = 'https://mapdagu.site/login';
 
-const LoginEmail = ({getUserInfRes, closeModal}) => {  
+const LoginEmail = ({getUserRole, closeModal}) => {  
     const navigate = useNavigate();  
     const [state, setState] = useState({
         email: "",
@@ -27,6 +28,8 @@ const LoginEmail = ({getUserInfRes, closeModal}) => {
             const role = res.data.role;
             const accessToken = res.headers[`authorization`];
             const refreshToken = res.headers[`authorization-refresh`];
+            setCookie("accessToken", accessToken);
+            setCookie("refreshToken", refreshToken); 
             if(role === "NOT_TEST_USER"){
                 navigate(`/test`);
             } else if(role === "USER"){
@@ -34,7 +37,7 @@ const LoginEmail = ({getUserInfRes, closeModal}) => {
             } else {
                 navigate(`/set_profile`);
             }
-            getUserInfRes(role, accessToken, refreshToken);
+            getUserRole(role);
         }catch (error) {
             alert(error.response.data.message);
         }

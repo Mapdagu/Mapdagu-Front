@@ -2,11 +2,13 @@ import { useContext, useEffect } from "react";
 import ResultViewer from "../components/ResultViewer";
 import { EvalDispatchContext, EvalStateContext } from "../App";
 import axios from "axios";
+import { getCookie } from "../cookie";
 
 const TEST_URL = `https://mapdagu.site/api/test`;
 const RESULT_URL = `https://mapdagu.site/api/test/info`;
 
-const Result = ({role, accessToken}) => {
+const Result = ({role}) => {
+    const accessToken = getCookie("accessToken");
     const data = useContext(EvalStateContext);
     const { onSubmit } = useContext(EvalDispatchContext);
     //임시 데이터

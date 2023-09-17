@@ -3,10 +3,12 @@ import { useState } from "react";
 import SetProfile from "../components/SetProfile";
 import axios from "axios";
 import { useEffect } from "react";
+import { getCookie } from "../cookie";
 
 const SERVER_URL = `https://mapdagu.site/api/members/me/info`
 
-const EditProfile = ({accessToken}) => {
+const EditProfile = () => {
+    const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const [data, setData] = useState();
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 import LoginEmail from "../components/login/LoginEmail";
 import LoginMain from "../components/login/LoginMain";
 
-const TestMain = ({getUserInfRes, role}) => {
+const TestMain = ({getUserRole, role}) => {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [showContent1, setShowContent1] = useState(true);
@@ -47,7 +47,7 @@ const TestMain = ({getUserInfRes, role}) => {
         <div className="container">
             <button onClick={goTest}>테스트 시작하기</button>
             <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>   
-                {showContent1 ? <LoginMain onChange={onChange} closeModal={closeModal}/> : <LoginEmail getUserInfRes={getUserInfRes} closeModal={closeModal}/>}   
+                {showContent1 ? <LoginMain onChange={onChange} closeModal={closeModal}/> : <LoginEmail getUserRole={getUserRole} closeModal={closeModal}/>}   
             </Modal>
         </div>
     )
