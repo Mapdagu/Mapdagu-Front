@@ -17,28 +17,23 @@ const Test = ({maxTestNum}) => {
         }
         else{
             setTestNum(testNum - 1);
+            setIdRefTest(idRefTest-1);
         }
     }
-    const goNext = (data) => {
-        const { itemName, selectionId } = data;
-        if(selectionId === 0){
-            alert("하나를 선택해주세요");
+    const goNext = (itemName, selectionId) => {
+        if(!matchItem){
+            onCreate( itemName, selectionId );
+            setIdRefTest(idRefTest+1);
         }
         else{
-            if(!matchItem){
-                onCreate( itemName, selectionId );
-                setIdRefTest(idRefTest+1);
-            }
-            else{
-                onUpdate( idRefTest, itemName, selectionId );
-                setIdRefTest(idRefTest+1);
-            }
-            if(testNum === maxTestNum){
-                submitHandler();
-            }
-            else{
-                setTestNum(testNum + 1);
-            }
+            onUpdate( idRefTest, itemName, selectionId );
+            setIdRefTest(idRefTest+1);
+        }
+        if(testNum === maxTestNum){
+            submitHandler();
+        }
+        else{
+            setTestNum(testNum + 1);
         }
     }
     const submitHandler = async (e) => {

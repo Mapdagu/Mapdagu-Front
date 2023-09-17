@@ -1,43 +1,37 @@
 import "./Selection.css";
 import { selectionList, testItemList, getItemImgById } from "../util";
-import { useState } from "react";
 import OptionItem from "./OptionItem";
 import ProgressBar from "./ProgressBar";
+import icon_rope from "../img/test_rope.png";
+import icon_back from "../img/icon/test_btn_back.png";
 
 const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
     const percent = (testNum+1)/(maxTestNum+1);
-    const [state, setState] = useState({
-        selectionId: 0,
-    });
     const itemInform = testItemList.filter(it => (it.id === testNum));
 
-    const handleChangeSelection = (selectionId) => {
-        setState({
-            ...state,
-            itemName: itemInform.map((it) => it.itemName),
-            selectionId,
-        });
-    };
     const handleOnBack = () => {
-        goBack(state);
+        goBack();
     }
-    const handleOnNext = () => {
-        goNext(state);
-        setState({
-            selectionId: 0,
-        })
-    }
+    const handleOnNext = (selectionId) => {
+        goNext(itemInform.map((it) => it.itemName), selectionId);
+    };
 
     return (
         <div className="Selection">
             <div className="selection_wrapper">
+                <div className="button_section">
+                    <button className="btn_back" onClick={handleOnBack}>
+                        <img alt="back" src={icon_back}/>
+                    </button>
+                </div>
+                <img className="img_rope" alt="rope" src={icon_rope}/>
                 <h3> 이거 먹었을 때 어땠어?</h3>
                 {itemInform.map((it) => (
                     <div key={it.id}>
                         <div className="image_wrapper">
                             <img alt="" src={getItemImgById(it.id+1)}/> 
                         </div>
-                        <h4> 나에게 {it.itemName} 은(는)</h4>
+                        <h4>{it.itemName}</h4>
                     </div>
                 ))} 
                 <div className="selection_list_wrapper">
@@ -46,8 +40,8 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
                             key={it.id}
                             {...it}
                             isTest={true}
-                            onClick={handleChangeSelection}
-                            isSelected={state.selectionId === it.id}
+                            onClick={handleOnNext}
+                            // isSelected={state.selectionId === it.id}
                         />
                     ))}
                 </div>
@@ -56,12 +50,8 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
                         <ProgressBar width={100} color={"#D9D9D9"}>
                             <ProgressBar width={100*percent} color={"#000000"}/>
                         </ProgressBar>
-                        {testNum+1} / {maxTestNum+1}
                     </div>
-                </div>
-                <div className="buttons">
-                    <button onClick={handleOnBack}>이전</button>
-                    <button onClick={handleOnNext}>다음</button>
+                    {testNum+1} / {maxTestNum+1}
                 </div>
             </div>
         </div>
