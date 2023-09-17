@@ -1,6 +1,13 @@
 .ResultViewer {
     text-align: center;
 }
+.ResultViewer .img_rope{
+    position: absolute;
+    top: -22px;
+    left: 48%;
+    width: 24px;
+    height: 100px;
+}
 .ResultViewer .result_wrapper{    
     background-color: #EE5054;
     margin: 25px;
