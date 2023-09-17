@@ -10,8 +10,14 @@ const OptionItem = ({ id, name, onClick, isSelected, isTest}) => {
             <div 
                 className = {[
                     "OptionItem",
-                    isSelected ? `OptionItem_on` : `OptionItem_off_for_test`,
+                    isSelected ? [`OptionItem_on`, [`OptionItem`, id].join("_")].join(" ") 
+                    : [`OptionItem`, id].join("_"),
                 ].join(" ")}
+                // className = {["OptionItem", [`OptionItem`, id].join("_")].join(" ")}
+                // className = {[
+                //     "OptionItem",
+                //     isSelected ? [`OptionItem`, id].join("_") : `OptionItem_off_for_test`,
+                // ].join(" ")}
                 onClick={handleOnClick}>
                 <span>{name}</span>
             </div>
@@ -22,7 +28,8 @@ const OptionItem = ({ id, name, onClick, isSelected, isTest}) => {
             <div 
                 className = {[
                     "OptionItem",
-                    isSelected ? `OptionItem_on` : `OptionItem_off`,
+                    isSelected ? [`OptionItem_on`, [`OptionItem`, id].join("_")].join(" ") 
+                    : [`OptionItem`, id].join("_"),
                 ].join(" ")}
                 onClick={handleOnClick}>
                 <span>{name}</span>

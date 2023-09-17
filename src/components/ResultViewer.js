@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import Graph from "./Graph.js"
 import img_title from "../img/title_result.png";
+import icon_rope from "../img/test_rope.png";
 
 const ResultViewer = () => {    
     //임시
@@ -30,6 +31,7 @@ const ResultViewer = () => {
     return (
         <div className="ResultViewer">
             <div className="result_wrapper">
+                <img className="img_rope" alt="rope" src={icon_rope}/>
                 <h4>나의 매운맛 수준은?</h4>
                 {/* <h1>맵기 레벨 테스트</h1> */}
                 <img alt="title" src={img_title}/>
