@@ -44,13 +44,16 @@
     border-radius: 5px;
 }
 
+.EvaluationItem .button_section{
+    display: flex;
+    height: 20px;
+    align-items: center;
+}
 .EvaluationItem .button_section button{
     cursor: pointer;
+    width: 20px;
     padding: 0;
-    margin: 5px;
+    margin-left: 5px;
     border: none;
     background-color: white;
-}
-.EvaluationItem .button_section img{
-    width: 20px;
 }

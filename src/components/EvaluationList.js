@@ -4,7 +4,7 @@ import EvaluationItem from "./EvaluationItem";
 import { useNavigate } from "react-router-dom";
 import icon_add from "../img/icon/evaluate_add.png";
 
-const EvaluationList = ({data, onSubmit}) => {   
+const EvaluationList = ({data, onSubmit, maxTestNum}) => {   
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const onChangeSearch = (e) => {
@@ -53,6 +53,7 @@ const EvaluationList = ({data, onSubmit}) => {
                     <EvaluationItem
                         key={it.id}
                         {...it}
+                        maxTestNum={maxTestNum}
                     />
                 ))}
             </div>

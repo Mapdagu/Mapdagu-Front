@@ -8,7 +8,7 @@ import { getCookie } from "../cookie";
 const GET_ALL_ITEM = `https://mapdagu.site/api/evaluations/me`;
 const GET_SEARCHED_ITEM = `https://mapdagu.site/api/evaluations?search=`;
 
-const Evaluate = () => {
+const Evaluate = ({maxTestNum}) => {
     const accessToken = getCookie("accessToken");
     const [data, setData] = useState();
         
@@ -39,12 +39,13 @@ const Evaluate = () => {
             alert(error.response.data.message);
         }
     }
+
     return(
         <div className="container">
             <div className="header">
                 <Header type={1}/>
             </div>            
-            <div className="content"><EvaluationList data={data} onSubmit={onSubmit}/></div>
+            <div className="content"><EvaluationList data={data} onSubmit={onSubmit} maxTestNum={maxTestNum}/></div>
             <div className="footer"><Navigator current="eval"/></div> 
         </div>
     )
