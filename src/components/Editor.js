@@ -4,6 +4,7 @@ import { getItemImgById, selectionList } from "../util";
 import { useCallback, useEffect, useState } from "react";
 
 const Editor = ({initData, onSubmit}) => {  
+    const slicedList = selectionList.slice(0,5);
     const [state, setState] = useState({
         name: "",
         imageNum: 0,
@@ -54,7 +55,7 @@ const Editor = ({initData, onSubmit}) => {
                     <h3>난이도: ☆☆☆☆☆</h3>
                 </div>
                 <div className="selection_list_wrapper">
-                    {selectionList.map((it) => (
+                    {slicedList.map((it) => (
                         <OptionItem
                             key={it.id}
                             {...it}
