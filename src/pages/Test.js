@@ -7,7 +7,7 @@ const Test = ({maxTestNum}) => {
     const testData = useContext(EvalStateContext);
     const {onCreate, onUpdate} = useContext(EvalDispatchContext);
     const [ testNum, setTestNum ] = useState(0);
-    const [ idRefTest, setIdRefTest ] = useState(3);
+    const [ idRefTest, setIdRefTest ] = useState(0);
     const navigate = useNavigate();
     const matchItem = testData.find((it)=> String(it.id) === String(idRefTest));
 

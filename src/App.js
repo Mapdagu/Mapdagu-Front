@@ -54,7 +54,7 @@ const maxTestNum = 2;
 
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
-  const idRef = useRef(3);
+  const idRef = useRef(0);
   const navigate = useNavigate();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [userInf, setUserInf] = useState({
@@ -170,7 +170,7 @@ function App() {
       targetId,
     });
   };
-
+  
   const onSubmit = async() => {    
     setRole("USER");
   }
@@ -201,7 +201,7 @@ function App() {
                   <Route path = "/main" element ={<Main />}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>
-                  <Route path = "/evaluate" element ={<Evaluate />}/>
+                  <Route path = "/evaluate" element ={<Evaluate maxTestNum={maxTestNum}/>}/>
                   <Route path = "/new" element ={<New />}/>
                   <Route path = "/edit/:id" element ={<EditEval />}/>
                   <Route path = "/mypage" element ={<MyPage email={email} initUserRole={initUserRole}/>}/>
