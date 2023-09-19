@@ -29,7 +29,7 @@ const MyPage = ({initUserRole}) => {
     }, [])
 
     const goBack = () => {
-        navigate(`-1`);
+        navigate(-1);
     }
     const handleLogout = async() => {
         if(window.confirm("로그아웃하시겠습니까?")){
