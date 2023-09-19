@@ -54,7 +54,7 @@ const maxTestNum = 2;
 
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
-  const idRef = useRef(0);
+  // const idRef = useRef(0);
   const navigate = useNavigate();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [userInf, setUserInf] = useState({
@@ -143,16 +143,16 @@ function App() {
     })
   }
 
-  const onCreate = (itemName, selectionId) => {
+  const onCreate = (targetId, itemName, selectionId) => {
     dispatch({
       type: "CREATE",
       data: {
-        id: idRef.current,
+        id: targetId,
         itemName,
         selectionId,
       }
     })
-    idRef.current += 1;
+    // idRef.current += 1;
   }
   const onUpdate = (targetId, itemName, selectionId) => {
     dispatch({
@@ -197,7 +197,7 @@ function App() {
                   <Route path = "/login/callback" element ={<KakaoRedirect />}/>
                   <Route path = "/oauth2/code/naver" element ={<NaverRedirect />}/>
                   <Route path = "/test" element ={<Test maxTestNum={maxTestNum}/>}/>
-                  <Route path = "/result" element ={<Result role={role}/>}/>
+                  <Route path = "/result" element ={<Result maxTestNum={maxTestNum} role={role}/>}/>
                   <Route path = "/main" element ={<Main />}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>

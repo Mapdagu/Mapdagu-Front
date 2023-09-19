@@ -4,11 +4,14 @@ import OptionItem from "./OptionItem";
 import ProgressBar from "./ProgressBar";
 import icon_rope from "../img/test_rope.png";
 import icon_back from "../img/icon/test_btn_back.png";
+import { useContext } from "react";
+import { EvalStateContext } from "../App";
 
 const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
+    const testData = useContext(EvalStateContext);
     const percent = (testNum+1)/(maxTestNum+1);
     const itemInform = testItemList.filter(it => (it.id === testNum));
-
+    const selectionInform = testData.filter(it => (it.id === testNum));
     const handleOnBack = () => {
         goBack();
     }
@@ -39,9 +42,8 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
                         <OptionItem
                             key={it.id}
                             {...it}
-                            isTest={true}
                             onClick={handleOnNext}
-                            // isSelected={state.selectionId === it.id}
+                            isSelected = {selectionInform.length !== 0 ? selectionInform[0].selectionId === it.id : 0 === it.id}
                         />
                     ))}
                 </div>

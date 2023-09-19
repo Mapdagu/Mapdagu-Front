@@ -7,10 +7,10 @@ import { getCookie } from "../cookie";
 const TEST_URL = `https://mapdagu.site/api/test`;
 const RESULT_URL = `https://mapdagu.site/api/test/info`;
 
-const Result = ({role}) => {
+const Result = ({maxTestNum, role}) => {
     const accessToken = getCookie("accessToken");
     const data = useContext(EvalStateContext);
-    const { onSubmit } = useContext(EvalDispatchContext);
+    const { onDelete, onSubmit } = useContext(EvalDispatchContext);
     //임시 데이터
     const schoville = 3000; 
     const level = 2;
@@ -42,6 +42,10 @@ const Result = ({role}) => {
           } catch (error) {
               alert(error.response.data.message);
           }
+          
+        for(let i=0; i<maxTestNum+1; i++){
+          onDelete(i);
+        }
     }, []);
     
     return(
