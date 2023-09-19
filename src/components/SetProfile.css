@@ -4,12 +4,13 @@
 .SetProfile .profile_input{
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 10%;
+    /* margin-top: 10%; */
 }
 .SetProfile .profile_container{
     margin-bottom: 30px;
     position: relative;
     display: inline-block;
+    padding-top: 74px;
 }
 .SetProfile .text_container{
     text-align: left;
@@ -29,6 +30,7 @@
     margin-bottom: 10px;
 }
 .SetProfile input{
+    font-family: 'Pretendard';
     width: 95%;
     height: 40px;
     font-size: 16px;
@@ -37,18 +39,9 @@
     border-radius: 15px;
     padding-left: 5%;
 }
-.SetProfile button{
-    cursor: pointer;
-    background-color: white;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 20px;
-    margin-right: 20px;
-}
 .SetProfile .btn_overlay{
     position: absolute;
-    top: 75px;
+    top: 150px;
     left: 60px;
     cursor: pointer;
     width: 30px;
@@ -83,7 +76,8 @@
 .btn_profile{
     width: 100%;
     cursor: pointer;
-    font-size: 15px;
+    font-family: 'Pretendard';
+    font-size: 18px;
     padding: 10px;
     padding-left: 100px;
     padding-right: 100px;

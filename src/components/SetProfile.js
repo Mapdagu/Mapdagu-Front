@@ -10,9 +10,8 @@ import { useNavigate } from "react-router-dom";
 const SetProfile = ({title, initData, onSubmit}) => {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [state, setState] = useState({
-        profileId: 0,
-    })
+    const [profileId, setProfileId] = useState(initData && initData.imageNum || 0);
+
     const [inputValue, setInputValue] = useState({
         userName: "",
         imageNum: 0,
@@ -26,15 +25,13 @@ const SetProfile = ({title, initData, onSubmit}) => {
         if(initData){
             setInputValue({
                 ...initData
-            })
+            });
+            setProfileId(initData.imageNum);
         }
     }, [initData])
 
     const goBack = () => {
         navigate(-1);
-    }
-    const goMain = () => {
-        navigate(`/main`);
     }
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -47,16 +44,13 @@ const SetProfile = ({title, initData, onSubmit}) => {
         onSubmit(inputValue);
     }
     const handleChangeSelection = useCallback((profileId) => {
-        setState((state) => ({
-            ...state,
-            profileId,
-        }));
+        setProfileId(profileId);
     }, []);
     const handleChangeProfile = () => {
         setModalIsOpen(false);
         setInputValue({
             ...inputValue,
-            imageNum: state.profileId,
+            imageNum: profileId,
         });
     }
     const modalStyle = {
@@ -75,12 +69,11 @@ const SetProfile = ({title, initData, onSubmit}) => {
         <div className="SetProfile">
             <div className="header">
                 <Header 
-                        title={<button onClick={goMain}>내가 맵다 했지!</button>}
+                        title={title}
                         leftChild={<button onClick={goBack}>취소</button>}
                         rightChild={<button onClick={onSubmitHandler}>완료</button>}
                 /> 
             </div>
-            <h1>{title}</h1>
             <div className="profile_input">
                 <div className="profile_container">
                     <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
@@ -93,7 +86,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                                     key={it.id}
                                     {...it}
                                     onClick={handleChangeSelection}
-                                    isSelected={state.profileId === it.id}
+                                    isSelected={profileId === it.id}
                                 />
                             ))}
                         </div>
