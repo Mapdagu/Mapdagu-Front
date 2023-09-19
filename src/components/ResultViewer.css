@@ -8,7 +8,7 @@
     width: 24px;
     height: 100px;
 }
-.ResultViewer .result_wrapper{    
+.ResultViewer .result_wrapper{ 
     background-color: #EE5054;
     margin: 25px;
     margin-top: 35px;
@@ -17,49 +17,80 @@
     border-radius: 40px;
     box-shadow: 5px 5px 7px 2px rgba(0, 0, 0, 0.25);
 }
-.ResultViewer .graph_wrapper{    
+.ResultViewer .title_1 {
+    font-family: 'KCCMurukmuruk';
+    font-weight: lighter;
+    color: #FFB4B4;
+    font-size: 18px;
+    margin: 0px;
+    margin-top: 24px;
+}
+.ResultViewer .title_2 {
+    margin: 0;
+}
+.ResultViewer .text_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;    
+}
+.ResultViewer .text_style_1 {
+    font-family: 'KCCMurukmuruk';
+    font-weight: lighter;
+    color: #FFE0E0;
+    font-size: 16px;
+}
+.ResultViewer .text_style_1_level {
+    font-family: 'KCCMurukmuruk';
+    font-weight: lighter;
+    color: white;
+    font-size: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.ResultViewer .graph_wrapper{   
+    display: flex;
+    flex-direction: column;
     background-color: #FAFAFA;
     margin: 10px;
     margin-bottom: 20px;
     border-radius: 15px;
     box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);
 }
-.ResultViewer h2 {
-    font-family: 'KCCMurukmuruk';
-    font-weight: lighter;
-    color: white;
-    font-size: 18px;
+.ResultViewer .graph_wrapper button{
+    pointer-events: none;
+    cursor: default;
 }
-.ResultViewer h3 {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-.ResultViewer h4 {
-    font-family: 'KCCMurukmuruk';
-    font-weight: lighter;
-    color: #FFB4B4;
-    font-size: 18px;
-    margin-bottom: 0px;
-}
-
 .ResultViewer .content_wrapper{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 30px;
 }
-
+.ResultViewer .text_style_2 {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.ResultViewer .text_style_2_level {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    color: white;
+    font-size: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 .ResultViewer .button_wrapper{
     margin-left: 20px;
     margin-right: -10px;
     justify-content: center;
     display: flex;
+    margin-bottom: 30px;
 }
 .ResultViewer .btn_type1{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     width: 100%;
     cursor: pointer;
     border: none;
@@ -68,10 +99,16 @@
     padding-left: 20px;
     padding-right: 20px;
     margin-right: 30px;
-    margin-bottom: 20px;
     background-color: #A73030;
     color: white;    
     box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);
+}
+.ResultViewer .text_bottom{
+    font-family: 'Pretendard';
+    font-weight: 500;
+    color: #FFB4B4;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 .ResultViewer .btn_type2{
     font-family: 'Pretendard-Regular';

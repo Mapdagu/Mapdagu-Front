@@ -4,11 +4,11 @@ import { useRef } from "react";
 import Graph from "./Graph.js"
 import img_title from "../img/title_result.png";
 import icon_rope from "../img/test_rope.png";
+import { getResultContentByLevel } from "../util";
 
 const ResultViewer = () => {    
     //임시
-    const level = 5;
-    const content="content: empty";
+    const level = 10;
     const navigate = useNavigate();
     
     const copyUrlRef = useRef();
@@ -32,16 +32,23 @@ const ResultViewer = () => {
         <div className="ResultViewer">
             <div className="result_wrapper">
                 <img className="img_rope" alt="rope" src={icon_rope}/>
-                <h4>나의 매운맛 수준은?</h4>
+                <div className="title_1">나의 매운맛 수준은?</div>
                 {/* <h1>맵기 레벨 테스트</h1> */}
-                <img alt="title" src={img_title}/>
-                <div className="content_wrapper">
-                    <h2>당신의 맵기는 Level. {level} 단계입니다.</h2>
-                    <div className="graph_wrapper">
-                        <Graph/>
+                <img className="title_2"alt="title" src={img_title}/>
+                    <div className="text_wrapper">
+                        <div className="text_style_1">당신의 맵기는</div>
+                        <div className="text_style_1_level">Level. {level} </div>
+                        <div className="text_style_1"> 단계입니다.</div>
                     </div>
-                    <h3>Level. {level} 인 당신은</h3>
-                    {content}
+                    <div className="graph_wrapper">
+                        <Graph level={level}/>
+                    </div>                    
+                <div className="content_wrapper">
+                    <div className="text_wrapper">
+                        <div className="text_style_2_level">Level. {level}</div>
+                        <div className="text_style_2">인 당신은</div>                        
+                    </div>
+                    <div className="text_style_2">{getResultContentByLevel(level)}</div>
                 </div>
                 <div className="button_wrapper">
                     <button className="btn_type1" onClick={doAgain}>다시 하기</button>
@@ -54,7 +61,7 @@ const ResultViewer = () => {
                         </form>                    
                 </div>
                 <div>
-                    <h4>나의 레벨에 맞는 음식 보러가기</h4>
+                    <div className="text_bottom">나의 레벨에 맞는 음식 보러가기</div>
                     <button className="btn_type2" onClick={goMain}>메인페이지</button>
                 </div>
             </div>
