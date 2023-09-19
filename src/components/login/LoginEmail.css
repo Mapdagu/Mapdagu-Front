@@ -10,7 +10,7 @@
     margin-bottom: 10px;
 }
 .LoginEmail input{  
-    /* width: 70%; */
+    font-family: 'Pretendard';
     width: 220px;
     height: 12px;
     font-size: 16px;
@@ -41,6 +41,7 @@
 }
 
 .LoginEmail button{
+    font-family: 'Pretendard';
     cursor: pointer;
     background-color: white;
     border: none;
@@ -58,7 +59,7 @@
     background-color: white;
     border: none;
     color: rgb(0, 0, 0, 0.5);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 .LoginEmail h2{

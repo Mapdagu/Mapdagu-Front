@@ -47,6 +47,11 @@
     outline: none;
     border-bottom: 1px solid #1f93ff;
 }
+.EvaluationList input{    
+    font-family: 'Pretendard';
+    font-weight: 300;
+    font-size: 16px;
+}
 .EvaluationList .search_bar_wrapper button{
     cursor: pointer;
     width: 90px;
@@ -64,6 +69,6 @@
     padding-top: 0;
 }
 .EvaluationList h2{
-    font-size: 24px;
+    font-size: 26px;
     margin: 0;
 }

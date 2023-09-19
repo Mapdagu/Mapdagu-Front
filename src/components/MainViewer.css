@@ -1,7 +1,4 @@
 .MainViewer{
-    /* align-items: center;
-    text-align: center;
-    justify-content: center; */
     background-color: #F54343;
     height: 250px;
 }
@@ -12,7 +9,6 @@
     padding: 50px;
     padding-top: 40px;
     padding-bottom: 40px;
-    /* padding-bottom: 100px; */
 }
 .MainViewer .profile_wrapper img{
     width: 100px;
@@ -44,7 +40,7 @@
 .MainViewer .item_section{
     align-items: center;
     justify-content: center;
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     background-color: white;
     padding: 20px;
     margin-bottom: 5px;
@@ -71,7 +67,7 @@
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-size: 16px;
 }
 .MainViewer .btn_viewmore{
@@ -94,27 +90,27 @@
     margin-bottom: 10px;
 }
 .MainViewer .text_level{
-    font-family: 'Pretendard-Regular';
-    font-weight: lighter;
+    font-family: 'Pretendard';
+    font-weight: 500;
     font-size: 14px;
     margin: 0;
 }
 .MainViewer .text_itemname{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-weight: bold;
     font-size: 20px;
     margin: 0;
     margin-bottom: 7px;
 }
 .MainViewer .text_score{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-size: 14px;
     color: #F6732D;
     margin: 0;
     margin-bottom: 7px;
 }
 .MainViewer .text_schoville{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-size: 14px;
     margin: 0;
     margin-bottom: 7px;

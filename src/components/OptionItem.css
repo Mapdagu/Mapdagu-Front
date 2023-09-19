@@ -9,8 +9,9 @@
     justify-content: center;
 }
 .OptionItem span {
-    font-family: 'Pretendard-Regular';
-    font-size: 14px;
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-size: 16px;
 }
 .OptionItem_on{
     transform: scale(1.1,1.1);

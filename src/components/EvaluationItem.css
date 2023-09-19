@@ -32,8 +32,9 @@
     margin-bottom: 15px;
 }
 .EvaluationItem .info_section .schoville_wrapper {
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 .EvaluationItem .info_section .content_wrapper {
     text-align: center;
@@ -41,6 +42,7 @@
     background-color: #e2e2e2;
     width: 100%;
     font-size: 12px;
+    font-weight: 500;
     border-radius: 5px;
 }
 

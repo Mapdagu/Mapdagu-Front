@@ -3,8 +3,8 @@
 }
 .MyPageViewer .profile_section{
     width: 100%;
-    padding-top: 119px;
-    padding-bottom: 119px;
+    padding-top: 74px;
+    padding-bottom: 74px;
     border-bottom: 1px solid #e2e2e2;
 }
 .MyPageViewer img{
@@ -13,7 +13,7 @@
     border: 5px solid black;
 }
 .MyPageViewer h1{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-weight: bold;
     font-size: 16px;
 }
@@ -28,10 +28,9 @@
     background-color: white;
     border: none;
     width: 100%;
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-weight: bold;
     font-size: 16px;
-    color: #525252;
     text-align: left;
     padding: 20px;
 }

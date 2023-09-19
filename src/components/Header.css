@@ -2,6 +2,7 @@
     padding-top: 20px;
     padding-bottom: 10px;
     display: flex;
+    align-items: center;
 }
 
 .Header > div {
@@ -9,6 +10,9 @@
 }
 
 .Header .header_title {
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 18px;
     width: 40%;
     height: 100%;
     justify-content: center;
@@ -29,9 +33,9 @@
 }
 .Header button {
     cursor: pointer;
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     border: none;
     background-color: white;
     margin: 0;
@@ -40,5 +44,6 @@
 .Header .header_title button{
     font-family: 'KCCMurukmuruk';
     font-weight: lighter;
-    font-size: 13px;
+    font-size: 14px;
+    padding-bottom: 7px;
 }
