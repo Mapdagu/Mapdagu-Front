@@ -73,47 +73,29 @@ export const getProfileImgById = (itemId) => {
 export const getSelectionTextById = (selectionId) => {
     const targetSelectionId = String(selectionId);
     switch(targetSelectionId){
-        case "1":
-            return "이게 맵다고?🍼";
-        case "2":
-            return "딱 맛있게 맵다☺️";
-        case "3":
-            return "맵지만 즐길 수는 있다🌶️";
-        case "4":
-            return "휴 도전이었다💦";
-        case "5": 
-            return "다시는 못 먹을 매운맛!!🔥";
-        case "6": 
+        case "1": 
             return "먹어본 적 없다🤷‍♀️";
+        case "2":
+            return "이게 맵다고?🍼";
+        case "3":
+            return "딱 맛있게 맵다☺️";
+        case "4":
+            return "맵지만 즐길 수는 있다🌶️";
+        case "5":
+            return "휴 도전이었다💦";
+        case "6": 
+            return "다시는 못 먹을 매운맛!!🔥";
         default:
             return null;
     }
 }
 export const selectionList = [
-    {
-        id: 1,
-        name: getSelectionTextById(1),
-    },
-    {
-        id: 2,
-        name: getSelectionTextById(2),
-    },
-    {
-        id: 3,
-        name: getSelectionTextById(3),
-    },
-    {
-        id: 4,
-        name: getSelectionTextById(4),
-    },
-    {
-        id: 5,
-        name: getSelectionTextById(5),
-    },    
-    {
-        id: 6,
-        name: getSelectionTextById(6),
-    },
+    { id: 1, name: getSelectionTextById(1)},
+    { id: 2, name: getSelectionTextById(2)},
+    { id: 3, name: getSelectionTextById(3)},
+    { id: 4, name: getSelectionTextById(4)},
+    { id: 5, name: getSelectionTextById(5)},
+    { id: 6, name: getSelectionTextById(6)},
 ]
 
 export const profileImgList = [
@@ -131,28 +113,41 @@ export const profileImgList = [
     },
 ]
 
-export const getMonthRangeByDate = (date) => {
-    const beginTimeStamp = new Date(date.getFullYear(), date.getMonth, 1).getTime();
-    const endTimeStamp = new Date(
-        date.getFullYear(),
-        date.getMonth() +1,
-        0,
-        23,
-        59,
-        59
-    ).getTime();
-    return { beginTimeStamp, endTimeStamp };
-}
+export const getResultContentByLevel = (level) => {
+    const targetLevel = String(level);
+    switch(targetLevel){
+        case "1": 
+            return "";
+        case "2":
+            return "";
+        case "3":
+            return "";
+        case "4":
+            return "";
+        case "5":
+            return "";
+        case "6": 
+            return "";
+        case "7": 
+            return "";
+        case "8":
+            return "";
+        case "9":
+            return "";
+        case "10":
+            return (
+                <div>
+                    불닭볶음면도 즐기며 먹는 맵고수군요?
+                    <br/>-<br/>-<br/>-<br/>
+                    Level.3단계에 속해 있는 엽기떡볶이 오리지널 맛을 도전해 보는 건 어떠세요?
+                </div>
+            )
+        case "11":
+            return "";
+        case "12": 
+            return "";
+        default:
+            return null;
+    }
 
-export const getFormattedDate = (targetDate) => {
-    let year = targetDate.getFullYear();
-    let month = targetDate.getMonth() + 1;
-    let date = targetDate.getDate();
-    if(month < 10){
-        month = `0${month}`;
-    }
-    if(date < 10){
-        date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`;
 }

@@ -16,38 +16,38 @@
     transform: scale(1.1,1.1);
 }
 .OptionItem_1{
+    background-color: white;
+    border: 2px solid #F24328;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.OptionItem_2{
     background-color: #FAA598;
     color: white;
     padding: 10px;
     margin-bottom: 10px;
 }
-.OptionItem_2{
+.OptionItem_3{
     background-color: #F88D7C;
     color: white;
     padding: 10px;
     margin-bottom: 10px;
 }
-.OptionItem_3{
+.OptionItem_4{
     background-color: #F67460;
     color: white;
     padding: 10px;
     margin-bottom: 10px;
 }
-.OptionItem_4{
+.OptionItem_5{
     background-color: #F45C44;
     color: white;
     padding: 10px;
     margin-bottom: 10px;
 }
-.OptionItem_5{
+.OptionItem_6{
     background-color: #F24328;
     color: white;
     padding: 10px;
-    margin-bottom: 10px;
-}
-.OptionItem_6{
-    background-color: white;
-    border: 2px solid #F24328;
-    padding: 8px;
     margin-bottom: 10px;
 }
