@@ -1,25 +1,47 @@
+import { useEffect, useState } from "react";
 import "./Graph.css";
 
 const Graph = ({level}) => {
+    const buttons = [
+        {id: 1, text: "1"},
+        {id: 2, text: "2"},
+        {id: 3, text: "3"},
+        {id: 4, text: "4"},
+        {id: 5, text: "5"},
+        {id: 6, text: "6"},
+        {id: 7, text: "7"},
+        {id: 8, text: "8"},
+        {id: 9, text: "9"},
+        {id: 10, text: "10"},
+        {id: 11, text: "11"},
+        {id: 12, text: "12"},
+    ]
+    
+    const [focusedButton, setFocusedButton] = useState(level);
+    
+    useEffect(() => {
+        if(level) {
+            setFocusedButton(level);
+        }
+    }, [level]);
+    const handleButtonFocus = (buttonId) => {
+      setFocusedButton(buttonId);
+    };
+
     if(level){
         return(
             <div className="Graph">
                 <div className="buttons">
-                    {level===1 ?<button className="color-1" autoFocus>1</button>:<button className="color-1">1</button>}
-                    {level===2 ?<button className="color-2" autoFocus>2</button>:<button className="color-2">2</button>}
-                    {level===3 ?<button className="color-3" autoFocus>3</button>:<button className="color-3">3</button>}
-                    {level===4 ?<button className="color-4" autoFocus>4</button>:<button className="color-4">4</button>}
-                    {level===5 ?<button className="color-5" autoFocus>5</button>:<button className="color-5">5</button>}
-                    {level===6 ?<button className="color-6" autoFocus>6</button>:<button className="color-6">6</button>}
-                    {level===7 ?<button className="color-7" autoFocus>7</button>:<button className="color-7">7</button>}
-                    {level===8 ?<button className="color-8" autoFocus>8</button>:<button className="color-8">8</button>}
-                    {level===9 ?<button className="color-9" autoFocus>9</button>:<button className="color-9">9</button>}
-                    {level===10 ?<button className="color-10" autoFocus>10</button>:<button className="color-10">10</button>}
-                    {level===11 ?<button className="color-11" autoFocus>11</button>:<button className="color-11">11</button>}
-                    {level===12 ?<button className="color-12" autoFocus>12</button>:<button className="color-12">12</button>}
-                    {/* <button className="btn-hover color-13">13</button>
-                    <button className="btn-hover color-14">14</button>
-                    <button className="btn-hover color-15">15</button> */}
+                    {buttons.map((it) => (
+                        <button
+                            key={it.id}
+                            className={[["color", it.id].join("-"), `${focusedButton === it.id ? 'focused_button' : ''}`].join(" ")}
+                            onFocus={() => handleButtonFocus(it.id)}
+                            // onBlurCapture={() => handleButtonFocus(level)}
+                        >
+                            {it.text}
+                        </button>
+                    ))}
                 </div>
             </div>
         );
