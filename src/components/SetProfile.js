@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const SetProfile = ({title, initData, onSubmit}) => {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [profileId, setProfileId] = useState(initData && initData.imageNum || 0);
+    const [profileId, setProfileId] = useState((initData && initData.imageNum) || 0);
 
     const [inputValue, setInputValue] = useState({
         userName: "",
@@ -55,13 +55,14 @@ const SetProfile = ({title, initData, onSubmit}) => {
     }
     const modalStyle = {
         content: {
-            width: "400px",
-            height: "300px",
+            width: "350px",
+            height: "600px",
             margin: "auto",
             padding: "20px",
-            border: "1px solid #ccc",
-            borderRadius: "50px", 
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            border: "none",
+            borderRadius: "30px", 
+            boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
+            justifyContent: "center",
         }
     }
     
@@ -79,18 +80,33 @@ const SetProfile = ({title, initData, onSubmit}) => {
                     <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
                     <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>✏️</button>
                     <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
+                        <div className="modal_title">프로필 선택</div>
                         <div><button className="btn_profile_close" onClick={() => setModalIsOpen(false)}>×</button></div>
                         <div className="profile_list_wrapper">
-                            {profileImgList.map((it) => (
-                                <ProfileItem
-                                    key={it.id}
-                                    {...it}
-                                    onClick={handleChangeSelection}
-                                    isSelected={profileId === it.id}
-                                />
-                            ))}
+                            <div className="profile_images">
+                                <p>Hot</p>
+                                {profileImgList("HOT").map((it) => (
+                                    <ProfileItem
+                                        key={it.id}
+                                        {...it}
+                                        onClick={handleChangeSelection}
+                                        isSelected={profileId === it.id}
+                                    />
+                                ))}
+                            </div>
+                            <div className="profile_images">
+                                <p>Cute</p>
+                                {profileImgList("CUTE").map((it) => (
+                                    <ProfileItem
+                                        key={it.id}
+                                        {...it}
+                                        onClick={handleChangeSelection}
+                                        isSelected={profileId === it.id}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                        <div><button className="btn_profile" onClick={handleChangeProfile}>완료</button></div>
+                        <div><button className="btn_profile_submit" onClick={handleChangeProfile}>선택하기</button></div>
                     </Modal>
                 </div>
 

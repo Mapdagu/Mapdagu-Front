@@ -1,25 +1,28 @@
 .ProfileItem {
     cursor: pointer;
     border-radius: 5px;
-    padding: 20px;
+    margin: 2px;
+    margin-bottom: 10px;
     justify-content: center;
     align-items: center;
+    /* flex: 0 0 calc(33.33%); */
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
 }
 
 .ProfileItem img{
-    width: 100%;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
 }
 
 .ProfileItem_off {
-    box-shadow: none;
+    border: 1px solid #AEAEAE;
 }
 
-.ProfileItem_on_0 {
-    box-shadow: 0px 0px 0px 3px rgb(0, 140, 255) inset;
-}
-.ProfileItem_on_1 {
-    box-shadow: 0px 0px 0px 3px rgb(0, 140, 255) inset;
-}
-.ProfileItem_on_2 {
-    box-shadow: 0px 0px 0px 3px rgb(0, 140, 255) inset;
+.ProfileItem_on{    
+    border: 2px solid rgb(0, 140, 255);
+    margin: 1px;
+    margin-bottom: 9px;
 }
