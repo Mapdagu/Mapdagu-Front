@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import icon_search from "../img/icon/header_search.png";
-import icon_profile from "../img/icon/header_profile.png";
+import icon_setting from "../img/icon/header_setting.png";
 
 const Header = ({type, title, leftChild, rightChild}) => {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Header = ({type, title, leftChild, rightChild}) => {
                 </div>
                 <div className="header_right">
                     <button><img alt="search" src={icon_search}/></button>
-                    <button onClick={goMyPage}><img alt="profile" src={icon_profile}/></button>
+                    <button onClick={goMyPage}><img alt="setting" src={icon_setting}/></button>
                 </div>
             </div>
         )        
