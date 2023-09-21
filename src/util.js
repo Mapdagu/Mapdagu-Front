@@ -116,18 +116,6 @@ export const selectionList = [
     { id: 5, name: getSelectionTextById(5)},
     { id: 6, name: getSelectionTextById(6)},
 ]
-
-// export const profileImgList = [
-//     {   id: 0, img: getProfileImgById(0)},
-//     {   id: 1, img: getProfileImgById(1)},
-//     {   id: 2, img: getProfileImgById(2)},
-//     {   id: 3, img: getProfileImgById(3)},
-//     {   id: 4, img: getProfileImgById(4)},
-//     {   id: 5, img: getProfileImgById(5)},
-//     {   id: 6, img: getProfileImgById(6)},
-//     {   id: 7, img: getProfileImgById(7)},
-//     {   id: 8, img: getProfileImgById(8)},
-// ]
 export const profileImgList = (category) => {
     switch(category){
         case "HOT": 
@@ -186,5 +174,23 @@ export const getResultContentByLevel = (level) => {
         default:
             return null;
     }
-
+}
+export const getTipById = (id) => {
+    const targetId = String(id);
+    switch(targetId){
+        case "1": 
+            return "우유는 캡사이신을 제거해줄 카제인 단백질이 함유돼 있기 때문에 매운 음식을 먹어 고통스러울 때 도움이 됩니다.";
+        case "2":
+            return "tip2";
+        case "3":
+            return "tip3";
+        case "4":
+            return "tip4";
+        case "5":
+            return "tip5";
+        case "6": 
+            return "tip6";
+        default:
+            return null;
+    }
 }
