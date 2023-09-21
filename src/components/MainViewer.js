@@ -2,12 +2,14 @@ import "./MainViewer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Graph from "./Graph";
-import { getProfileImgById } from "../util";
+import { getTipById } from "../util";
 import tImg from "../img/ramen.png";
+import { getCookie } from "../cookie";
 
 const SERVER_URL = `https://mapdagu.site/api/members/me/main`;
 
-const MainViewer = ({accessToken}) => {
+const MainViewer = () => {
+    const accessToken = getCookie("accessToken");
     const [data, setData] = useState({
     });
 
@@ -27,42 +29,70 @@ const MainViewer = ({accessToken}) => {
     return(
         <div className="MainViewer">
             <div className="profile_wrapper">
-                <div className="image_section">
-                    <img
-                        alt="profileImg"
-                        src = {getProfileImgById(data.imageNum)}
-                    />
-                </div>
-                <div className="info_section">
                     <div className="text_username">{data.userName}</div>
-                    <div className="text_level">님은 Level. {data.level} 단계입니다.</div>
-                </div>
+                    <div className="text_level">
+                        {data.userName} 님은
+                        <h> Level. {data.level} </h>
+                        단계입니다.
+                    </div>
             </div>
             <div className="level_info">
                 <div className="graph_section">
                     <Graph level={data.level}/>
+                </div>               
+                <div className="lines">
+                    <svg width="200" height="20">
+                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
+                    </svg>
+                    <svg width="200" height="20">
+                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
+                    </svg>
                 </div>
-                <div className="item_section">
-                    <img alt="tImg" src={tImg}/>
-                    <div className="item_info">                        
-                        <div className="text_itemname">신라면</div>       
-                        <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>       
-                        <div className="text_schoville">스코빌지수: 8000</div>
-                        <button className="btn_eval">평가하러 가기</button>
+                <div className="item_wrapper">
+                    <div className="item_section">
+                        <div className="item_info">                        
+                            <div className="text_itemname">신라면</div>       
+                            {/* <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>        */}
+                            <div className="text_schoville">스코빌지수: 8000</div>
+                            {/* <button className="btn_eval">평가하러 가기</button> */}
+                        </div>
+                        <img alt="tImg" src={tImg}/>
                     </div>
-                </div>
-                <div className="item_section">
-                    <img alt="tImg" src={tImg}/>
-                    <div className="item_info">                        
-                        <div className="text_itemname">신라면</div>       
-                        <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>       
-                        <div className="text_schoville">스코빌지수: 8000</div>
-                        <button className="btn_eval">평가하러 가기</button>
+                    <div className="item_section">
+                        <div className="item_info">                        
+                            <div className="text_itemname">신라면</div>       
+                            <div className="text_schoville">스코빌지수: 8000</div>
+                        </div>
+                        <img alt="tImg" src={tImg}/>
                     </div>
+                </div>                
+                <div className="lines">
+                    <svg width="200" height="20">
+                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
+                    </svg>
+                    <svg width="200" height="20">
+                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
+                    </svg>
                 </div>
-                <button className="btn_viewmore">더보기</button>
+                <button className="btn_viewmore">내 레벨에 맞는 음식 전체보기</button>
             </div>
-
+            <div className="search_boxs">
+                <div className="item_section left">
+                    <img alt="tImg" src={tImg}/>
+                </div>
+                <div className="item_section right">
+                    <textarea 
+                        placeholder="스코빌 지수를 알고 싶은 음식을 검색해보세요!"
+                    />
+                    <button className="btn_submit">검색하기</button>
+                </div>
+            </div>
+            <div className="tip_box">
+                Tip.
+                <div className="text_tip">
+                    {getTipById(1)}
+                </div>
+            </div>
         </div>
     )
 }

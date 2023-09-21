@@ -1,11 +1,39 @@
 .Graph {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
 }
+.Graph .text_level{
+    /* width: 100%; */
+    display: flex;
+    color: #D8D8D8;
+    padding-left: 5%;    
+    padding-right: 4%;
+    text-align: center;
+}
+.Graph .text_level .left{
+    text-align: left;
+    width: 50%;
+    font-family: 'Pretendard';
+    font-size: 12px;
+    margin: 0;
+}
+.Graph .text_level .right{
+    text-align: end;
+    width: 50%;
+    font-family: 'Pretendard';
+    font-size: 12px;
+    margin: 0;
+}
+.Graph p{
+    width: 20px;
+}
+.Graph .buttons{
+    justify-content: center;
+}
 .Graph button {
-    width: 6.5%;
-    height: 50px;
+    width: 7%;
+    height: 52px;
     margin: 2px;
     font-family: 'Pretendard';
     font-size: 12px;
@@ -72,8 +100,8 @@
     color: #F24328;   
 }
 .Graph .focused_button{
-    height: 65px;
-    padding-top: 15px;
+    height: 68px;
+    padding-top: 16px;
     color: white;
     outline: none;
 }

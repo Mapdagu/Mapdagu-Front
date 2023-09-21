@@ -31,6 +31,10 @@ const Graph = ({level}) => {
     if(level){
         return(
             <div className="Graph">
+                <div className="text_level">
+                    <p className="left">1</p>
+                    <p className="right">12</p>
+                </div>
                 <div className="buttons">
                     {buttons.map((it) => (
                         <button
@@ -39,7 +43,7 @@ const Graph = ({level}) => {
                             onFocus={() => handleButtonFocus(it.id)}
                             // onBlurCapture={() => handleButtonFocus(level)}
                         >
-                            {it.text}
+                        {it.text}
                         </button>
                     ))}
                 </div>
