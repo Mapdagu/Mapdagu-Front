@@ -1,9 +1,11 @@
 .Selection {
     text-align: center;
+    position: relative;
 }
-.Selection .img_rope{
+.Selection 
+.img_rope{
     position: absolute;
-    top: -22px;
+    top: -60px;
     left: 48%;
     width: 24px;
     height: 100px;

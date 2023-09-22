@@ -21,13 +21,13 @@ const Selection = ({testNum, maxTestNum, goNext, goBack}) => {
 
     return (
         <div className="Selection">
+        <img className="img_rope" alt="rope" src={icon_rope}/>
             <div className="selection_wrapper">
                 <div className="button_section">
                     <button className="btn_back" onClick={handleOnBack}>
                         <img alt="back" src={icon_back}/>
                     </button>
                 </div>
-                <img className="img_rope" alt="rope" src={icon_rope}/>
                 <h3> 이거 먹었을 때 어땠어?</h3>
                 {itemInform.map((it) => (
                     <div key={it.id}>
