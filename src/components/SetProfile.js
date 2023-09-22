@@ -6,8 +6,14 @@ import { getProfileImgById, profileImgList } from "../util";
 import { useEffect } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import icon_edit from "../img/icon/profile_edit.png";
+import axios from "axios";
+import { getCookie } from "../cookie";
+
+const SERVER_URL = `https://mapdagu.site/api/members/userName/isDuplicated`;
 
 const SetProfile = ({title, initData, onSubmit}) => {
+    const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [profileId, setProfileId] = useState((initData && initData.imageNum) || 0);
@@ -40,6 +46,18 @@ const SetProfile = ({title, initData, onSubmit}) => {
             [name]: value,
         });
     };
+    const onCheckDuplicated = async() => {
+        console.log(userName);
+        try{
+            await axios.post(SERVER_URL, userName, {headers: {Authorization: accessToken}})
+            .then(res => {
+                console.log(res.data);
+            });
+        } catch (error){
+            alert(error.response.data.message);
+        }
+        
+    }
     const onSubmitHandler = async(e) => {
         onSubmit(inputValue);
     }
@@ -77,8 +95,10 @@ const SetProfile = ({title, initData, onSubmit}) => {
             </div>
             <div className="profile_input">
                 <div className="profile_container">
-                    <div><img alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
-                    <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>✏️</button>
+                    <div><img className="img_profile" alt="" src={getProfileImgById(inputValue.imageNum)}/></div>
+                    <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>
+                        <img alt="edit" src={icon_edit}/>
+                    </button>
                     <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
                         <div className="modal_title">프로필 선택</div>
                         <div><button className="btn_profile_close" onClick={() => setModalIsOpen(false)}>×</button></div>
@@ -113,11 +133,14 @@ const SetProfile = ({title, initData, onSubmit}) => {
                 <div className="text_container">
                     <div className="inputMessage">닉네임</div>
                     <div>
-                        <input 
-                            name="userName"
-                            onChange={handleInput}
-                            value={inputValue.userName}
-                        />
+                        <div className="wrapper">
+                            <input 
+                                name="userName"
+                                onChange={handleInput}
+                                value={inputValue.userName}
+                            />
+                            <button className="btn_duplicate" onClick={onCheckDuplicated}>중복확인</button>
+                        </div>
                         <h5>{(userName.length!==0 && !isValidUserName) ? '2글자 이상 5글자 이하로 입력해 주세요😢' : ''}</h5>
                     </div>
                 </div>

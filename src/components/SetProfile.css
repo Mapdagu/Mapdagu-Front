@@ -7,30 +7,71 @@
     /* margin-top: 10%; */
 }
 .SetProfile .profile_container{
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     position: relative;
     display: inline-block;
-    padding-top: 74px;
+    padding: 74px;
 }
+.SetProfile .img_profile{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 5px solid black;
+}
+.SetProfile .btn_overlay{
+    position: absolute;
+    top: 165px;
+    left: 150px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    background-color: white;
+    border-radius: 100%;
+    border: 3px solid black;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .SetProfile .text_container{
     text-align: left;
     margin-bottom: 20px;
     margin-left: 5%;
     margin-right: 5%; 
 }
-.SetProfile img{
-    width: 100px;
-    border-radius: 100%;
-    border: 5px solid black;
-}
 .SetProfile .inputMessage{
-    font-size: 16px;
+    font-family: 'Pretendard';
     font-weight: bold;
+    font-size: 16px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.SetProfile .wrapper{
+    display: flex;
+    width: 100%;
+}
+.SetProfile .wrapper input{
+    width: 75%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.SetProfile .btn_duplicate{
+    cursor: pointer;
+    width: 25%;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-size: 14px;
+}
 .SetProfile input{
     font-family: 'Pretendard';
+    font-weight: 500;
+    font-size: 14px;
     width: 95%;
     height: 40px;
     font-size: 16px;
@@ -39,28 +80,9 @@
     border-radius: 15px;
     padding-left: 5%;
 }
-.SetProfile .btn_overlay{
-    position: absolute;
-    top: 150px;
-    left: 60px;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border-radius: 100%;
-    border: 1px solid black;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 20px;
-    margin-right: 20px;
-}
 
-.SetProfile h1{    
-    margin-top: 10%;
-    font-size: 24px;
-}
 .SetProfile h5 {
-    font-size: 15px;
+    font-size: 14px;
     margin: 3px;
     color: rgb(199, 41, 41);
 }
