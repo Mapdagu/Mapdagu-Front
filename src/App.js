@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import React, { useState, useRef, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import axios  from 'axios';
 import { setCookie } from './cookie';
 
@@ -12,6 +12,7 @@ import SetProfilePage from './pages/SetProfilePage';
 import Test from './pages/Test';
 import Result from './pages/Result';
 import Main from './pages/Main';
+import SearchPage from './pages/SearchPage';
 import Friend from './pages/Friend';
 import Evaluate from './pages/Evaluate';
 import MyPage from './pages/MyPage';
@@ -54,7 +55,6 @@ const maxTestNum = 2;
 
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
-  // const idRef = useRef(0);
   const navigate = useNavigate();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [userInf, setUserInf] = useState({
@@ -199,6 +199,7 @@ function App() {
                   <Route path = "/test" element ={<Test maxTestNum={maxTestNum}/>}/>
                   <Route path = "/result" element ={<Result maxTestNum={maxTestNum} role={role}/>}/>
                   <Route path = "/main" element ={<Main />}/>
+                  <Route path = "/search" element ={<SearchPage />}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>
                   <Route path = "/evaluate" element ={<Evaluate maxTestNum={maxTestNum}/>}/>

@@ -15,6 +15,9 @@ const Header = ({type, title, leftChild, rightChild}) => {
     const goMain = () => {
         navigate(`/main`);
     }
+    const goSearch = () => {
+        navigate(`/search`);
+    }
 
     if(type === 1){
         return (
@@ -26,7 +29,7 @@ const Header = ({type, title, leftChild, rightChild}) => {
                     <button onClick={goMain}>내가 맵다 했지!</button>
                 </div>
                 <div className="header_right">
-                    <button><img alt="search" src={icon_search}/></button>
+                    <button onClick={goSearch}><img alt="search" src={icon_search}/></button>
                     <button onClick={goMyPage}><img alt="setting" src={icon_setting}/></button>
                 </div>
             </div>
