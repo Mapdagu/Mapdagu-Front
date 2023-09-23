@@ -152,7 +152,7 @@
     font-size: 14px;
     margin: 0;
 }
-.MainViewer .text_level h{
+.MainViewer .text_level a{
     font-weight: 600;
 }
 .MainViewer .text_itemname{

@@ -32,7 +32,7 @@ const MainViewer = () => {
                     <div className="text_username">{data.userName}</div>
                     <div className="text_level">
                         {data.userName} 님은
-                        <h> Level. {data.level} </h>
+                        <a> Level. {data.level} </a>
                         단계입니다.
                     </div>
             </div>
