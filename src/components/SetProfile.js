@@ -17,14 +17,19 @@ const SetProfile = ({title, initData, onSubmit}) => {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [profileId, setProfileId] = useState((initData && initData.imageNum) || 0);
-
+    const [checkUserName, setCheckUserName] = useState({
+        isChanged: false,
+        isDuplicated: false,
+        isClicked: false,
+    })
     const [inputValue, setInputValue] = useState({
         userName: "",
         imageNum: 0,
         intro: ""
     });
-    const {userName, intro} = inputValue
+    const {userName, intro} = inputValue;
     const isValidUserName = userName.length >= 2 && userName.length <= 7; 
+    const isDuplicatedUserName = !checkUserName.isChanged || (!checkUserName.isDuplicated && checkUserName.isClicked);
     const isValidIntro = intro.length <= 20;
 
     useEffect(() => {
@@ -45,21 +50,37 @@ const SetProfile = ({title, initData, onSubmit}) => {
             ...inputValue,
             [name]: value,
         });
+        if(name === "userName" && isValidUserName){
+            setCheckUserName({
+                ...checkUserName,
+                isChanged: true,
+                isClicked: false,
+            });
+        }
     };
     const onCheckDuplicated = async() => {
-        console.log(userName);
-        try{
-            await axios.post(SERVER_URL, userName, {headers: {Authorization: accessToken}})
-            .then(res => {
-                console.log(res.data);
-            });
-        } catch (error){
-            alert(error.response.data.message);
-        }
-        
+        if(isValidUserName){
+            try{
+                await axios.post(SERVER_URL, {userName}, {headers: {Authorization: accessToken}})
+                .then(res => {
+                    setCheckUserName({
+                        ...checkUserName,
+                        isDuplicated: res.data.isDuplicated,
+                        isClicked: true,
+                    })
+                });
+            } catch (error){
+                alert(error.response.data.message);
+            }
+        }        
     }
     const onSubmitHandler = async(e) => {
-        onSubmit(inputValue);
+        if(isValidUserName && isDuplicatedUserName && isValidIntro){
+            onSubmit(inputValue);
+        }
+        else if(!isDuplicatedUserName){
+            alert("닉네임 중복을 확인해주세요");
+        }
     }
     const handleChangeSelection = useCallback((profileId) => {
         setProfileId(profileId);
@@ -142,6 +163,8 @@ const SetProfile = ({title, initData, onSubmit}) => {
                             <button className="btn_duplicate" onClick={onCheckDuplicated}>중복확인</button>
                         </div>
                         <h5>{(userName.length!==0 && !isValidUserName) ? '2글자 이상 5글자 이하로 입력해 주세요😢' : ''}</h5>
+                        <h5>{(checkUserName.isClicked && !isDuplicatedUserName) ? '사용할 수 없는 닉네임입니다😢' : ''}</h5>
+                        <h6>{(checkUserName.isClicked && isDuplicatedUserName) ? '사용 가능한 닉네임입니다' : ''}</h6>
                     </div>
                 </div>
 

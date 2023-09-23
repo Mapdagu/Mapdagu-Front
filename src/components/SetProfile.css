@@ -82,9 +82,18 @@
 }
 
 .SetProfile h5 {
+    font-family: 'Pretendard';
     font-size: 14px;
+    font-weight: 600;
     margin: 3px;
-    color: rgb(199, 41, 41);
+    color: #EB6161;
+}
+.SetProfile h6 {
+    font-family: 'Pretendard';
+    font-size: 14px;
+    font-weight: 600;
+    margin: 3px;
+    color: #52AF5B;
 }
 
 /* Modal */
