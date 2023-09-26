@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
+import FriendViewer from "../components/friend/FriendViewer";
 
 const Friend = () => {
     return(
@@ -10,6 +11,7 @@ const Friend = () => {
                 />
             </div>
             <div className="content">
+                <FriendViewer />
             </div>
             <div className="footer">
                 <Navigator current="friend"/>

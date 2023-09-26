@@ -1,0 +1,39 @@
+.FriendViewer{
+    padding: 25px;
+    padding-top: 30px;
+}
+.FriendViewer .contents_top{
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.FriendViewer .contents_top .text_title{
+    text-align: left;
+    width: 50%;
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 26px;
+}
+.FriendViewer .contents_top .img_noti{
+    margin-left: 200px;
+    cursor: pointer;
+}
+.FriendViewer .graph_wrapper{
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.FriendViewer .list_wrapper{
+    padding: 15px;
+    padding-top: 0;
+}
+
+/*Modal*/
+.friend_modal_title{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 22px;
+    text-align: left;
+    padding: 15px;
+    padding-bottom: 30px;
+}
