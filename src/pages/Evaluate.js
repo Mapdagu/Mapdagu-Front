@@ -6,7 +6,7 @@ import axios from "axios";
 import { getCookie } from "../cookie";
 
 const GET_ALL_ITEM = `https://mapdagu.site/api/evaluations/me`;
-const GET_SEARCHED_ITEM = `https://mapdagu.site/api/evaluations?search=`;
+const GET_SEARCHED_ITEM = `https://mapdagu.site/api/evaluations?search`;
 
 const Evaluate = ({maxTestNum}) => {
     const accessToken = getCookie("accessToken");
@@ -28,7 +28,7 @@ const Evaluate = ({maxTestNum}) => {
 
     const onSubmit = async(foodname) => {
         try{
-            axios.get([GET_SEARCHED_ITEM, foodname].join("/"), {headers: {Authorization: accessToken}})
+            axios.get([GET_SEARCHED_ITEM, foodname].join("="), {headers: {Authorization: accessToken}})
             .then(res => {
                 setData(res.data.content.map((item, index) => ({
                     id: index,
