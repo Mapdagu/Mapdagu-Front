@@ -3,6 +3,7 @@ import { useState } from "react";
 import EvaluationItem from "./EvaluationItem";
 import { useNavigate } from "react-router-dom";
 import icon_add from "../img/icon/evaluate_add.png";
+import icon_search from "../img/icon/searchbar_search.png";
 
 const EvaluationList = ({data, onSubmit, maxTestNum}) => {   
     const navigate = useNavigate();
@@ -10,15 +11,12 @@ const EvaluationList = ({data, onSubmit, maxTestNum}) => {
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
     };
-    const submitHandler = () => {
-        if(search !== ""){
-            onSubmit(search);
-            // setSearch("");
-        }
-    }
     const onKeyDown = (e) => {
         if(e.keyCode === 13){
-            submitHandler();
+            if(search !== ""){
+                onSubmit(search);
+                // setSearch("");
+            }
         }
     }
     const handleCreateEval = () => {
@@ -39,6 +37,7 @@ const EvaluationList = ({data, onSubmit, maxTestNum}) => {
                 </div>
             </div>
             <div className="search_bar_wrapper">
+                <img className="icon_search" alt="search" src={icon_search}/>
                 <input 
                     className="search_bar" 
                     value={search}
@@ -46,7 +45,6 @@ const EvaluationList = ({data, onSubmit, maxTestNum}) => {
                     onKeyDown={onKeyDown}
                     placeholder="검색어를 입력하세요"
                 />
-                <button onClick={submitHandler}>검색</button>
             </div>
             <div className="list_wrapper">
                 {data.map((it) => (

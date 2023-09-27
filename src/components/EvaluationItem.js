@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { getItemImgById, getSelectionTextById } from "../util";
 import icon_edit from "../img/icon/evaluate_edit.png";
 import icon_delete from "../img/icon/evaluate_delete.png";
+import star from "../img/icon/star.png";
+import star_border from "../img/icon/star-border.png";
 import axios from "axios";
 import { getCookie } from "../cookie";
 
 const SERVER_URL = `https://mapdagu.site/api/evaluations`;
 
-const EvaluationItem = ({id, name, imageNum, score, maxTestNum}) => {
+const EvaluationItem = ({id, name, imageNum, score, scoville, maxTestNum}) => {
     const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const goDetail = () => {
@@ -38,14 +40,22 @@ const EvaluationItem = ({id, name, imageNum, score, maxTestNum}) => {
                 <img alt="" src={getItemImgById(imageNum)}/>
             </div>    
             <div onClick={goDetail} className="info_section">
-                <div className="item_wrapper">
+                <div className="item_name">
                     {name}
                 </div>
-                <div className="schoville_wrapper">
-                    스코빌지수 3500
+                <div className="schoville_score">
+                    스코빌지수 {scoville}
                 </div>
-                <div className="content_wrapper">
-                    {getSelectionTextById(score)}
+                <div className="difficulty_score">
+                    난이도 :
+                    {score>1 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }
+                    {score>2 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }
+                    {score>3 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }
+                    {score>4 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }
+                    {score>5 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }  
+                </div>
+                <div className="score_text">
+                    "{getSelectionTextById(score)}"
                 </div>
             </div>
             <div className="button_section">

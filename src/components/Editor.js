@@ -4,7 +4,7 @@ import { getItemImgById, selectionList } from "../util";
 import { useCallback, useEffect, useState } from "react";
 
 const Editor = ({initData, onSubmit}) => {  
-    const slicedList = selectionList.slice(0,5);
+    const slicedList = selectionList.slice(1,6);
     const [state, setState] = useState({
         name: "",
         imageNum: 0,

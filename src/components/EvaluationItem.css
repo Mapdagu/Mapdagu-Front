@@ -6,42 +6,46 @@
     border-radius: 20px;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);  
 }
-.EvaluationItem .img_section {
+
+.EvaluationItem .img_section img {
     cursor: pointer;
     width: 120px;
     height: 120px;
-    display: flex;
-    justify-content: center;
-}
-.EvaluationItem .img_section img {
-    width: (80/120);
     border-radius: 15px;
 }
 
 .EvaluationItem .info_section {
-    /* flex-grow: 1; */
     width: 100%;
-    margin: 15px;
     margin-left: 20px;
     cursor: pointer;
+    font-family: 'Pretendard';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
-.EvaluationItem .info_section .item_wrapper {
+.EvaluationItem .info_section .item_name {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 15px;
+    padding-bottom: 10px;
 }
-.EvaluationItem .info_section .schoville_wrapper {
+.EvaluationItem .info_section .schoville_score {
     font-size: 15px;
-    margin-bottom: 15px;
+    padding-bottom: 10px;
     font-weight: 500;
 }
-.EvaluationItem .info_section .content_wrapper {
-    text-align: center;
-    padding: 5px;
-    background-color: #e2e2e2;
-    width: 100%;
-    font-size: 12px;
+.EvaluationItem .info_section .difficulty_score{
+    font-size: 15px;
+    font-weight: 500;
+    color: #9F9F9F;
+    display: flex;
+    padding-bottom: 10px;
+    align-items: center;
+}
+.EvaluationItem .info_section .difficulty_score img{
+    align-items: center;
+}
+.EvaluationItem .info_section .score_text {
+    font-size: 13px;
     font-weight: 500;
     border-radius: 5px;
 }
