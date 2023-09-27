@@ -13,7 +13,9 @@ import Test from './pages/Test';
 import Result from './pages/Result';
 import Main from './pages/Main';
 import SearchPage from './pages/SearchPage';
+import SearchUser from './pages/SearchUser';
 import Friend from './pages/Friend';
+import UserPage from './pages/UserPage';
 import Evaluate from './pages/Evaluate';
 import MyPage from './pages/MyPage';
 import EditProfile from './pages/EditProfile';
@@ -200,8 +202,10 @@ function App() {
                   <Route path = "/result" element ={<Result maxTestNum={maxTestNum} role={role}/>}/>
                   <Route path = "/main" element ={<Main />}/>
                   <Route path = "/search" element ={<SearchPage />}/>
+                  <Route path = "/search_user" element ={<SearchUser />}/>
                   <Route path = "/detail/:id" element ={<Details />}/>
                   <Route path = "/friend" element ={<Friend />}/>
+                  <Route path = "/user_page/:id" element ={<UserPage />}/>
                   <Route path = "/evaluate" element ={<Evaluate maxTestNum={maxTestNum}/>}/>
                   <Route path = "/new" element ={<New />}/>
                   <Route path = "/edit/:id" element ={<EditEval />}/>
