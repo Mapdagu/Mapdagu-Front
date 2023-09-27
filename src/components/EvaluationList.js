@@ -17,6 +17,9 @@ const EvaluationList = ({data, onSubmit, maxTestNum}) => {
                 onSubmit(search);
                 // setSearch("");
             }
+            else{
+                navigate(0);
+            }
         }
     }
     const handleCreateEval = () => {
@@ -30,7 +33,7 @@ const EvaluationList = ({data, onSubmit, maxTestNum}) => {
         <div className="EvaluationList">
             <div className="menu_wrapper">
                 <div className="left_col">
-                    <h2>최근 평가 목록</h2>
+                    <button className="btn_title" onClick={() => navigate(0)}>최근 평가 목록</button>
                 </div>
                 <div className="right_col">
                     <button onClick={handleCreateEval}><img alt="add" src={icon_add}/></button>
