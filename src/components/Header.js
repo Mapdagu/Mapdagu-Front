@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import icon_search from "../img/icon/header_search.png";
 import icon_setting from "../img/icon/header_setting.png";
+import icon_friend from "../img/icon/header_friend.png";
 
-const Header = ({type, title, leftChild, rightChild}) => {
+const Header = ({type, title, leftChild, rightChild, isFriend}) => {
     const navigate = useNavigate();
     
     const changePage = () => {
@@ -16,7 +17,12 @@ const Header = ({type, title, leftChild, rightChild}) => {
         navigate(`/main`);
     }
     const goSearch = () => {
-        navigate(`/search`);
+        if(isFriend){
+            navigate(`/search_user`);
+        }
+        else{
+            navigate(`/search`);
+        }
     }
 
     if(type === 1){
@@ -29,7 +35,9 @@ const Header = ({type, title, leftChild, rightChild}) => {
                     <button onClick={goMain}>내가 맵다 했지!</button>
                 </div>
                 <div className="header_right">
-                    <button onClick={goSearch}><img alt="search" src={icon_search}/></button>
+                    <button onClick={goSearch}>
+                        {(isFriend) ? <img alt="add_friend" src={icon_friend}/> : <img alt="search" src={icon_search}/>}
+                    </button>
                     <button onClick={goMyPage}><img alt="setting" src={icon_setting}/></button>
                 </div>
             </div>

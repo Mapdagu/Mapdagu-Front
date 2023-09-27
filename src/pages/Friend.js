@@ -8,6 +8,7 @@ const Friend = () => {
             <div className="header">
                 <Header
                     type={1}
+                    isFriend={true}
                 />
             </div>
             <div className="content">
