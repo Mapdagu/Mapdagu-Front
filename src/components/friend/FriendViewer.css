@@ -8,14 +8,18 @@
     padding-bottom: 20px;
 }
 .FriendViewer .contents_top .text_title{
+    cursor: pointer;
     text-align: left;
-    width: 50%;
+    width: 30%;
+    margin-right: 20%;
     font-family: 'Pretendard';
     font-weight: bold;
     font-size: 26px;
+    background-color: white;
+    border: none;
 }
 .FriendViewer .contents_top .img_noti{
-    margin-left: 200px;
+    margin-left: auto;
     cursor: pointer;
 }
 .FriendViewer .graph_wrapper{
@@ -28,6 +32,7 @@
     padding-top: 0;
 }
 
+
 /*Modal*/
 .friend_modal_title{
     font-family: 'Pretendard';
@@ -36,4 +41,13 @@
     text-align: left;
     padding: 15px;
     padding-bottom: 30px;
+}
+p{
+    margin-top: 200px;
+    text-align: center;
+    line-height: 1.5;
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-size: 18px;
+    color: #969696;
 }

@@ -6,7 +6,7 @@ const RequestItem = ({id, imageNum, userName, level, onAccept, onDelete}) => {
         onAccept(id, true);
     }
     const handleOnDelete = () => {
-        onDelete(id, false);
+        onDelete(id);
     }
     return (
         <div className="RequestItem">
