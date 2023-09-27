@@ -125,7 +125,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                         <div><button className="btn_profile_close" onClick={() => setModalIsOpen(false)}>×</button></div>
                         <div className="profile_list_wrapper">
                             <div className="profile_images">
-                                <p>Hot</p>
+                                <a>Hot</a>
                                 {profileImgList("HOT").map((it) => (
                                     <ProfileItem
                                         key={it.id}
@@ -136,7 +136,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                                 ))}
                             </div>
                             <div className="profile_images">
-                                <p>Cute</p>
+                                <a>Cute</a>
                                 {profileImgList("CUTE").map((it) => (
                                     <ProfileItem
                                         key={it.id}
