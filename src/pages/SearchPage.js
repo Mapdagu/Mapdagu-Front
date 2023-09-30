@@ -5,7 +5,7 @@ const SearchPage = () => {
     return(
         <div className="container">
             <div className="content">
-                <Search />
+                <Search isFood={true}/>
             </div>
             <div className="footer">
                 <Navigator/>
