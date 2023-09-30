@@ -1,36 +1,28 @@
 import Header from "../components/Header";
-import useDetail from "../hooks/useDetail";
 import Viewer from "../components/Viewer";
 import { useNavigate, useParams } from "react-router-dom";
+import icon_back from "../img/icon/header_back.png";
 
 const Details = () => {
     const { id } = useParams();
-    const data = useDetail(id);
     const navigate = useNavigate();
 
-    const goBack = () => {
+    const handleOnBack = () => {
         navigate(-1);
     }
     const handleCreateEval = () => {
         navigate(`/create_evalution`);
     }
-
-    if(!data){
-        return <div>정보를 불러오고 있습니다...</div>
-    }
-    else {
-        const { itemName } = data;
-        return (
-            <div>
-                <Header
-                    title="detail page"
-                    leftChild={<button onClick={goBack}>←</button>}
-                    rightChild={<button onClick={handleCreateEval}>평가작성</button>}
-                />
-                <Viewer itemName={itemName} id={id}/>
+    return (
+        <div className="container">
+            <div className="header">
+                <Header type={1} leftChild={<button onClick={handleOnBack}><img alt="back" src={icon_back}/></button>}/>                
             </div>
-        )
-    }
+            <div className="content">
+                <Viewer itemName="신라면" id={parseInt(id)+1}/>
+            </div>
+        </div>
+    )
 }
 
 export default Details;
