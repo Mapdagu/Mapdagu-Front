@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const MANAGE_FRIEND = `https://mapdagu.site/api/friends`;
 const REQUEST_FRIEND = `https://mapdagu.site/api/friends/request`;
-const SEARCH_FRIEND = `https://mapdagu.site/api/friends?search`;
-const FRIENDS_LIST = `https://mapdagu.site/friends/me`;
+const FRIENDS_LIST = `https://mapdagu.site/api/friends/me`;
 
 const FriendViewer = () => {
     const navigate = useNavigate();
@@ -21,15 +20,16 @@ const FriendViewer = () => {
     const [data, setData] = useState();
     const [requestData, setRequestData] = useState();
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [reload, setReload] = useState(false);
     
     useEffect(() => {
         try{
-            // axios.get(FRIENDS_LIST, {headers: {Authorization: accessToken}})
-            // .then(res => {
-            //     setData(res.data.content.map((item) => ({
-            //         ...item
-            //     })));
-            // });
+            axios.get(FRIENDS_LIST, {headers: {Authorization: accessToken}})
+            .then(res => {
+                setData(res.data.content.map((item) => ({
+                    ...item
+                })));
+            });
             axios.get(REQUEST_FRIEND, {headers: {Authorization: accessToken}})
             .then(res => {
                 setRequestData(res.data.content.map((item) => ({
@@ -39,24 +39,28 @@ const FriendViewer = () => {
         } catch(error){
             alert(error.response.data.message);
         }
-    }, [])
+        setReload(false);
+    }, [reload])
 
-    const deleteRequest = (friendId) => {
+    const deleteRequest = (memberId) => {
         try{
-            console.log(friendId);
-            axios.delete([REQUEST_FRIEND, friendId].join("/"), {headers: {Authorization: accessToken}});              
+            axios.delete([REQUEST_FRIEND, memberId].join("/"), {headers: {Authorization: accessToken}}); 
+            setReload(true);
         } catch(error){
             alert(error.response.data.message);
         }
     }
-    const managefriend = (friendId, isAdd) => {
+    const managefriend = (memberId, isAdd) => {
         try{
             if(isAdd){
-                axios.post([MANAGE_FRIEND, friendId].join("/"), {friendId}, {headers: {Authorization: accessToken}});
+                axios.post([MANAGE_FRIEND, memberId].join("/"), {memberId}, {headers: {Authorization: accessToken}});                
             }
             else{
-                axios.delete([REQUEST_FRIEND, friendId].join("/"), {headers: {Authorization: accessToken}});    
+                if(window.confirm("삭제하시겠습니까?")){
+                    axios.delete([MANAGE_FRIEND, memberId].join("/"), {headers: {Authorization: accessToken}});    
+                }
             }
+            setReload(true);
         } catch(error){
             alert(error.response.data.message);
         }

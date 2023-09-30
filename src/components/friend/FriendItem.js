@@ -2,7 +2,7 @@ import "./FriendItem.css";
 import { getProfileImgById } from "../../util";
 import { useNavigate } from "react-router-dom";
 
-const FriendItem = ({ id, imageNum, username, level, onDelete}) => {
+const FriendItem = ({ id, imageNum, userName, level, onDelete}) => {
     const navigate = useNavigate();
 
     const goUserPage = () => {
@@ -13,9 +13,9 @@ const FriendItem = ({ id, imageNum, username, level, onDelete}) => {
         onDelete(id, false);
     }
     return(
-        <div onClick={goUserPage} className="FriendItem">
-            <img alt="friend_profile" src={getProfileImgById(imageNum)}/>
-            <a>{username}</a>
+        <div className="FriendItem">
+            <img onClick={goUserPage} alt="friend_profile" src={getProfileImgById(imageNum)}/>
+            <a>{userName}</a>
             <a>Level. {level}</a>
             {onDelete ? <button onClick={handleOnDelete}>삭제</button> : ""}
         </div>
