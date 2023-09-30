@@ -53,7 +53,7 @@ const MainViewer = () => {
                         <div className="item_info">                        
                             <div className="text_itemname">신라면</div>       
                             {/* <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>        */}
-                            <div className="text_schoville">스코빌지수: 8000</div>
+                            <div className="text_scoville">스코빌지수: 8000</div>
                             {/* <button className="btn_eval">평가하러 가기</button> */}
                         </div>
                         <img alt="tImg" src={tImg}/>
@@ -61,7 +61,7 @@ const MainViewer = () => {
                     <div className="item_section">
                         <div className="item_info">                        
                             <div className="text_itemname">신라면</div>       
-                            <div className="text_schoville">스코빌지수: 8000</div>
+                            <div className="text_scoville">스코빌지수: 8000</div>
                         </div>
                         <img alt="tImg" src={tImg}/>
                     </div>

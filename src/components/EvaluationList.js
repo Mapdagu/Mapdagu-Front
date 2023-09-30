@@ -3,7 +3,7 @@ import { useState } from "react";
 import EvaluationItem from "./EvaluationItem";
 import { useNavigate } from "react-router-dom";
 import icon_add from "../img/icon/evaluate_add.png";
-import icon_search from "../img/icon/searchbar_search.png";
+import icon_search from "../img/icon/evaluate_search.png";
 
 const EvaluationList = ({data, onSubmit, maxTestNum}) => {   
     const navigate = useNavigate();

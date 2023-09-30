@@ -43,7 +43,7 @@ const EvaluationItem = ({id, name, imageNum, score, scoville, maxTestNum}) => {
                 <div className="item_name">
                     {name}
                 </div>
-                <div className="schoville_score">
+                <div className="scoville_score">
                     스코빌지수 {scoville}
                 </div>
                 <div className="difficulty_score">

@@ -12,7 +12,7 @@ const Result = ({maxTestNum, role}) => {
     const data = useContext(EvalStateContext);
     const { onDelete, onSubmit } = useContext(EvalDispatchContext);
     //임시 데이터
-    const schoville = 3000; 
+    const scoville = 3000; 
     const level = 2;
 
     const dtoList = data.map(item => {
@@ -38,7 +38,7 @@ const Result = ({maxTestNum, role}) => {
             }
           }
           try{
-              axios.patch(RESULT_URL, {schoville, level}, {headers: {Authorization: accessToken}});
+              axios.patch(RESULT_URL, {scoville, level}, {headers: {Authorization: accessToken}});
           } catch (error) {
               alert(error.response.data.message);
           }

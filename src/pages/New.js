@@ -19,11 +19,11 @@ const New = () => {
         const {name, score} = data;
         // const name1 = name[0];
         //임시 데이터
-        const schoville = 1000;
+        const scoville = 1000;
         const level = 1;
         try {
             await axios.post(ADD_EVAL, {name, score}, {headers: {Authorization: accessToken}});
-            await axios.patch(UPDATE_LEVEL, {schoville, level}, {headers: {Authorization: accessToken}});
+            await axios.patch(UPDATE_LEVEL, {scoville, level}, {headers: {Authorization: accessToken}});
             alert("작성이 완료되었습니다");
             navigate(`/evaluate`, {replace:true});
         } catch (error) {
