@@ -34,6 +34,9 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+.SignUp input:focus{
+    outline: none;
+}
 .SignUp .btn_type1{
     font-family: 'Pretendard';
     font-weight: 600;
