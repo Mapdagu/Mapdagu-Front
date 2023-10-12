@@ -5,11 +5,11 @@ import MainViewer from "../components/MainViewer";
 const Main = () => {
     return(
         <div className="container">
-            <div className="header">
+            {/* <div className="header">
                 <Header
                     type={1}
                 />
-            </div>
+            </div> */}
             <div className="content">
                 <MainViewer />
             </div>

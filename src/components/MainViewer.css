@@ -1,19 +1,16 @@
 .MainViewer{
     justify-content: center;
+    background-color: #F54343;
+    height: 320px;
 }
 
 .MainViewer .profile_wrapper{
     color: white;
     padding: 45px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     margin-bottom: 20px;
-    background-color: #F54343;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
     text-align: left;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
-    
 }
 
 .MainViewer .level_info{
@@ -26,19 +23,17 @@
     padding-left: 0;
     padding-right: 0;
     border: 2px solid #F54343;
+    background-color: white;
     border-radius: 20px;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
 }
-.MainViewer .item_wrapper{
-    border: 2px solid #F77F2E;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
-    display: flex;
+
+.MainViewer .item_wrapper{display: flex;
     padding: 15px;
     padding-left: 7px;
     padding-right: 7px;
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
 }
 .MainViewer .item_section{
     align-items: center;
@@ -46,19 +41,28 @@
     width: 165px;
     height: 165px;
     margin: auto;
+    margin-bottom: 20px;
     border: none;
     border-radius: 20px;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    position: relative;
+    /* box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);  */
 }
 .MainViewer .item_section img{
     cursor: pointer;
-    width: 100px;
-    height: 100px;
+    width: 145px;
+    height: 145px;
     border-radius: 15px;  
 }
 .MainViewer .item_info{
-    text-align: center;
-    margin-top: 5px;
+    position: absolute;
+    width: 109px;
+    top: 128px;
+    left: 23px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    text-align: left;
+    padding: 7px 0px 7px 10px;
 }
 .MainViewer .btn_viewmore{
     width: 100%;
@@ -68,7 +72,8 @@
     font-weight: 600;
     font-size: 14px;
     padding: 10px;
-    border: 1px solid #F77F2E;
+    margin-bottom: 20px;
+    border: none;
     border-radius: 10px;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
 }
@@ -128,9 +133,7 @@
     align-items: center;
     text-align: center;
     padding-top: 15px;
-    margin: 30px;
-    margin-top: 0;
-    margin-bottom: 40px;
+    margin: 0 30px 20px 30px;
     border: none;
     border-radius: 20px;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
@@ -158,15 +161,17 @@
 .MainViewer .text_itemname{
     font-family: 'Pretendard';
     font-weight: bold;
-    font-size: 16px;
-    margin: 0;
-    margin-bottom: 7px;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 .MainViewer .text_scoville{
     font-family: 'Pretendard';
-    font-size: 12px;
-    margin: 0;
-    margin-bottom: 7px;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+.MainViewer .text_score{
+    font-family: 'Pretendard';
+    font-size: 11px;
 }
 .MainViewer .lines{
     display: flex;

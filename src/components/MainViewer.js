@@ -40,40 +40,32 @@ const MainViewer = () => {
                 <div className="graph_section">
                     <Graph level={data.level}/>
                 </div>               
-                <div className="lines">
+                {/* <div className="lines">
                     <svg width="200" height="20">
                     <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
                     </svg>
                     <svg width="200" height="20">
                     <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
                     </svg>
-                </div>
+                </div> */}
                 <div className="item_wrapper">
                     <div className="item_section">
-                        <div className="item_info">                        
-                            <div className="text_itemname">신라면</div>       
-                            {/* <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>        */}
-                            <div className="text_scoville">스코빌지수: 8000</div>
-                            {/* <button className="btn_eval">평가하러 가기</button> */}
-                        </div>
                         <img alt="tImg" src={tImg}/>
+                        <div className="item_info">                        
+                            <div className="text_itemname">신라면</div>         
+                            <div className="text_scoville">스코빌지수: 8000</div>
+                            <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>     
+                        </div>
                     </div>
                     <div className="item_section">
+                        <img alt="tImg" src={tImg}/>
                         <div className="item_info">                        
                             <div className="text_itemname">신라면</div>       
                             <div className="text_scoville">스코빌지수: 8000</div>
+                            <div className="text_score">난이도: ☆ ☆ ☆ ☆ ☆</div>   
                         </div>
-                        <img alt="tImg" src={tImg}/>
                     </div>
-                </div>                
-                <div className="lines">
-                    <svg width="200" height="20">
-                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
-                    </svg>
-                    <svg width="200" height="20">
-                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
-                    </svg>
-                </div>
+                </div>     
                 <button className="btn_viewmore">내 레벨에 맞는 음식 전체보기</button>
             </div>
             <div className="search_boxs">
