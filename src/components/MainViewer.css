@@ -3,16 +3,27 @@
     background-color: #F54343;
     height: 320px;
 }
-
-.MainViewer .profile_wrapper{
-    color: white;
-    padding: 45px;
-    padding-top: 30px;
-    padding-bottom: 10px;
+.MainViewer .top_section{
+    padding: 32px;
+    padding-bottom: 12px;
     margin-bottom: 20px;
+    display: flex;
+}
+.MainViewer .profile_wrapper{
+    width: 70%;
+    color: white;
     text-align: left;
 }
-
+.MainViewer .header_icons{
+    width: 30%;
+    text-align: end;
+}
+.MainViewer .header_icons img{
+    cursor: pointer;
+    margin-left: 22px;
+    justify-content: center;
+    align-items: center;
+}
 .MainViewer .level_info{
     margin: 30px;
     margin-top: 0;

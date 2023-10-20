@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Graph from "./Graph";
 import { getTipById } from "../util";
-import tImg from "../img/ramen.png";
 import { getCookie } from "../cookie";
+import icon_search from "../img/icon/header_search_white.png";
+import icon_setting from "../img/icon/header_setting_white.png";
+import tImg from "../img/ramen.png";
+import { useNavigate } from "react-router-dom";
 
 const SERVER_URL = `https://mapdagu.site/api/members/me/main`;
 
@@ -12,6 +15,7 @@ const MainViewer = () => {
     const accessToken = getCookie("accessToken");
     const [data, setData] = useState({
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
         try{
@@ -28,26 +32,24 @@ const MainViewer = () => {
 
     return(
         <div className="MainViewer">
-            <div className="profile_wrapper">
-                    <div className="text_username">{data.userName}</div>
-                    <div className="text_level">
-                        {data.userName} 님은
-                        <a> Level. {data.level} </a>
-                        단계입니다.
-                    </div>
+            <div className="top_section">
+                <div className="profile_wrapper">
+                        <div className="text_username">{data.userName}</div>
+                        <div className="text_level">
+                            {data.userName} 님은
+                            <a> Level. {data.level} </a>
+                            단계입니다.
+                        </div>
+                </div>
+                <div className="header_icons">
+                    <img onClick={()=>{navigate(`/search`)}} alt="search" src={icon_search}/>
+                    <img onClick={()=>{navigate(`/mypage`)}} alt="setting" src={icon_setting}/>
+                </div>
             </div>
             <div className="level_info">
                 <div className="graph_section">
                     <Graph level={data.level}/>
-                </div>               
-                {/* <div className="lines">
-                    <svg width="200" height="20">
-                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
-                    </svg>
-                    <svg width="200" height="20">
-                    <line x1="100" x2="100" y1="0" y2="20" stroke="#F77F2E" strokeWidth="2" />
-                    </svg>
-                </div> */}
+                </div>    
                 <div className="item_wrapper">
                     <div className="item_section">
                         <img alt="tImg" src={tImg}/>
