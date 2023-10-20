@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Search.css";
 import SearchBar from "./SearchBar";
 import axios from "axios";
@@ -7,12 +7,16 @@ import FriendItem from "./friend/FriendItem";
 import FoodItem from "./FoodItem";
 import icon_back from "../img/icon/header_back.png";
 import { useNavigate } from "react-router-dom";
+import { SearchStateContext, EvalDispatchContext } from "../App";
+import RecentSearchedItem from "./RecentSearchedItem";
 
 const SEARCH_MEMBER = `https://mapdagu.site/api/friends?search`;
-const SEARCH_FOOD = `https://mapdagu.site/api/food?search`;
+const SEARCH_FOOD = `https://mapdagu.site/api/foods?search`;
 
 const Search = ({isFood}) => {
     const accessToken = getCookie("accessToken");
+    const searchData = useContext(SearchStateContext);
+    const {onCreate, onDelete} = useContext(EvalDispatchContext);
     const [data, setData] = useState();
     const [contents, setContents] = useState("");
     const navigate = useNavigate();
@@ -22,6 +26,7 @@ const Search = ({isFood}) => {
     }
     const onSubmit = async(contents) => {
         setContents(contents);
+        onCreate(2, contents);
         try{
             if(isFood){
                 axios.get([SEARCH_FOOD, contents].join("="), {headers: {Authorization: accessToken}})
@@ -44,6 +49,9 @@ const Search = ({isFood}) => {
             alert(error.response.data.message);
         }
     }
+    const deleteAll = () => {
+        onDelete(3);
+    }
     if(!data){
         return(
             <div className="Search">
@@ -56,11 +64,18 @@ const Search = ({isFood}) => {
                         <h1>최근 검색어</h1>
                     </div>
                     <div className="right">
-                        <button className="btn_delete">전체 삭제</button>
+                        <button className="btn_delete" onClick={deleteAll}>전체 삭제</button>
                     </div>
                 </div>
                 <div className="list_wrapper">
-                {/* 최근 검색어 리스트    */}
+                    {searchData.map((it) => (                           
+                        <RecentSearchedItem
+                            key={it.id}
+                                {...it}
+                                onDelete={onDelete}
+                                isFood={isFood}
+                        />
+                    ))}
                 </div>
             </div>  
         );      

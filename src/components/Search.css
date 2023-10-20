@@ -1,11 +1,10 @@
 .Search{
-    margin: 20px;
-    margin-top: 30px;
+    margin: 30px;
 }
 .Search .contents_top{
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-top: 30px;
 }
 .Search .search_bar_wrapper{
     width: 100%;    
@@ -47,5 +46,5 @@
     padding-left: 10px;
 }
 .Search .list_wrapper{
-    margin-top: 50px;
+    margin-top: 30px;
 }

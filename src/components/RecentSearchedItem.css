@@ -1,0 +1,20 @@
+.RecentSearchedItem{
+    display: flex;
+    align-items: center;
+    padding-bottom: 22px;
+}
+.RecentSearchedItem img{
+    padding-right: 28px;
+}
+.RecentSearchedItem .text_itemName{
+    width: 70%;
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+.RecentSearchedItem .button_delete{
+    cursor: pointer;
+    padding: 0;
+    margin-left: 28px;
+}
