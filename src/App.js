@@ -28,7 +28,7 @@ const SOCIAL_SIGN_UP_URL = 'https://mapdagu.site/api/sign-up/social';
 const LOGIN_URL = 'https://mapdagu.site/login';
 
 export const EvalStateContext = React.createContext();
-export const UserStateContext = React.createContext();
+export const SearchStateContext = React.createContext();
 export const EvalDispatchContext = React.createContext();
 
 function reducer(state, action) {
@@ -45,7 +45,7 @@ function reducer(state, action) {
       return state.filter((it) => String(it.id) !== String(action.targetId));
     }
     case "INIT": {
-      return action.data;
+      return state.filter((it) => String(it.id) === -1);
     }
     default: {
       return state;
@@ -56,7 +56,9 @@ function reducer(state, action) {
 const maxTestNum = 2;
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [testData, testDispatch] = useReducer(reducer, []);
+  const [searchData, searchDispatch] = useReducer(reducer, []);
+  const [idRef, setIdRef] = useState(0);
   const navigate = useNavigate();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [userInf, setUserInf] = useState({
@@ -73,10 +75,6 @@ function App() {
   const {nickname, email, password, isSocial} = userInf;  
 
   useEffect(() => {
-    // dispatch({
-    //   type: "INIT",
-    //   data: mockData,
-    // });
     setIsDataLoaded(true);
   }, []);
 
@@ -145,32 +143,55 @@ function App() {
     })
   }
 
-  const onCreate = (targetId, itemName, selectionId) => {
-    dispatch({
-      type: "CREATE",
-      data: {
-        id: targetId,
-        itemName,
-        selectionId,
-      }
-    })
-    // idRef.current += 1;
+  const onCreate = (type, itemName, targetId, selectionId) => {
+    if(type===1){
+      testDispatch({
+        type: "CREATE",
+        data: {
+          id: targetId,
+          itemName,
+          selectionId,
+        }
+      })
+    }else if(type===2){
+      searchDispatch({
+        type: "CREATE",
+        data: {
+          id: idRef,
+          itemName,
+        }
+      })
+      setIdRef(idRef+1);
+    }
   }
-  const onUpdate = (targetId, itemName, selectionId) => {
-    dispatch({
-      type: "UPDATE",
-      data: {
-        id: targetId,
-        itemName,
-        selectionId,
-      },
-    });
+  const onUpdate = (type, itemName, targetId, selectionId) => {
+    if(type===1){
+      testDispatch({
+        type: "UPDATE",
+        data: {
+          id: targetId,
+          itemName,
+          selectionId,
+        },
+      });
+    }
   };
-  const onDelete = (targetId) => {
-    dispatch({
-      type: "DELETE",
-      targetId,
-    });
+  const onDelete = (type, targetId) => {
+    if(type===1){
+      testDispatch({
+        type: "DELETE",
+        targetId,
+      });
+    }else if(type===2){
+      searchDispatch({
+        type: "DELETE",
+        targetId,
+      });
+    }else{
+      searchDispatch({
+        type: "INIT"
+      });
+    }
   };
   
   const onSubmit = async() => {    
@@ -181,8 +202,8 @@ function App() {
     return <div>데이터를 불러오는 중입니다</div>
   else {
     return (
-      <EvalStateContext.Provider value={data}>
-        <UserStateContext.Provider value={userInf}>
+      <EvalStateContext.Provider value={testData}>
+        <SearchStateContext.Provider value={searchData}>
           <EvalDispatchContext.Provider
             value={{
               onCreate,
@@ -214,7 +235,7 @@ function App() {
                 </Routes>
             </div>
           </EvalDispatchContext.Provider>
-        </UserStateContext.Provider>
+        </SearchStateContext.Provider>
       </EvalStateContext.Provider>
     );
   }

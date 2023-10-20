@@ -44,7 +44,7 @@ const Result = ({maxTestNum, role}) => {
           }
           
         for(let i=0; i<maxTestNum+1; i++){
-          onDelete(i);
+          onDelete(1, "", i);
         }
     }, []);
     

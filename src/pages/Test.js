@@ -15,22 +15,21 @@ const Test = ({maxTestNum}) => {
         if(testNum === 0){
             navigate(-1);
             for(let i=0; i<maxTestNum+1; i++){
-              onDelete(i);
+              onDelete(1, i);
             }
         }
         else{
-            // onDelete(idRefTest);
             setTestNum(testNum - 1);
             setIdRefTest(idRefTest-1);
         }
     }
     const goNext = (itemName, selectionId) => {
         if(!matchItem){
-            onCreate( idRefTest, itemName, selectionId );
+            onCreate( 1, itemName, idRefTest, selectionId );
             setIdRefTest(idRefTest+1);
         }
         else{
-            onUpdate( idRefTest, itemName, selectionId );
+            onUpdate( 1, itemName, idRefTest, selectionId );
             setIdRefTest(idRefTest+1);
         }
         // console.log(testData);
@@ -41,7 +40,7 @@ const Test = ({maxTestNum}) => {
             setTestNum(testNum + 1);
         }
     }
-    const submitHandler = async (e) => {
+    const submitHandler = () => {
         navigate(`/result`);
     }
     return (
