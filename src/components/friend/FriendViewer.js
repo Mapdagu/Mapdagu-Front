@@ -7,8 +7,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { getCookie } from "../../cookie";
 import Modal from "react-modal";
-import RequestItem from "./RequestItem";
 import { useNavigate } from "react-router-dom";
+import RequestModal from "./RequestModal";
 
 const MANAGE_FRIEND = `https://mapdagu.site/api/friends`;
 const REQUEST_FRIEND = `https://mapdagu.site/api/friends/request`;
@@ -50,7 +50,7 @@ const FriendViewer = () => {
             alert(error.response.data.message);
         }
     }
-    const managefriend = (memberId, isAdd) => {
+    const manageFriend = (memberId, isAdd) => {
         try{
             if(isAdd){
                 axios.post([MANAGE_FRIEND, memberId].join("/"), {memberId}, {headers: {Authorization: accessToken}});                
@@ -64,6 +64,9 @@ const FriendViewer = () => {
         } catch(error){
             alert(error.response.data.message);
         }
+    }
+    const closeModal = () => {
+        setModalIsOpen(false);
     }
 
     const modalStyle = {
@@ -82,22 +85,9 @@ const FriendViewer = () => {
         <div className="FriendViewer">
             <div className="contents_top">
                 <button className="text_title" onClick={() => navigate(0)}>친구 목록</button>
-                <img className="img_noti" onClick={() => {setModalIsOpen(true)}}alt="noti" src={ !requestData || requestData.length === 0 ? icon_noti : icon_noti_on}/>
-                <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
-                    <div className="friend_modal_title">친구 요청</div>
-                    <div><button className="btn_profile_close" onClick={() => setModalIsOpen(false)}>×</button></div>
-                    <div className="request_list_wrapper">
-                        { !requestData || requestData.length === 0 ?
-                        <p>받은 요청이 없습니다</p> :
-                        requestData.map((it) => (                            
-                            <RequestItem
-                                key={it.id}
-                                    {...it}
-                                    onAccept={managefriend}
-                                    onDelete={deleteRequest}
-                            />
-                        ))}
-                    </div>
+                <img className="img_noti" onClick={() => {setModalIsOpen(true)}} alt="noti" src={ !requestData || requestData.length === 0 ? icon_noti : icon_noti_on}/>
+                <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>    
+                    <RequestModal closeModal={closeModal} requestData={requestData} deleteRequest={deleteRequest} manageFriend = {manageFriend}/>
                 </Modal>
             </div>
             <div className="graph_wrapper">
@@ -110,7 +100,7 @@ const FriendViewer = () => {
                     <FriendItem
                         key={it.id}
                             {...it}
-                            onDelete={managefriend}
+                            onDelete={manageFriend}
                     />
                 ))}
             </div>
