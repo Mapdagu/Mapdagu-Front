@@ -7,6 +7,7 @@
     padding-right: 28px;
 }
 .RecentSearchedItem .text_itemName{
+    cursor: pointer;
     width: 70%;
     font-family: 'Pretendard';
     font-weight: 600;

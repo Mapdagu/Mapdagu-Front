@@ -24,9 +24,11 @@ const Search = ({isFood}) => {
     const handleOnBack = () => {
         navigate(-1);
     }
-    const onSubmit = async(contents) => {
+    const onSubmit = async(contents, isRecent) => {
         setContents(contents);
-        onCreate(2, contents);
+        if(!isRecent){
+            onCreate(2, contents);
+        }
         try{
             if(isFood){
                 axios.get([SEARCH_FOOD, contents].join("="), {headers: {Authorization: accessToken}})
@@ -52,6 +54,9 @@ const Search = ({isFood}) => {
     const deleteAll = () => {
         onDelete(3);
     }
+    const onClickContents = (recentContents) => {
+        onSubmit(recentContents, true);
+    }
     if(!data){
         return(
             <div className="Search">
@@ -74,6 +79,7 @@ const Search = ({isFood}) => {
                                 {...it}
                                 onDelete={onDelete}
                                 isFood={isFood}
+                                onClickContents={onClickContents}
                         />
                     ))}
                 </div>
