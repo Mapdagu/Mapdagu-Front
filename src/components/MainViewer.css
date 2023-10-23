@@ -102,28 +102,33 @@
 }
 .item_section.left img{
     width: 145px;
-    height: 145px;
+    height: 110px;
     margin: 15px;
+    overflow: hidden;
+    object-fit: cover; 
 }
 .MainViewer .search_boxs .item_section.right{
     width: 175px;
     height: 175px;
     margin-right: 0;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
-    /* align-items: center; */
 }
-.MainViewer textarea{
+.MainViewer input{
     width: 125px;
-    height: 70px;
+    height: 50px;
     background-color: #F5F5F5;
-    color: #B0B0B0;
     border: none;
     border-radius: 15px;
     padding: 10px;
     margin: 15px;
     resize: none;
     font-family: 'Pretendard';
+    font-weight: bold;
     font-size: 14px;
+    text-align: center;
+}
+.MainViewer input:focus{
+    outline: none;
 }
 .MainViewer .btn_submit{
     cursor: pointer;
@@ -141,6 +146,7 @@
     margin-top: 0;
 }
 .MainViewer .tip_box{
+    position: relative;
     align-items: center;
     text-align: center;
     padding-top: 15px;
@@ -151,6 +157,12 @@
     font-family: 'Pretendard';
     font-weight: bold;
     font-size: 16px;
+}
+.MainViewer .btn_change{
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 15px;
 }
 
 
@@ -184,9 +196,17 @@
     font-family: 'Pretendard';
     font-size: 11px;
 }
-.MainViewer .lines{
-    display: flex;
-    justify-content: center;
+.MainViewer .text_search{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.MainViewer .text_result{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
 }
 .MainViewer .text_tip{
     font-weight: 600;
