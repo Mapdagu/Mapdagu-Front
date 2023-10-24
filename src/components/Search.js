@@ -13,7 +13,7 @@ import RecentSearchedItem from "./RecentSearchedItem";
 const SEARCH_MEMBER = `https://mapdagu.site/api/friends?search`;
 const SEARCH_FOOD = `https://mapdagu.site/api/foods?search`;
 
-const Search = ({isFood}) => {
+const Search = ({isFood, isModal, onSelect, changeModalSize}) => {
     const accessToken = getCookie("accessToken");
     const searchData = useContext(SearchStateContext);
     const {onCreate, onDelete} = useContext(EvalDispatchContext);
@@ -26,15 +26,17 @@ const Search = ({isFood}) => {
     }
     const onSubmit = async(contents, isRecent) => {
         setContents(contents);
-        if(!isRecent){
+        if(isModal){
+            changeModalSize(true);
+        }
+        if(!isRecent && !isModal){
             onCreate(2, contents);
         }
         try{
             if(isFood){
                 axios.get([SEARCH_FOOD, contents].join("="), {headers: {Authorization: accessToken}})
                 .then(res => {
-                    setData(res.data.content.map((item, index) => ({
-                        id: index,
+                    setData(res.data.content.map((item) => ({
                         ...item
                     })));
                 })
@@ -54,35 +56,47 @@ const Search = ({isFood}) => {
     const deleteAll = () => {
         onDelete(3);
     }
-    const onClickContents = (recentContents) => {
+    const onClickRecent = (recentContents) => {
         onSubmit(recentContents, true);
+    }
+    const onClickItem = (id, name, image) => {
+        if(isModal){
+            onSelect(name, image);
+            changeModalSize(false);
+        }else{
+            navigate(`/detail/${id}`);
+        }
     }
     if(!data){
         return(
             <div className="Search">
                 <div className="contents_top">
-                    {isFood ? <img className="img_back" onClick={handleOnBack} alt="back" src={icon_back}/> : ""}
+                    {isFood && !isModal ? <img className="img_back" onClick={handleOnBack} alt="back" src={icon_back}/> : ""}
                     <SearchBar onSubmit={onSubmit}/>
                 </div>
-                <div className="contents_top">
-                    <div className="left">
-                        <h1>최근 검색어</h1>
+                { !isModal ? 
+                <div>
+                    <div className="contents_top">
+                        <div className="left">
+                            <h1>최근 검색어</h1>
+                        </div>
+                        <div className="right">
+                            <button className="btn_delete" onClick={deleteAll}>전체 삭제</button>
+                        </div>
                     </div>
-                    <div className="right">
-                        <button className="btn_delete" onClick={deleteAll}>전체 삭제</button>
+                    <div className="list_wrapper">
+                        {searchData.map((it) => (                           
+                            <RecentSearchedItem
+                                key={it.id}
+                                    {...it}
+                                    onDelete={onDelete}
+                                    isFood={isFood}
+                                    onClickRecent={onClickRecent}
+                            />
+                        ))}
                     </div>
                 </div>
-                <div className="list_wrapper">
-                    {searchData.map((it) => (                           
-                        <RecentSearchedItem
-                            key={it.id}
-                                {...it}
-                                onDelete={onDelete}
-                                isFood={isFood}
-                                onClickContents={onClickContents}
-                        />
-                    ))}
-                </div>
+                : "" }
             </div>  
         );      
     }
@@ -90,7 +104,7 @@ const Search = ({isFood}) => {
         return(
             <div className="Search">
                 <div className="contents_top">
-                    {isFood ? <img className="img_back" onClick={handleOnBack} alt="back" src={icon_back}/> : ""}
+                    {isFood && !isModal ? <img className="img_back" onClick={handleOnBack} alt="back" src={icon_back}/> : ""}
                     <SearchBar onSubmit={onSubmit}/>
                 </div>
                 <div className="list_wrapper">
@@ -102,6 +116,7 @@ const Search = ({isFood}) => {
                         <FoodItem
                             key={it.id}
                                 {...it}
+                                onClickItem={onClickItem}
                         />
                     )) :
                     data.map((it) => (                            
