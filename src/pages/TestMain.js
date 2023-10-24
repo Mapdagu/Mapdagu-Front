@@ -33,13 +33,13 @@ const TestMain = ({getUserRole, role}) => {
 
     const modalStyle = {
         content: {
-            width: "300px",
-            height: "280px",
+            width: "290px",
+            height: "240px",
             margin: "auto",
-            padding: "20px",
-            border: "1px solid #ccc",
-            borderRadius: "50px", 
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            padding: "10px",
+            border: "none",
+            borderRadius: "30px", 
+            boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
         }
     }
 

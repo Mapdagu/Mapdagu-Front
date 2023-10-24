@@ -48,7 +48,7 @@ const LoginEmail = ({getUserRole, closeModal}) => {
 
     return (
         <div className="LoginEmail">
-            <h2>로그인</h2>
+            {/* <h2>로그인</h2> */}
             <div className="login_input">
                 <div>
                     <input 
