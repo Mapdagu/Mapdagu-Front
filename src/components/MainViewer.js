@@ -2,7 +2,7 @@ import "./MainViewer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Graph from "./Graph";
-import { getItemImgById, getTipById } from "../util";
+import { getTipById } from "../util";
 import { getCookie } from "../cookie";
 import icon_search from "../img/icon/header_search_white.png";
 import icon_setting from "../img/icon/header_setting_white.png";
@@ -92,14 +92,11 @@ const MainViewer = () => {
             <div className="search_boxs">
                 <div className="item_section left">
                     {result ? 
-                    <img alt="food_img" src={getItemImgById(result.imageNum)}/>
+                    <img alt="food_img" src={result.image}/>
                     : <img alt="default_img" src={tImg}/>}
                     <div className="text_result">스코빌지수: {result ? result.scoville : "none"}</div>
                 </div>
                 <div className="item_section right">
-                    {/* <textarea 
-                        placeholder="스코빌 지수를 알고 싶은 음식을 검색해보세요!"
-                    /> */}
                     <div className="text_search">스코빌지수 검색창</div>
                     <input 
                         className="search_box" 
