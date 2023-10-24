@@ -1,6 +1,6 @@
 import "./EvaluationItem.css";
 import { useNavigate } from "react-router-dom";
-import { getItemImgById, getSelectionTextById } from "../util";
+import { getSelectionTextById } from "../util";
 import icon_edit from "../img/icon/evaluate_edit.png";
 import icon_delete from "../img/icon/evaluate_delete.png";
 import star from "../img/icon/star.png";
@@ -10,7 +10,7 @@ import { getCookie } from "../cookie";
 
 const SERVER_URL = `https://mapdagu.site/api/evaluations`;
 
-const EvaluationItem = ({id, name, imageNum, score, scoville, maxTestNum}) => {
+const EvaluationItem = ({id, name, image, score, scoville, maxTestNum}) => {
     const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const goDetail = () => {
@@ -21,7 +21,7 @@ const EvaluationItem = ({id, name, imageNum, score, scoville, maxTestNum}) => {
     }
     const onClickDelete = async() => {
         if(window.confirm("평가를 정말 삭제할까요?")){
-            if(imageNum >= 1 && imageNum <= maxTestNum+1 ){
+            if(id >= 1 && id <= maxTestNum+1 ){
                 alert("테스트 결과는 삭제할 수 없습니다.");
             } else {
                 try{
@@ -37,7 +37,7 @@ const EvaluationItem = ({id, name, imageNum, score, scoville, maxTestNum}) => {
     return (
         <div className="EvaluationItem">
             <div onClick={goDetail} className="img_section">
-                <img alt="" src={getItemImgById(imageNum)}/>
+                <img alt="" src={image}/>
             </div>    
             <div onClick={goDetail} className="info_section">
                 <div className="item_name">

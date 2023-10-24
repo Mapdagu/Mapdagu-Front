@@ -140,7 +140,7 @@
     background-color: #000000;
     color: white;
 }
-.btn_profile_close{
+.btn_modal_close{
     cursor: pointer;
     position: absolute;
     top: 30px;

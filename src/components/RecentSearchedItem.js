@@ -2,12 +2,12 @@ import "./RecentSearchedItem.css";
 import icon_search from "../img/icon/search_search.png";
 import icon_delete from "../img/icon/search_delete.png";
 
-const RecentSearchedItem = ({isFood, id, itemName, onDelete, onClickContents}) => {
+const RecentSearchedItem = ({isFood, id, itemName, onDelete, onClickRecent}) => {
     const deleteHandler = () => {
         onDelete(2, id);
     }
     const onClickHandler = () => {
-        onClickContents(itemName);
+        onClickRecent(itemName);
     }
 
     if(isFood){

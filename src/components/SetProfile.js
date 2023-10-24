@@ -122,7 +122,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                     </button>
                     <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
                         <div className="modal_title">프로필 선택</div>
-                        <div><button className="btn_profile_close" onClick={() => setModalIsOpen(false)}>×</button></div>
+                        <div><button className="btn_modal_close" onClick={() => setModalIsOpen(false)}>×</button></div>
                         <div className="profile_list_wrapper">
                             <div className="profile_images">
                                 <a>Hot</a>
