@@ -1,17 +1,34 @@
 import Header from "../components/Header";
-import Viewer from "../components/Viewer";
+import DetailViewer from "../components/DetailViewer";
 import { useNavigate, useParams } from "react-router-dom";
 import icon_back from "../img/icon/header_back.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { getCookie } from "../cookie";
+
+const GET_FOOD_INFO = `https://mapdagu.site/api/foods`;
 
 const Details = () => {
     const { id } = useParams();
+    const accessToken = getCookie("accessToken");
+    const [data, setData] = useState();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        try{
+            axios.get([GET_FOOD_INFO, id].join("/"), {headers: {Authorization: accessToken}})
+            .then(res => {
+                setData({
+                    ...res.data,
+                })
+            });
+        } catch(error){
+            alert(error.response.data.message);
+        }
+    }, [])
 
     const handleOnBack = () => {
         navigate(-1);
-    }
-    const handleCreateEval = () => {
-        navigate(`/create_evalution`);
     }
     return (
         <div className="container">
@@ -19,7 +36,7 @@ const Details = () => {
                 <Header type={1} leftChild={<button onClick={handleOnBack}><img alt="back" src={icon_back}/></button>}/>                
             </div>
             <div className="content">
-                <Viewer itemName="신라면" id={parseInt(id)+1}/>
+                <DetailViewer initData={data}/>
             </div>
         </div>
     )
