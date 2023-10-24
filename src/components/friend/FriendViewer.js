@@ -26,8 +26,9 @@ const FriendViewer = () => {
         try{
             axios.get(FRIENDS_LIST, {headers: {Authorization: accessToken}})
             .then(res => {
-                setData(res.data.content.map((item) => ({
-                    ...item
+                setData(res.data.content.map((item, index) => ({
+                    ...item,
+                    index,
                 })));
             });
             axios.get(REQUEST_FRIEND, {headers: {Authorization: accessToken}})
@@ -72,7 +73,7 @@ const FriendViewer = () => {
     const modalStyle = {
         content: {
             width: "350px",
-            height: "600px",
+            height: "500px",
             margin: "auto",
             padding: "20px",
             border: "none",

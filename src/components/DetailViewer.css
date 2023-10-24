@@ -1,0 +1,101 @@
+.DetailViewer {
+    height: 500px;
+    text-align: center;
+    position: relative;
+    background-color: #F6F6F6;
+    padding-top: 40px;    
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.DetailViewer .viewer_container{
+    width: 100%;
+    top: 340px;
+    position: absolute;
+    background-color: white;
+    padding-top: 45px;
+    padding-bottom: 50px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.DetailViewer .image_wrapper{
+    position: absolute;
+    width: 280px;
+    height: 320px;
+    left: calc(50% - 140px);
+    top: 50px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 5px 5px -1px rgba(0, 0, 0, 0.25); 
+}
+.DetailViewer .image_wrapper img{
+    cursor: pointer;
+    width: 230px;
+    height: 230px;
+    margin-top: 25px;
+}
+.DetailViewer .text_wrapper{
+    margin-bottom: 20px;
+}
+.DetailViewer .difficulty_score{
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-weight: 500; 
+    color: #9F9F9F;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.DetailViewer .btn_score{
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 2px solid #F67460;
+    border-radius: 10px;
+    font-family: 'Pretendard';
+    font-size: 15px;
+    font-weight: bold; 
+}
+.DetailViewer .selection_list_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+.DetailViewer .buttons{
+    display: flex;
+    justify-content: center;
+}
+.DetailViewer .buttons button {
+    width: 170px;
+    padding: 18px 15px 18px 15px;
+    margin: 0 15px 20px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #DB1D22;
+    box-shadow: 5px 5px 7px -2px rgba(0, 0, 0, 0.25);  
+    color: white;
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-weight: bold;
+}
+.DetailViewer .text_name{
+    margin: 13px;
+    font-family: 'Pretendard';
+    font-size: 24px;
+    font-weight: bold;
+}
+.DetailViewer .text_scoville{
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+.DetailViewer .text_section{
+    width: 70%;
+    height: 180px;    
+    margin: auto auto 10px auto;
+}
