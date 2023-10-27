@@ -54,7 +54,7 @@ const LoginEmail = ({getUserRole, closeModal}) => {
                     <input 
                         name="email"
                         onChange={handleInput}
-                        placeholder="아이디"
+                        placeholder="ID"
                     />
                 </div>
                 <div>
@@ -62,7 +62,7 @@ const LoginEmail = ({getUserRole, closeModal}) => {
                         type = "password"
                         name="password"
                         onChange={handleInput}
-                        placeholder="비밀번호"
+                        placeholder="P/W"
                     />
                 </div>  
                 <button className="btn_login" onClick={onSubmit}>로그인</button>
