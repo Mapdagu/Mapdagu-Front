@@ -1,14 +1,18 @@
-import { useParams } from "react-router-dom";
 import Header from "../components/Header"
 import Navigator from "../components/Navigator"
-import axios from "axios"
+
+import { useParams } from "react-router-dom";
 import { getCookie } from "../cookie";
+import axios from "axios"
 
 const SERVER_URL = `https://mapdagu.site/api/friends/request`;
+
 const UserPage = () => {
     const accessToken = getCookie("accessToken");
     const { id } = useParams();
+
     const friendId = id;
+
     const onRequest = async() => {
         try{
             console.log(friendId);
@@ -17,6 +21,7 @@ const UserPage = () => {
             alert(error.response.data.message);
         }
     }
+    
     return(
         <div className="container">
             <div className="header">

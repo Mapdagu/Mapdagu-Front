@@ -1,15 +1,17 @@
-import Navigator from "../components/Navigator";
-import EvaluationList from "../components/EvaluationList";
 import Header from "../components/Header";
+import Navigator from "../components/Navigator";
+import EvaluationList from "../components/evaluate/EvaluationList";
+
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { getCookie } from "../cookie";
+import axios from "axios";
 
 const GET_ALL_ITEM = `https://mapdagu.site/api/evaluations/me`;
 const GET_SEARCHED_ITEM = `https://mapdagu.site/api/evaluations?search`;
 
 const Evaluate = ({maxTestNum}) => {
     const accessToken = getCookie("accessToken");
+    
     const [data, setData] = useState();
         
     useEffect(() => {

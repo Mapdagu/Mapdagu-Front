@@ -1,0 +1,218 @@
+.Main{
+    justify-content: center;
+    background-color: #F54343;
+    height: 320px;
+}
+.Main .top_section{
+    padding: 32px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    display: flex;
+}
+.Main .profile_wrapper{
+    width: 70%;
+    color: white;
+    text-align: left;
+}
+.Main .header_icons{
+    width: 30%;
+    text-align: end;
+}
+.Main .header_icons img{
+    cursor: pointer;
+    margin-left: 22px;
+    justify-content: center;
+    align-items: center;
+}
+.Main .level_info{
+    margin: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.Main .graph_section{
+    padding: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    border: 2px solid #F54343;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    margin-bottom: 20px;
+}
+
+.Main .item_wrapper{display: flex;
+    padding: 15px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-bottom: 20px;
+}
+.Main .item_section{
+    align-items: center;
+    text-align: center;
+    width: 165px;
+    height: 165px;
+    margin: auto;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    position: relative;
+    /* box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);  */
+}
+.Main .item_section img{
+    cursor: pointer;
+    width: 145px;
+    height: 145px;
+    border-radius: 15px;  
+}
+.Main .item_info{
+    position: absolute;
+    width: 109px;
+    top: 128px;
+    left: 23px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    text-align: left;
+    padding: 7px 0px 7px 10px;
+}
+.Main .btn_viewmore{
+    width: 100%;
+    cursor: pointer;
+    background-color: white;
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+}
+.Main .search_boxs{
+    display: flex;
+    margin: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.Main .search_boxs .item_section.left{
+    width: 175px;
+    height: 175px;
+    margin-left: 0;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+}
+.Main .item_section.left img{
+    width: 145px;
+    height: 110px;
+    margin: 15px;
+    overflow: hidden;
+    object-fit: cover; 
+}
+.Main .search_boxs .item_section.right{
+    width: 175px;
+    height: 175px;
+    margin-right: 0;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.Main input{
+    width: 125px;
+    height: 50px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 15px;
+    resize: none;
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+.Main input:focus{
+    outline: none;
+}
+.Main .btn_submit{
+    cursor: pointer;
+    width: 145px;
+    height: 30px;
+    background-color: #F5F5F5;
+    color: #797979;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px;
+    margin: 15px;
+    margin-top: 0;
+}
+.Main .tip_box{
+    position: relative;
+    align-items: center;
+    text-align: center;
+    padding-top: 15px;
+    margin: 0 30px 20px 30px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25); 
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 16px;
+}
+.Main .btn_change{
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 15px;
+}
+
+
+.Main .text_username{
+    font-family: 'yg-jalnan';
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 5px;
+}
+.Main .text_level{
+    font-family: 'Pretendard';
+    font-weight: 100;
+    font-size: 14px;
+    margin: 0;
+}
+.Main .text_level a{
+    font-weight: 600;
+}
+.Main .text_itemname{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.Main .text_scoville{
+    font-family: 'Pretendard';
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+.Main .text_score{
+    font-family: 'Pretendard';
+    font-size: 11px;
+}
+.Main .text_search{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.Main .text_result{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.Main .text_tip{
+    font-weight: 600;
+    font-size: 14px;
+    color: #999999;
+    padding: 15px;
+    padding-top: 10px;
+    line-height: 1.5;
+}

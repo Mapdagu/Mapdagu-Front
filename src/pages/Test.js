@@ -1,14 +1,16 @@
-import Selection from "../components/Selection";
-import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import Selection from "../components/evaluate/Selection";
 import { EvalDispatchContext, EvalStateContext } from "../App";
 
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Test = ({maxTestNum}) => {        
+    const navigate = useNavigate();
     const testData = useContext(EvalStateContext);
     const {onCreate, onUpdate, onDelete} = useContext(EvalDispatchContext);
+
     const [ testNum, setTestNum ] = useState(0);
     const [ idRefTest, setIdRefTest ] = useState(0);
-    const navigate = useNavigate();
     const matchItem = testData.find((it)=> String(it.id) === String(idRefTest));
 
     const goBack = () => {
@@ -43,6 +45,7 @@ const Test = ({maxTestNum}) => {
     const submitHandler = () => {
         navigate(`/result`);
     }
+    
     return (
         <div className="container">
             <div className="content">

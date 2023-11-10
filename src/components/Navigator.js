@@ -1,14 +1,17 @@
-import "./Navigator.css";
+import "../styles/Navigator.css";
+
+import icon_main_on from "../assets/icon/navi_main_on.png"
+import icon_main_off from "../assets/icon/navi_main_off.png"
+import icon_friend_on from "../assets/icon/navi_friend_on.png"
+import icon_friend_off from "../assets/icon/navi_friend_off.png"
+import icon_eval_on from "../assets/icon/navi_eval_on.png"
+import icon_eval_off from "../assets/icon/navi_eval_off.png"
+
 import { useNavigate } from "react-router-dom";
-import icon_main_on from "../img/icon/navi_main_on.png"
-import icon_main_off from "../img/icon/navi_main_off.png"
-import icon_friend_on from "../img/icon/navi_friend_on.png"
-import icon_friend_off from "../img/icon/navi_friend_off.png"
-import icon_eval_on from "../img/icon/navi_eval_on.png"
-import icon_eval_off from "../img/icon/navi_eval_off.png"
 
 const Navigator = ({current}) => {
     const navigate = useNavigate();
+
     const goMain = () => {
         navigate(`/main`);
     }
@@ -18,9 +21,10 @@ const Navigator = ({current}) => {
     const goEval = () => {
         navigate(`/evaluate`);
     }
-    const goMyPage = () => {
-        navigate(`/mypage`);
-    }
+    // const goMyPage = () => {
+    //     navigate(`/mypage`);
+    // }
+    
     return (
         <div className="Navigator">
             <button onClick={goMain}>

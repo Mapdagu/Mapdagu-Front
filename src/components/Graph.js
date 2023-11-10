@@ -1,5 +1,5 @@
+import "../styles/Graph.css";
 import { useEffect, useState } from "react";
-import "./Graph.css";
 
 const Graph = ({level}) => {
     const buttons = [

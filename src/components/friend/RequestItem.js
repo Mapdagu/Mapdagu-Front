@@ -1,4 +1,4 @@
-import "./RequestItem.css";
+import "../../styles/RequestItem.css";
 import { getProfileImgById } from "../../util";
 
 const RequestItem = ({id, imageNum, userName, level, onAccept, onDelete}) => {
@@ -8,6 +8,7 @@ const RequestItem = ({id, imageNum, userName, level, onAccept, onDelete}) => {
     const handleOnDelete = () => {
         onDelete(id);
     }
+    
     return (
         <div className="RequestItem">
             <div className="image_section">

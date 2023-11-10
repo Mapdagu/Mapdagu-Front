@@ -1,13 +1,15 @@
+import "../../styles/FriendViewer.css";
 import Graph from "../Graph";
-import "./FriendViewer.css";
-import icon_noti from "../../img/icon/friend_notification.png";
-import icon_noti_on from "../../img/icon/friend_notification_on.png";
 import FriendItem from "./FriendItem";
-import axios from "axios";
+
+import icon_noti from "../../assets/icon/friend_notification.png";
+import icon_noti_on from "../../assets/icon/friend_notification_on.png";
+
 import { useEffect, useState } from "react";
-import { getCookie } from "../../cookie";
-import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../cookie";
+import axios from "axios";
+import Modal from "react-modal";
 import RequestModal from "./RequestModal";
 
 const MANAGE_FRIEND = `https://mapdagu.site/api/friends`;
@@ -17,6 +19,7 @@ const FRIENDS_LIST = `https://mapdagu.site/api/friends/me`;
 const FriendViewer = () => {
     const navigate = useNavigate();
     const accessToken = getCookie("accessToken");
+    
     const [data, setData] = useState();
     const [requestData, setRequestData] = useState();
     const [modalIsOpen, setModalIsOpen] = useState(false);

@@ -1,11 +1,14 @@
+import "../styles/MyPage.css";
 import Header from "../components/Header";
 import Navigator from "../components/Navigator";
-import MyPageViewer from "../components/MyPageViewer";
-import { useNavigate } from "react-router-dom";
+import { getProfileImgById } from "../util";
+
+import icon_back from "../assets/icon/header_back.png";
+
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { getCookie } from "../cookie";
-import icon_back from "../img/icon/header_back.png";
+import axios from "axios";
 
 const PROFILE_URL = `https://mapdagu.site/api/members/me/info`;
 const LOGOUT_URL = `https://mapdagu.site/api/auth/logout`;
@@ -13,13 +16,14 @@ const LOGOUT_URL = `https://mapdagu.site/api/auth/logout`;
 const MyPage = ({initUserRole}) => {
     const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
-    const [state, setState] = useState();
+
+    const [data, setData] = useState();
 
     useEffect(() => {
         try{
             axios.get(PROFILE_URL, {headers: {Authorization: accessToken}})
                 .then(res => {
-                    setState({
+                    setData({
                         ...res.data,
                     })
                 })
@@ -30,6 +34,14 @@ const MyPage = ({initUserRole}) => {
 
     const goBack = () => {
         navigate(-1);
+    }
+    const handleEdit = () => {
+        navigate(`/edit_profile`);
+    }
+    const doAgain = () => {
+        if(window.confirm("테스트를 다시 진행하시겠습니까?")){
+            navigate(`/test`);
+        }
     }
     const handleLogout = async() => {
         if(window.confirm("로그아웃하시겠습니까?")){
@@ -47,7 +59,8 @@ const MyPage = ({initUserRole}) => {
             //탈퇴
         }
     }
-    if(!state){
+    
+    if(!data){
         return <div>불러오는 중입니다.</div>
     }
     else{
@@ -62,7 +75,18 @@ const MyPage = ({initUserRole}) => {
                     />
                 </div>
                 <div className="content">
-                    <MyPageViewer imageNum={state.imageNum} userName={state.userName} handleLogout={handleLogout} handleWithdrawal={handleWithdrawal}/>
+                    <div className="MyPage">
+                        <div className="profile_section">
+                            <div><img alt="profile image" src={getProfileImgById(data.imageNum)}/></div>
+                            <h1>{data.userName}</h1>
+                        </div>
+                        <div className="buttons">
+                            <div><button onClick={handleEdit}>회원정보수정</button></div>
+                            <div><button onClick={doAgain}>테스트 다시하기</button></div>
+                            <div><button onClick={handleLogout}>로그아웃</button></div>
+                            <div><button onClick={handleWithdrawal}>회원탈퇴</button></div>
+                        </div>
+                    </div>
                 </div>
                 <div className="footer">
                     <Navigator/>

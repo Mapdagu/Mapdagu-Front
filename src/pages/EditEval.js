@@ -1,10 +1,11 @@
 import Header from "../components/Header";
-import Editor from "../components/Editor";
+import Editor from "../components/evaluate/Editor";
+
+import icon_back from "../assets/icon/header_back.png";
+
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getCookie } from "../cookie";
-import icon_back from "../img/icon/header_back.png";
 import axios from "axios";
 
 const SERVER_URL = `https://mapdagu.site/api/evaluations`;
@@ -13,6 +14,7 @@ const EditEval = () => {
     const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
     const { id } = useParams();
+    
     const [data, setData] = useState({
         name: "",
         imageNum: 0,

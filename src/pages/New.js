@@ -1,9 +1,11 @@
 import Header from "../components/Header";
+import Editor from "../components/evaluate/Editor";
+
+import icon_back from "../assets/icon/header_back.png";
+
 import { useNavigate } from "react-router-dom";
-import Editor from "../components/Editor";
-import icon_back from "../img/icon/header_back.png";
-import axios from "axios";
 import { getCookie } from "../cookie";
+import axios from "axios";
 
 const ADD_EVAL = 'https://mapdagu.site/api/evaluations';
 const UPDATE_LEVEL = 'https://mapdagu.site/api/evaluations/info';
@@ -11,6 +13,7 @@ const UPDATE_LEVEL = 'https://mapdagu.site/api/evaluations/info';
 const New = () => {    
     const accessToken = getCookie("accessToken");
     const navigate = useNavigate();
+    
     const handleOnBack = () => {
         navigate(-1);
     }

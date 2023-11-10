@@ -1,7 +1,9 @@
-import Search from "../components/Search.js";
-import Navigator from "../components/Navigator.js";
 import Header from "../components/Header.js";
-import icon_back from "../img/icon/header_back.png";
+import Search from "../components/search/Search.js";
+import Navigator from "../components/Navigator.js";
+
+import icon_back from "../assets/icon/header_back.png";
+
 import { useNavigate } from "react-router-dom";
 
 const SearchUser = () => {
@@ -10,6 +12,7 @@ const SearchUser = () => {
     const handleOnBack = () => {
         navigate(-1);
     }
+    
     return(
         <div className="container">
             <div className="header">

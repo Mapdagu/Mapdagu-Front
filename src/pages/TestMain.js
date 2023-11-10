@@ -1,12 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import React from "react";
-import Modal from "react-modal";
-import { useState } from "react";
 import LoginEmail from "../components/login/LoginEmail";
 import LoginMain from "../components/login/LoginMain";
 
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
+
 const TestMain = ({getUserRole, role}) => {
     const navigate = useNavigate();
+    
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [showContent1, setShowContent1] = useState(true);
 

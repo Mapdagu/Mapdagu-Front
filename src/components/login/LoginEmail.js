@@ -1,13 +1,15 @@
-import "./LoginEmail.css";
+import "../../styles/LoginEmail.css";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { setCookie } from "../../cookie";
+import axios from "axios";
 
 const SERVER_URL = 'https://mapdagu.site/login';
 
 const LoginEmail = ({getUserRole, closeModal}) => {  
     const navigate = useNavigate();  
+    
     const [state, setState] = useState({
         email: "",
         password: "",

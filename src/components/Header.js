@@ -1,8 +1,10 @@
+import "../styles/Header.css";
+
+import icon_search from "../assets/icon/header_search.png";
+import icon_setting from "../assets/icon/header_setting.png";
+import icon_friend from "../assets/icon/header_friend.png";
+
 import { useNavigate } from "react-router-dom";
-import "./Header.css";
-import icon_search from "../img/icon/header_search.png";
-import icon_setting from "../img/icon/header_setting.png";
-import icon_friend from "../img/icon/header_friend.png";
 
 const Header = ({type, title, leftChild, rightChild, isFriend}) => {
     const navigate = useNavigate();

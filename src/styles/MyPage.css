@@ -1,0 +1,37 @@
+.MyPage{
+    text-align: center;
+}
+.MyPage .profile_section{
+    width: 100%;
+    padding-top: 74px;
+    padding-bottom: 74px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.MyPage img{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 5px solid black;
+}
+.MyPage h1{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 16px;
+}
+.MyPage .buttons{
+    margin: 20px;
+}
+.MyPage .button_section{
+    display: flex;
+}
+.MyPage button{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    width: 100%;
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    padding: 20px;
+}

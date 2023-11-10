@@ -1,4 +1,4 @@
-import Search from "../components/Search.js";
+import Search from "../components/search/Search.js";
 import Navigator from "../components/Navigator.js";
 
 const SearchPage = () => {

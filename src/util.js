@@ -1,20 +1,20 @@
-import logo192 from "./img/logo192.png";
-import ramen from "./img/ramen.png";
-import jin from "./img/jin.png";
-import neogoori from "./img/neogoori.png";
-import buldak from "./img/buldak.png";
-import samyang from "./img/samyang.png";
+import logo192 from "./assets/logo192.png";
+import ramen from "./assets/ramen.png";
+import jin from "./assets/jin.png";
+import neogoori from "./assets/neogoori.png";
+import buldak from "./assets/buldak.png";
+import samyang from "./assets/samyang.png";
 
-import hot_0 from "./img/profile/hot_0.png";
-import hot_1 from "./img/profile/hot_1.png";
-import hot_2 from "./img/profile/hot_2.png";
+import hot_0 from "./assets/profile/hot_0.png";
+import hot_1 from "./assets/profile/hot_1.png";
+import hot_2 from "./assets/profile/hot_2.png";
 
-import cute_0 from "./img/profile/cute_0.jpg";
-import cute_1 from "./img/profile/cute_1.jpg";
-import cute_2 from "./img/profile/cute_2.jpg";
-import cute_3 from "./img/profile/cute_3.jpg";
-import cute_4 from "./img/profile/cute_4.jpg";
-import cute_5 from "./img/profile/cute_5.jpg";
+import cute_0 from "./assets/profile/cute_0.jpg";
+import cute_1 from "./assets/profile/cute_1.jpg";
+import cute_2 from "./assets/profile/cute_2.jpg";
+import cute_3 from "./assets/profile/cute_3.jpg";
+import cute_4 from "./assets/profile/cute_4.jpg";
+import cute_5 from "./assets/profile/cute_5.jpg";
 
 export const getItemImgById = (itemId) => {
     const targetItemId = String(itemId);

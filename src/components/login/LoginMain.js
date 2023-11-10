@@ -1,8 +1,9 @@
-import "./LoginMain.css";
-import icon_kakao from "../../img/icon/login_kakao.png";
-import icon_google from "../../img/icon/login_google.png";
-import icon_naver from "../../img/icon/login_naver.png";
-import icon_mail from "../../img/icon/login_mail.png";
+import "../../styles/LoginMain.css";
+
+import icon_kakao from "../../assets/icon/login_kakao.png";
+import icon_google from "../../assets/icon/login_google.png";
+import icon_naver from "../../assets/icon/login_naver.png";
+import icon_mail from "../../assets/icon/login_mail.png";
 
 const LoginMain = ({onChange, closeModal}) => {
     const KAKAO_REDIRECT_URI = `https://mapdagu.site/oauth2/authorization/kakao`;
