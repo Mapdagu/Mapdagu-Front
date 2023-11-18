@@ -1,6 +1,8 @@
 import "../../styles/Editor.css";
 import OptionItem from "./OptionItem";
 import Search from "../search/Search";
+import '../../App.css';
+import { searchFood_SMALL, searchFood_BIG} from "../../styles/ModalStyles";
 import { selectionList } from "../../util";
 
 import star from "../../assets/icon/star.png";
@@ -13,6 +15,7 @@ import Modal from "react-modal";
 const Editor = ({initData, onSubmit}) => {  
     const slicedList = selectionList.slice(1,6);
     const [isModalSizeBig, setIsModalBig] = useState(false);
+    const [fadeIn, setFadeIn] = useState(true);
     const [state, setState] = useState({
         name: "",
         image: "",
@@ -54,14 +57,27 @@ const Editor = ({initData, onSubmit}) => {
             setModalIsOpen(true);
         }
     }
+    const closeModal = () => {
+        setFadeIn(false);
+        let timer;
+        if(modalIsOpen){
+          timer = setTimeout(() => {setModalIsOpen(false); setFadeIn(true);setIsModalBig(false);}, 300);
+        }
+    
+        return () => {
+          clearTimeout(timer);
+        };
+    }
     const modalStyle1 = {
         content: {
-            width: "350px",
-            height: "160px",
-            margin: "220px auto auto auto",
-            border: "none",
-            borderRadius: "30px", 
-            boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
+            // width: "21.5rem",
+            // height: "9.8rem",
+            // margin: "16.5rem auto auto auto",
+            // border: "none",
+            // borderRadius: "30px", 
+            // boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
+            // animation: "fade-in 0.3s forwards",
+            
         }
     }
     const modalStyle2 = {
@@ -72,6 +88,7 @@ const Editor = ({initData, onSubmit}) => {
             border: "none",
             borderRadius: "30px", 
             boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
+            // animation: "fade-in 0.3s forwards",
         }
     }
     return (
@@ -87,7 +104,7 @@ const Editor = ({initData, onSubmit}) => {
                     {score>4 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }
                     {score>5 ? <img alt="★" src={star}/> : <img alt="☆" src={star_border}/> }  
                 </div>
-                </div>
+                </div> 
                 <div className="selection_list_wrapper">
                     {slicedList.map((it) => (
                         <OptionItem
@@ -103,9 +120,9 @@ const Editor = ({initData, onSubmit}) => {
             </div>
             <div className="image_wrapper">
                 <img alt="food_img" src={image ? image : defaultImage} onClick={onClickImage}/>
-                <Modal style={isModalSizeBig?modalStyle2:modalStyle1} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={()=>{setModalIsOpen(false);setIsModalBig(false)}}>       
+                <Modal overlayClassName={`ReactModal__Overlay--after-open ${fadeIn}`} style={isModalSizeBig?searchFood_BIG():searchFood_SMALL()} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>       
                     <div className="search_modal_title">음식 선택</div>                     
-                    <div><button className="btn_modal_close" onClick={()=>{setModalIsOpen(false);setIsModalBig(false)}}>×</button></div>
+                    <div><button className="btn_modal_close" onClick={closeModal}>×</button></div>
                     <Search isFood={true} isModal={true} onSelect={onSelect} changeModalSize={changeModalSize}/>
                 </Modal>
                 <div>

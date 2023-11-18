@@ -1,6 +1,7 @@
 import "../../styles/SetProfile.css";
 import Header from "../Header";
 import ProfileItem from "./ProfileItem";
+import '../../App.css';
 import { getProfileImgById, profileImgList } from "../../util";
 
 import icon_edit from "../../assets/icon/profile_edit.png";
@@ -18,6 +19,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
     const navigate = useNavigate();
     
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [fadeIn, setFadeIn] = useState(true);
     const [profileId, setProfileId] = useState((initData && initData.imageNum) || 0);
     const [checkUserName, setCheckUserName] = useState({
         isChanged: false,
@@ -88,12 +90,24 @@ const SetProfile = ({title, initData, onSubmit}) => {
         setProfileId(profileId);
     }, []);
     const handleChangeProfile = () => {
-        setModalIsOpen(false);
+        closeModal();
         setInputValue({
             ...inputValue,
             imageNum: profileId,
         });
     }
+    const closeModal = () => {
+        setFadeIn(false);
+        let timer;
+        if(modalIsOpen){
+          timer = setTimeout(() => {setModalIsOpen(false); setFadeIn(true);}, 300);
+        }
+
+        return () => {
+          clearTimeout(timer);
+        };
+    }
+
     const modalStyle = {
         content: {
             width: "350px",
@@ -104,11 +118,13 @@ const SetProfile = ({title, initData, onSubmit}) => {
             borderRadius: "30px", 
             boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
             justifyContent: "center",
+            backGroundColor: "white",
+            // animation: "fade-in 0.3s forwards",
         }
     }
     
     return (
-        <div className="SetProfile">
+        <div className="SetProfile"> 
             <div className="header">
                 <Header 
                         title={title}
@@ -122,9 +138,9 @@ const SetProfile = ({title, initData, onSubmit}) => {
                     <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>
                         <img alt="edit" src={icon_edit}/>
                     </button>
-                    <Modal style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>    
+                    <Modal overlayClassName={`ReactModal__Overlay--after-open ${fadeIn}`} style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>    
                         <div className="modal_title">프로필 선택</div>
-                        <div><button className="btn_modal_close" onClick={() => setModalIsOpen(false)}>×</button></div>
+                        <div><button className="btn_modal_close" onClick={closeModal}>×</button></div>
                         <div className="profile_list_wrapper">
                             <div className="profile_images">
                                 <a>Hot</a>
