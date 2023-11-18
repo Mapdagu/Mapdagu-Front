@@ -25,25 +25,29 @@ const LoginEmail = ({getUserRole, closeModal}) => {
     };
 
     const onSubmit = async() => {  
-        try {
-            const res = (await axios.post(SERVER_URL, {email, password}));
-            const role = res.data.role;
-            const accessToken = res.headers[`authorization`];
-            const refreshToken = res.headers[`authorization-refresh`];
-            setCookie("accessToken", accessToken);
-            setCookie("refreshToken", refreshToken); 
-            if(role === "NOT_TEST_USER"){
-                navigate(`/test`);
-            } else if(role === "USER"){
-                navigate(`/main`);
-            } else {
-                navigate(`/set_profile`);
+        const isValidEmail = email.includes('@') && email.includes('.');
+        if(isValidEmail && password.length > 0){
+            try {
+                const res = (await axios.post(SERVER_URL, {email, password}));
+                const role = res.data.role;
+                const accessToken = res.headers[`authorization`];
+                const refreshToken = res.headers[`authorization-refresh`];
+                setCookie("accessToken", accessToken);
+                setCookie("refreshToken", refreshToken); 
+                if(role === "NOT_TEST_USER"){
+                    navigate(`/test`);
+                } else if(role === "USER"){
+                    navigate(`/main`);
+                } else {
+                    navigate(`/set_profile`);
+                }
+                getUserRole(role);
+            }catch (error) {
+                alert(error.response.data.message);
             }
-            getUserRole(role);
-        }catch (error) {
-            alert(error.response.data.message);
         }
     }    
+
     const onSignUp = () => {
         navigate(`/sign_up`);
     }
@@ -52,21 +56,17 @@ const LoginEmail = ({getUserRole, closeModal}) => {
         <div className="LoginEmail">
             {/* <h2>로그인</h2> */}
             <div className="login_input">
-                <div>
                     <input 
                         name="email"
                         onChange={handleInput}
                         placeholder="ID"
                     />
-                </div>
-                <div>
                     <input 
                         type = "password"
                         name="password"
                         onChange={handleInput}
                         placeholder="P/W"
                     />
-                </div>  
                 <button className="btn_login" onClick={onSubmit}>로그인</button>
             </div>
             <div className="buttons">
