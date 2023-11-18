@@ -7,7 +7,7 @@ import crown_bronze from "../../assets/icon/crown_bronze.png";
 
 import { useNavigate } from "react-router-dom";
 
-const FriendItem = ({ id, index, imageNum, userName, level, onDelete}) => {
+const FriendItem = ({ id, imageNum, userName, level, rank, onDelete}) => {
     const navigate = useNavigate();
 
     const goUserPage = () => {
@@ -17,15 +17,15 @@ const FriendItem = ({ id, index, imageNum, userName, level, onDelete}) => {
     const handleOnDelete = () => {
         onDelete(id, false);
     }
-    
+    // console.log(userName, index);
     return(
         <div className="FriendItem">
-            {index===0 ? <img className="img_crown" alt="crown" src={crown_gold}/>:""}
-            {index===1 ? <img className="img_crown" alt="crown" src={crown_silver}/>:""}
-            {index===2 ? <img className="img_crown" alt="crown" src={crown_bronze}/>:""}
+            {rank && level===rank.first && <img className="img_crown" alt="crown" src={crown_gold}/>}
+            {rank && level===rank.second && <img className="img_crown" alt="crown" src={crown_silver}/>}
+            {rank && level===rank.third && <img className="img_crown" alt="crown" src={crown_bronze}/>}
             <img className="profile_img" onClick={goUserPage} alt="profile_img" src={getProfileImgById(imageNum)}/>
-            <a>{userName}</a>
-            <a>Level. {level}</a>
+            <a className="username">{userName}</a>
+            <a className="level">Level. {level}</a>
             {onDelete ? <button onClick={handleOnDelete}>삭제</button> : ""}
         </div>
     );
