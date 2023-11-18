@@ -29,15 +29,17 @@
     width: 20px;
 }
 .Graph .buttons{
+    display: flex;
     justify-content: center;
+    align-items: end;
 }
 .Graph button {
-    width: 7%;
-    height: 52px;
-    margin: 2px;
+    width: 1.8rem;
+    height: 3rem;
+    margin: .1rem;
     font-family: 'Pretendard';
+    font-weight: bold;
     font-size: 12px;
-    padding-bottom: 15px;
     cursor: pointer;
     text-align:center;
     border: none;
@@ -46,12 +48,9 @@
 }
 
 .Graph button:hover {
-    transform: scale(1.1,1.1);
-    box-shadow: 0px 5px 2px -3px rgba(0, 0, 0, 0.25);
+    transform: scale(1, 1.1);
 }
 .Graph .color-1 {
-    /* background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673); */
-    /* box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); */
     background-color: #FFEB3A;
     color: #FFEB3A; 
 }
@@ -100,8 +99,16 @@
     color: #F24328;   
 }
 .Graph .focused_button{
-    height: 68px;
-    padding-top: 16px;
+    height: 4rem;
     color: white;
     outline: none;
+}
+.Graph .focused_button:hover{
+    transform: none;
+}
+
+@media screen and (max-width: 400px){
+    .Graph button{
+        width: 1.5rem;
+    }
 }

@@ -1,4 +1,5 @@
 .EvaluationItem {
+    position: relative;
     padding: 15px;
     margin-bottom: 20px;
     display: flex;
@@ -43,6 +44,7 @@
 }
 .EvaluationItem .info_section .difficulty_score img{
     align-items: center;
+    max-width: 1.3rem;
 }
 .EvaluationItem .info_section .score_text {
     font-size: 13px;
@@ -51,15 +53,18 @@
 }
 
 .EvaluationItem .button_section{
+    position: absolute;
+    top: 15px;
+    right: 15px;
     display: flex;
     height: 20px;
     align-items: center;
 }
 .EvaluationItem .button_section button{
     cursor: pointer;
-    width: 20px;
+    width: 100%;
     padding: 0;
-    margin-left: 5px;
+    margin-left: 10px;
     border: none;
     background-color: white;
 }

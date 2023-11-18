@@ -1,0 +1,27 @@
+.RequestModal{
+    position: relative;
+}
+.RequestModal .friend_modal_title{
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 22px;
+    text-align: left;
+    padding: 15px;
+    padding-bottom: 30px;
+}
+.RequestModal .btn_modal_close{
+    position: absolute;
+    top:0;
+    right:0;
+    padding: 12px;
+    color: #B4B4B4;
+}
+.RequestModal p{
+    margin-top: 170px;
+    text-align: center;
+    line-height: 1.5;
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-size: 16px;
+    color: #969696;
+}

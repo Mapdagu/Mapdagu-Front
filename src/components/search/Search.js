@@ -89,7 +89,7 @@ const Search = ({isFood, isModal, onSelect, changeModalSize}) => {
                             <button className="btn_delete" onClick={deleteAll}>전체 삭제</button>
                         </div>
                     </div>
-                    <div className="list_wrapper">
+                    <div className="list_wrapper recent">
                         {searchData.map((it) => (                           
                             <RecentSearchedItem
                                 key={it.id}
@@ -114,7 +114,7 @@ const Search = ({isFood, isModal, onSelect, changeModalSize}) => {
                 </div>
                 <div className="list_wrapper">
                     { data.length === 0 ?
-                    <p>"{contents}" 에 일치하는 검색 결과가 없습니다.</p> : ""
+                    <p className="no_result">"{contents}" 에 일치하는 검색 결과가 없습니다.</p> : ""
                     }
                     { isFood ?
                     data.map((it) => (                           

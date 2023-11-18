@@ -11,7 +11,7 @@
 .OptionItem span {
     font-family: 'Pretendard';
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
 }
 .OptionItem_on{
     transform: scale(1.1,1.1);
@@ -51,4 +51,10 @@
     color: white;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 400px) {
+    .OptionItem span {
+        font-size: .9rem;
+    }    
 }
