@@ -1,29 +1,59 @@
 .LoginMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 35px;
+    margin-top: 2.25rem;
 }
 .LoginMain .buttons{
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
 }
 
 .LoginMain img{
     cursor: pointer;
-    width:48px;
-    height:48px;
-    margin: 0 9px 0 9px;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 .6rem 0 .6rem;
     border-radius: 100%;
 }
 .LoginMain .btn_close{
     font-family: 'Pretendard';
     font-weight: bold;
-    font-size: 14px;
+    font-size: .875rem;
     cursor: pointer;
     background-color: white;
     border: none;
     color: #C8C8C8;
+    margin-top: .35rem;
 }
 .LoginMain h2{
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 0;
+}
+
+@media screen and (max-width: 400px) {
+    .LoginMain{
+        margin-top: 1.75rem;
+    }
+    .LoginMain .buttons{
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .LoginMain img{
+        width: 2.875rem;
+        height: 2.875rem;
+        margin: 0 .5rem 0 .5rem;
+    }
+    .LoginMain .btn_close{
+        font-size: .8rem;
+        margin-top: .6rem;
+    }
+    .LoginMain h2{
+        font-size: 1.125rem;
+        margin: 0;
+    }
+    
 }

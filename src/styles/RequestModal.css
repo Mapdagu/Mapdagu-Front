@@ -4,24 +4,39 @@
 .RequestModal .friend_modal_title{
     font-family: 'Pretendard';
     font-weight: bold;
-    font-size: 22px;
+    font-size: 1.375rem;
     text-align: left;
-    padding: 15px;
-    padding-bottom: 30px;
+    padding: .875rem;
+    padding-bottom: 1.75rem;
 }
 .RequestModal .btn_modal_close{
     position: absolute;
-    top:0;
-    right:0;
-    padding: 12px;
+    top: .675rem;
+    right: .675rem;
     color: #B4B4B4;
 }
 .RequestModal p{
-    margin-top: 170px;
+    margin-top: 11rem;
     text-align: center;
     line-height: 1.5;
     font-family: 'Pretendard';
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     color: #969696;
+}
+
+@media screen and (max-width: 400px) {
+.RequestModal .friend_modal_title{
+    font-size: 1.25rem;
+}
+.RequestModal .btn_modal_close{
+    top: .75rem;
+    right: .75rem;
+    font-size: 1.5rem;
+}
+.RequestModal p{
+    margin-top: 11rem;
+    line-height: 1.5;
+    font-size: 1rem;
+}
 }

@@ -5,6 +5,7 @@ import FriendItem from "../components/friend/FriendItem";
 import RequestModal from "../components/friend/RequestModal";
 import Graph from "../components/Graph";
 import '../App.css';
+import { checkRequests } from "../styles/ModalStyles";
 
 import icon_noti from "../assets/icon/friend_notification.png";
 import icon_noti_on from "../assets/icon/friend_notification_on.png";
@@ -51,7 +52,7 @@ const Friend = () => {
     const [levelCounts, setLevelCounts] = useState();
     const [totalFriends, setTotalFriends] = useState(0);
 
-    const [requestData, setRequestData] = useState();
+    const [requestData, setRequestData] = useState(mockData);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [fadeIn, setFadeIn] = useState(true);
     const [reload, setReload] = useState(false);
@@ -92,12 +93,12 @@ const Friend = () => {
                 //전체 친구 수
                 setTotalFriends(data.length);
             // });
-            axios.get(REQUEST_FRIEND, {headers: {Authorization: accessToken}})
-            .then(res => {
-                setRequestData(res.data.content.map((item) => ({
-                    ...item
-                })));
-            });  
+            // axios.get(REQUEST_FRIEND, {headers: {Authorization: accessToken}})
+            // .then(res => {
+            //     setRequestData(res.data.content.map((item) => ({
+            //         ...item
+            //     })));
+            // });  
         } catch(error){
             alert(error.response.data.message);
         } 
@@ -139,19 +140,6 @@ const Friend = () => {
         };
     }
 
-    const modalStyle = {
-        content: {
-            width: "350px",
-            height: "500px",
-            margin: "auto",
-            padding: "20px",
-            border: "none",
-            borderRadius: "30px", 
-            boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
-            // animation: "fade-in 0.3s forwards",
-        } 
-    }
-
     return(
         <div className="container">
             <div className="header">
@@ -165,7 +153,7 @@ const Friend = () => {
                     <div className="contents_top">
                         <button className="text_title" onClick={() => navigate(0)}>친구 목록</button>
                         <img className="img_noti" onClick={() => {setModalIsOpen(true)}} alt="noti" src={ !requestData || requestData.length === 0 ? icon_noti : icon_noti_on}/>
-                        <Modal overlayClassName={`ReactModal__Overlay--after-open ${fadeIn}`} className="modal-content fade-out" style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>    
+                        <Modal overlayClassName={`ReactModal__Overlay--after-open ${fadeIn}`} className="modal-content fade-out" style={checkRequests()} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>    
                             <RequestModal closeModal={closeModal} requestData={requestData} deleteRequest={deleteRequest} manageFriend = {manageFriend}/>
                         </Modal>
                     </div>

@@ -68,29 +68,7 @@ const Editor = ({initData, onSubmit}) => {
           clearTimeout(timer);
         };
     }
-    const modalStyle1 = {
-        content: {
-            // width: "21.5rem",
-            // height: "9.8rem",
-            // margin: "16.5rem auto auto auto",
-            // border: "none",
-            // borderRadius: "30px", 
-            // boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
-            // animation: "fade-in 0.3s forwards",
-            
-        }
-    }
-    const modalStyle2 = {
-        content: {
-            width: "350px",
-            height: "510px",
-            margin: "100px auto auto auto",
-            border: "none",
-            borderRadius: "30px", 
-            boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
-            // animation: "fade-in 0.3s forwards",
-        }
-    }
+    
     return (
         <div className="Editor">
             <div className="editor_container">

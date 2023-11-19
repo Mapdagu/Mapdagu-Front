@@ -2,6 +2,7 @@ import "../../styles/SetProfile.css";
 import Header from "../Header";
 import ProfileItem from "./ProfileItem";
 import '../../App.css';
+import { selectProfileImg } from "../../styles/ModalStyles";
 import { getProfileImgById, profileImgList } from "../../util";
 
 import icon_edit from "../../assets/icon/profile_edit.png";
@@ -107,21 +108,6 @@ const SetProfile = ({title, initData, onSubmit}) => {
           clearTimeout(timer);
         };
     }
-
-    const modalStyle = {
-        content: {
-            width: "350px",
-            height: "600px",
-            margin: "auto",
-            padding: "20px",
-            border: "none",
-            borderRadius: "30px", 
-            boxShadow: "0 0 5px 2px rgba(0, 0, 0, 0.1)",
-            justifyContent: "center",
-            backGroundColor: "white",
-            // animation: "fade-in 0.3s forwards",
-        }
-    }
     
     return (
         <div className="SetProfile"> 
@@ -138,7 +124,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                     <button className="btn_overlay" onClick={() => setModalIsOpen(true)}>
                         <img alt="edit" src={icon_edit}/>
                     </button>
-                    <Modal overlayClassName={`ReactModal__Overlay--after-open ${fadeIn}`} style={modalStyle} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>    
+                    <Modal overlayClassName={`ReactModal__Overlay--after-open ${fadeIn}`} style={selectProfileImg()} ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={closeModal}>    
                         <div className="modal_title">프로필 선택</div>
                         <div><button className="btn_modal_close" onClick={closeModal}>×</button></div>
                         <div className="profile_list_wrapper">
@@ -165,7 +151,7 @@ const SetProfile = ({title, initData, onSubmit}) => {
                                 ))}
                             </div>
                         </div>
-                        <div><button className="btn_profile_submit" onClick={handleChangeProfile}>선택하기</button></div>
+                        <div className="btn_profile_submit" ><button onClick={handleChangeProfile}>선택하기</button></div>
                     </Modal>
                 </div>
 
