@@ -1,7 +1,7 @@
 # 내가맵다했지!
 2023.07 - 2023.11 (2人 팀 프로젝트)
 
-<img width="400" alt="Image" src="https://github.com/user-attachments/assets/6382f673-f6a8-41b5-83b1-fd5f85d474a8" />
+<img width="500" alt="Image" src="https://github.com/user-attachments/assets/6382f673-f6a8-41b5-83b1-fd5f85d474a8" />
 
 
 <img width="850" alt="Image" src="https://github.com/user-attachments/assets/1b0f49d3-3842-4904-afb1-718b508b0248" />
