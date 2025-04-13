@@ -1,13 +1,20 @@
 # 내가맵다했지!
 2023.07 - 2023.11 (2人 팀 프로젝트)
-<img width="500" alt="Image" src="https://github.com/user-attachments/assets/6382f673-f6a8-41b5-83b1-fd5f85d474a8" />
 
 
-![Image](https://github.com/user-attachments/assets/1b0f49d3-3842-4904-afb1-718b508b0248)
-![Image](https://github.com/user-attachments/assets/18e0e248-4a15-420e-876b-2d9a5025ed26)
-![Image](https://github.com/user-attachments/assets/553fd7ce-0a07-43fb-a3d4-20650b042985)
-![Image](https://github.com/user-attachments/assets/c54d3fdc-8ab7-4bae-b56e-a78d4b30e02b)
+<img width="300" alt="Image" src="https://github.com/user-attachments/assets/6382f673-f6a8-41b5-83b1-fd5f85d474a8" />
 
+
+<img width="700" alt="Image" src="https://github.com/user-attachments/assets/1b0f49d3-3842-4904-afb1-718b508b0248" />
+
+
+<img width="700" alt="Image" src="https://github.com/user-attachments/assets/18e0e248-4a15-420e-876b-2d9a5025ed26" />
+
+
+<img width="700" alt="Image" src="https://github.com/user-attachments/assets/553fd7ce-0a07-43fb-a3d4-20650b042985" />
+
+
+<img width="700" alt="Image" src="https://github.com/user-attachments/assets/c54d3fdc-8ab7-4bae-b56e-a78d4b30e02b" />
 
 
 
